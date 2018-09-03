@@ -8,6 +8,10 @@
 
 function getArtists()
 {
-    return array("Bruce Springsteen", "David Bowie", "Mylène Farmer");
+    return [
+        ["name" => "Kaleo", "kind" => "Blues Rock"],
+        ["name" => "Txarango", "kind" => "Latino"],
+        ["name" => "Nekfeu", "kind" => "Rap"]
+    ];
 }
 ?>
