@@ -1,5 +1,5 @@
 $color: red;
-
-body{
-  color: $color;
+$test: rgb(1,1,1);
+body {
+  color: $test;
 }
