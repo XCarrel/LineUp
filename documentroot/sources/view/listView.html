@@ -1,3 +1,16 @@
 <h1>Liste</h1>
 
 <h2>Il y a <?= count($artists); ?> artistes au programme</h2>
+
+<table>
+    <tr>
+        <th>Nom</th>
+    </tr>
+<?php
+    foreach($artists as $artist){ ?>
+        <tr>
+            <td><?= $artist[name] ?></td>
+        </tr> <?php
+    }
+?>
+</table>
