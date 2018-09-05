@@ -1,0 +1,8 @@
+<h1><?= $artist['name'] ?></h1>
+
+<label for="kind">Genre</label><input type="text" name="kind" id="kind" value="<?= $artist['kind'] ?>" readonly><br>
+<label for="country">Pays</label><input type="text" name="country" id="country" value="<?= $artist['country'] ?>" readonly><br>
+<label for="description">Description</label><textarea rows="10" cols="60" name="description" id="description" readonly><?= $artist['description'] ?></textarea><br>
+<label for="pic">Image</label><img id="pic" src="<?= $artist['mainpicturelink']?>"><br>
+
+<a href="?page=preview&id=<?= $artist['id'] ?>"><button class="button">Prévisualiser</button></a>
