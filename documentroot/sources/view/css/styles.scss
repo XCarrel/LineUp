@@ -1,0 +1,66 @@
+@import "fonts.css";
+@import "blueTheme";
+//@import "redTheme";
+//@import "greenTheme";
+
+body {
+  font-family: 'abel', Fallback, sans-serif;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding:20px;
+  background-image: url("/assets/images/crowd.jpg");
+  background-size: contain;
+}
+
+// Menu stuff
+
+$menuHeight: 50px;
+
+nav {
+  height: $menuHeight;
+  font-family: 'riffic', Fallback, sans-serif;
+  background-color: $navBackgroundColor;
+  border-radius: 10px;
+  font-size: larger;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  vertical-align: middle;
+  opacity: 0.8;
+
+  a {
+    height: $menuHeight;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: $linksTextColor;
+    text-decoration: none; // remove underline
+  }
+
+  a:hover {
+    background-color: $linksBackgroundColor;
+  }
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin: 2px;
+}
+
+#page {
+  background-color: $pageBackgroundColor;
+  padding: 15px;
+  flex-grow: 2;
+}
+
+footer {
+  background-color: $footerBackgroundColor;
+  padding-left: 20px;
+}
