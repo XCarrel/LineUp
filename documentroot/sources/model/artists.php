@@ -9,9 +9,9 @@
 function getArtists()
 {
     return [
-        ["name" => "Kaleo", "kind" => "Blues Rock"],
-        ["name" => "Txarango", "kind" => "Latino"],
-        ["name" => "Nekfeu", "kind" => "Rap"]
+        ["id" => 1, "name" => "Kaleo", "kind" => "Blues Rock"],
+        ["id" => 2, "name" => "Txarango", "kind" => "Latino"],
+        ["id" => 3, "name" => "Nekfeu", "kind" => "Rap"]
     ];
 }
 ?>

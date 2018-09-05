@@ -64,3 +64,28 @@ footer {
   background-color: $footerBackgroundColor;
   padding-left: 20px;
 }
+
+// Table stuff
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: darken($pageBackgroundColor, 5%);
+
+  th {
+    background-color: darken($pageBackgroundColor, 15%);
+  }
+
+  tr {
+    cursor: pointer;
+  }
+
+  td {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  a {
+    text-decoration: none; // we want links in tables to be handled in js
+    color: $linksTextColor;
+  }
+}
