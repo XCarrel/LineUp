@@ -9,11 +9,19 @@
 $appVersion = "v1.0";
 
 $page = isset($_GET["page"]) ? $_GET["page"] : "home";
+$artistid = $_GET["id"];
 
 switch ($page)
 {
     case 'home':
     case 'list':
+        break;
+    case 'infos':
+        if(!isset($artistid))
+        {
+            $page = 'error';
+            $errormessage = "Manque l'id de l'artiste";
+        }
         break;
     default:
         $page = 'error';
