@@ -1,6 +1,47 @@
+@font-face {
+  font-family: "Lato";
+  src: url("../../assets/fonts/Lato/Lato-Regular.ttf");
+}
+@font-face {
+  font-family: "Univers Light Condensend";
+  src: url("../../assets/fonts/Univers_Light_Condensed.ttf");
+}
 body {
   padding: 0;
   margin: 0;
+  background: black url("../../assets/images/body-background-left.png") repeat-y;
+  font-family: Lato, sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 85px;
+  padding: 20px;
+  font-family: "Univers Light Condensend";
+}
+header #logo {
+  object-fit: scale-down;
+  height: 100%;
+  order: 1;
+  flex-basis: 10%;
+}
+header nav {
+  color: white;
+  order: 2;
+  flex-basis: 45%;
+  font-size: 25px;
+}
+header nav li {
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 10px;
+}
+header nav li a {
+  color: white;
+  text-decoration: none;
 }
 
 table {
