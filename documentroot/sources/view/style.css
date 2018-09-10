@@ -1,5 +1,15 @@
 body {
-  color: #010101;
+  padding: 0;
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+table thead {
+  background-color: #e94285;
+  color: white;
+  height: 30px;
 }
 
 /*# sourceMappingURL=style.css.map */

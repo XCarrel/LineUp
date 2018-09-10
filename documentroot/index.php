@@ -15,6 +15,15 @@ switch ($page)
     case 'home':
     case 'list':
         break;
+    case 'info':
+    case 'preview':
+        if(isset($_GET["id"])) {
+            $artistId = $_GET["id"];
+        }else{
+            $page = 'error';
+            $errormessage = "Format incorrect (manque l'id de l'artiste)";
+        }
+        break;
     default:
         $page = 'error';
         $errormessage = "La page demandée n'existe pas";
@@ -26,4 +35,6 @@ $content = ob_get_contents();
 ob_end_clean();
 
 include("sources/view/layout.html");
+
+
 ?>

@@ -1,5 +1,18 @@
-$color: red;
-$test: rgb(1,1,1);
-body {
-  color: $test;
+
+$paleoPink:#e94285;
+
+body{
+  padding: 0;
+  margin: 0;
 }
+
+table{
+  border-collapse: collapse;
+  thead{
+    background-color: $paleoPink;
+    color: white;
+    height: 30px;
+  }
+}
+
+
