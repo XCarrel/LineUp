@@ -15,7 +15,6 @@ switch ($page)
     case 'home':
     case 'list':
         break;
-    case 'info':
     case 'preview':
         if(isset($_GET["id"])) {
             $artistId = $_GET["id"];

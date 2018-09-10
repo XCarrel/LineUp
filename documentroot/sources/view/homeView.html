@@ -1,1 +1,17 @@
-<h1>Home</h1>
+<div id="home-top">
+    <div class="overlay">
+        <h1>PaléoFestival</h1>
+    </div>
+</div>
+<section id="nextartists">
+    <?php foreach($artists as $artist) : ?>
+    <a href="?page=preview&id=<?= $artist['id'] ?>">
+        <article>
+        <img src="<?= pathToArtistsImages() ?><?= $artist['imageurl'] ?>" class="artistimg" />
+        <div class="artistoverlay">
+            <h2 class="artisttitle"><?= $artist['name'] ?></h2>
+        </div>
+        </article>
+    </a>
+    <?php endforeach; ?>
+</section>
