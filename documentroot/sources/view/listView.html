@@ -5,12 +5,14 @@
 <table>
     <tr>
         <th>Nom</th>
+        <th>Genre</th>
     </tr>
 <?php
     foreach($artists as $artist){ ?>
-        <tr>
-            <td><?= $artist[name] ?></td>
-        </tr> <?php
+    <tr>
+        <td><a href="?page=infos&id=<?= $artist['id'] ?>"><?= $artist["name"] ?></a></td>
+        <td><?= $artist["kind"] ?></td>
+    </tr> <?php
     }
 ?>
 </table>
