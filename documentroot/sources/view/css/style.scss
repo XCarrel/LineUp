@@ -1,6 +1,9 @@
 
 header{
- 
+
+}
+body{
+  background-color: #232323;
 }
 
 .box{
@@ -12,6 +15,7 @@ header{
   text-align: center;
   text-decoration: none;
   color: black;
+  background-color: white;
 }
 .container{
   display: flex;
@@ -111,6 +115,23 @@ a:hover
   position: relative ;
   font-size: 70px;
   bottom: -41vh;
-  left: 37vw;
+  left: 300px;
 
+}
+.description{
+  margin-top:50px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding:10px;
+  text-align: justify;
+  color: lightgray;
+}
+h2{
+  color: white;
+}
+.container-description{
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }

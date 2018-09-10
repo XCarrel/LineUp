@@ -2,14 +2,21 @@
 <head>
     <meta charset="utf-8">
     <title>LineUp</title>
+    <link rel="stylesheet" href="/sources/view/css/style.css">
+
 </head>
 <body>
 <header id="header">
-    <img src="/assets/images/Logo.jpg" width="80px" height="80px">
-    <nav>
-        <a href="?page=home">Accueil</a>
-        <a href="?page=list">Liste</a>
-    </nav>
+    <img src="/assets/images/Logo.jpg" width="80px" height="80px" class="logo">
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a href="?page=home">Accueil</a>
+            <a href="?page=list">Liste</a>
+        </div>
+    </div>
+    <!-- Use any element to open/show the overlay navigation menu -->
+    <span onclick="openNav()">open</span>
 </header>
 <div id="page">
     <div id="content"><?= $content ?></div>
@@ -18,5 +25,17 @@
 <footer id="footer">
     <?= $appVersion ?> &copy; 2018 <a href="http://www.cpnv.ch">CPNV</a>
 </footer>
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("myNav").style.height = "100%";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("myNav").style.height = "0%";
+    }
+</script>
 </body>
 </html>
