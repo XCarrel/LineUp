@@ -6,11 +6,18 @@
   font-family: "Univers Light Condensend";
   src: url("../../assets/fonts/Univers_Light_Condensed.ttf");
 }
+table, #home-top .overlay h1, header {
+  font-family: "Univers Light Condensend", sans-serif;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
 body {
   padding: 0;
   margin: 0;
   background: black url("../../assets/images/body-background-left.png") repeat-y;
-  font-family: "Lato", sans-serif;
 }
 
 header {
@@ -20,7 +27,6 @@ header {
   align-items: center;
   height: 85px;
   padding: 10px;
-  font-family: "Univers Light Condensend";
 }
 header #logo {
   object-fit: scale-down;
@@ -63,22 +69,21 @@ header nav li a:hover {
   text-align: center;
 }
 #home-top .overlay h1 {
-  font-family: "Univers Light Condensend";
   font-size: 120px;
   color: white;
 }
 
-#nextartists {
+#next-artists {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-#nextartists a {
+#next-artists a {
   width: 32%;
   outline: none;
 }
-#nextartists article {
+#next-artists article {
   background-color: #e94285;
   width: 100%;
   opacity: 0.8;
@@ -87,12 +92,12 @@ header nav li a:hover {
   margin-bottom: 10vh;
   position: relative;
 }
-#nextartists article .artistimg {
+#next-artists article .artist-img {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
-#nextartists article .artistoverlay {
+#next-artists article .artist-overlay {
   transition: all 0.3s;
   display: block;
   position: absolute;
@@ -104,29 +109,54 @@ header nav li a:hover {
   opacity: 0.25;
   z-index: 999;
 }
-#nextartists article .artistoverlay .artisttitle {
+#next-artists article .artist-overlay .artist-title {
   display: none;
   text-align: center;
 }
-#nextartists article .artistoverlay:hover {
+#next-artists article .artist-overlay:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
   opacity: 1;
   background-color: transparent;
 }
-#nextartists article .artistoverlay:hover .artisttitle {
+#next-artists article .artist-overlay:hover .artist-title {
   display: block;
 }
 
 table {
   border-collapse: collapse;
+  width: 100%;
 }
 table thead {
   background-color: #e94285;
   color: white;
   height: 30px;
+  font-size: 25px;
+}
+table thead th {
+  padding: 10px;
+}
+table tbody td {
+  padding: 20px;
+}
+table tbody td:nth-child(odd) {
+  background-color: #c0dfdc;
+}
+table tbody td:nth-child(odd):hover {
+  background-color: #9ecec9;
+}
+table tbody td:nth-child(even) {
+  background-color: #e94285;
+}
+table tbody td:nth-child(even):hover {
+  background-color: #de1a69;
+}
+table tbody td a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  font-size: 110%;
 }
 
 footer {

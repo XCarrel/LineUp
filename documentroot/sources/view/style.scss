@@ -8,6 +8,14 @@
   src: url("../../assets/fonts/Univers_Light_Condensed.ttf");
 }
 
+%fancyFontFamily {
+  font-family: "Univers Light Condensend", sans-serif;
+}
+
+%basicFontFamily {
+  font-family: "Lato", sans-serif;
+}
+
 $paleoPink:rgb(233, 66, 133);
 $goldNumber:1.61803398875;
 
@@ -15,7 +23,7 @@ body{
   padding: 0;
   margin: 0;
   background: black url("../../assets/images/body-background-left.png") repeat-y;
-  font-family: "Lato", sans-serif;
+  @extend %basicFontFamily;
 }
 
 header{
@@ -25,7 +33,7 @@ header{
   align-items: center;
   height: 85px;
   padding: 10px;
-  font-family: "Univers Light Condensend";
+  @extend %fancyFontFamily;
 
   #logo{
     object-fit: scale-down;
@@ -70,14 +78,14 @@ header{
     background-color: rgba(0, 0, 0, 0.8);
     text-align: center;
     h1 {
-      font-family: "Univers Light Condensend";
+      @extend %fancyFontFamily;
       font-size: 120px;
       color: white;
     }
   }
 }
 
-#nextartists{
+#next-artists{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -95,13 +103,13 @@ header{
     margin-bottom: 10vh;
     position: relative;
 
-    .artistimg{
+    .artist-img{
       object-fit: cover;
       width: 100%;
       height: 100%;
     }
 
-    .artistoverlay{
+    .artist-overlay{
       transition: all 0.3s;
       display: block;
       position: absolute;
@@ -113,7 +121,7 @@ header{
       opacity: 0.25;
       z-index: 999;
 
-      .artisttitle{
+      .artist-title{
         display: none;
 
         text-align: center;
@@ -123,11 +131,10 @@ header{
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: black;
         opacity: 1;
         background-color: transparent;
 
-        .artisttitle{
+        .artist-title{
           display: block;
         }
       }
@@ -137,10 +144,41 @@ header{
 
 table{
   border-collapse: collapse;
+  width: 100%;
+  @extend %fancyFontFamily;
   thead{
     background-color: $paleoPink;
     color: white;
     height: 30px;
+    font-size: 25px;
+    th {
+      padding: 10px;
+    }
+  }
+
+  tbody{
+    td {
+      padding: 20px;
+      &:nth-child(odd) { // Impair
+        background-color: #c0dfdc;
+        &:hover{
+          background-color: darken(#c0dfdc, 10%);
+        }
+      }
+      &:nth-child(even) { // Pair
+        background-color: #e94285;
+        &:hover{
+          background-color: darken(#e94285, 10%);
+        }
+      }
+
+      a{
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+        font-size: 110%;
+      }
+    }
   }
 }
 

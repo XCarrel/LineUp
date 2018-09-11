@@ -3,13 +3,13 @@
         <h1>PaléoFestival</h1>
     </div>
 </div>
-<section id="nextartists">
+<section id="next-artists">
     <?php foreach($artists as $artist) : ?>
     <a href="?page=preview&id=<?= $artist['id'] ?>">
         <article>
-        <img src="<?= pathToArtistsImages() ?><?= $artist['imageurl'] ?>" class="artistimg" />
-        <div class="artistoverlay">
-            <h2 class="artisttitle"><?= $artist['name'] ?></h2>
+        <img src="<?= pathToArtistsImages() ?><?= $artist['imageurl'] ?>" class="artist-img" />
+        <div class="artist-overlay">
+            <h2 class="artist-title"><?= $artist['name'] ?></h2>
         </div>
         </article>
     </a>
