@@ -21,7 +21,7 @@ switch ($page)
             $artistId = $_GET["id"];
         else
         {
-            $page = 'erroro';
+            $page = 'error';
             $errormessage = "Format incorrect (manque l'id de l'artiste)";
         }
         break;
