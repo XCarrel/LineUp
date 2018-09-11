@@ -1,4 +1,4 @@
-<h1>Liste</h1>
+<!--<h1>Liste</h1>
 
 <h2>Il y a <?= count($artists); ?> artistes au programmes</h2>
 <div class="container">
@@ -11,6 +11,31 @@
             <div>
                 <h1><?= $artist['name'];?></h1>
             </div>
+        </a>
+    <?php }?>
+</div>-->
+<h1>Liste</h1>
+
+<h2>Il y a <?= count($artists); ?> artistes au programmes</h2>
+<div class="container">
+
+    <?php foreach($artists as $key => $artist){
+    ?>
+        <a href="?page=info&id=<?= $artist['id'] ?>" class="box">
+            <?php if ($key %2 == 0){ ?>
+            <div class="crop" style="background-image:url('./assets/jaquettes/<?=$artist['image']?>'); float: right;position: relative" >
+                <div style="font-size: 50px; float:left;position: relative; bottom:-220px; z-index: 100">
+                    <h1 style="color: white"><?= $artist['name'];?></h1>
+                </div>
+            <?php }else{ ?>
+                <div class="crop" style="background-image:url('./assets/jaquettes/<?=$artist['image']?>'); float: left" >
+                    <div style="font-size: 50px; float:right; position: relative; bottom:-220px;">
+                        <h1 style="color: white"><?= $artist['name'];?></h1>
+                    </div>
+            <?php } ?>
+
+            </div>
+
         </a>
     <?php }?>
 </div>

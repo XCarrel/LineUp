@@ -1,14 +1,18 @@
 <div class="container-description">
     <div class="text-title-div">
-    <h2 class="text-title">Détails de l'artiste ou du groupe</h2>
+        <h2 class="text-title">Détails de l'artiste ou du groupe</h2>
     </div>
     <div class="image-info" style="background-image: url('/assets/jaquettes/<?= $artist["image"] ?>')">
         <div class="title-info">
             <h2 ><?= $artist['name'] ?></h2>
         </div>
     </div>
+
     <div class="description">
+        <h3>Description: </h3>
         <?= $artist['description'] ?>
     </div>
+
+<a href="?page=preview&id=<?= $artist['id'] ?>">La Preview</a>
 
 </div>

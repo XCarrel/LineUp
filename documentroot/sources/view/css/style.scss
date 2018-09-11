@@ -6,18 +6,17 @@ body{
   background-color: #232323;
   padding: 0;
   margin: 0;
+  color: white;
 }
 
 .box{
-  width: 250px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 100%;
   text-align: center;
   margin: 20px;
   min-height: 250px;
   text-align: center;
   text-decoration: none;
   color: black;
-  background-color: white;
 }
 .container{
   display: flex;
@@ -28,10 +27,19 @@ body{
 .jaquettes{
   width: 100%;
 }
-.crop {
+/*.crop {
   width: 250px;
   height: 140px;
   overflow: hidden;
+}*/
+
+.crop {
+  width: 50vw;
+  height: 40vh;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  margin: 20px;
 }
 
 
@@ -78,7 +86,7 @@ a:hover
 .overlay a {
   padding: 8px;
   text-decoration: none;
-  font-size: 36px;
+  font-size: 56px;
   color: #818181;
   display: block;
   transition: 0.3s;
@@ -138,14 +146,14 @@ h2{
   margin-right: auto;
   line-height: 30px;
 }
-#nav-toggle span { position: absolute; right: 20px; top: 40px; }
+#nav-toggle span { position: absolute; right: 20px; top: 25px; }
 
 #nav-toggle span,
 #nav-toggle span:before,
 #nav-toggle span:after {
   cursor: pointer;
-  border-radius: 1px;
-  height: 5px;
+  border-radius: 10px;
+  height: 3px;
   width: 35px;
   background: white;
   position: absolute;
@@ -164,6 +172,7 @@ h2{
 
 }
 .text-title-div{
+  margin-top: 20px;
   margin-right: auto;
   margin-left: auto;
   text-align: center;

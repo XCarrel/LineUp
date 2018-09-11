@@ -15,6 +15,7 @@ switch ($page)
     case 'home':
     case 'list':
     case 'info':
+    case 'preview':
         break;
     default:
         $page = 'error';
