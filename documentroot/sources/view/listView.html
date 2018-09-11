@@ -1,3 +1,26 @@
+<script>
+    function show(id) {
+        document.getElementById("over-"+ id).style.opacity = "1";
+       document.getElementById("over-" + id).style.height = "100%";
+       document.getElementById("over-" + id).style.width = "100%";
+    }
+    function leave(id) {
+        document.getElementById("over-"+ id).style.opacity = "0";
+        document.getElementById("over-" + id).style.height = "0";
+        document.getElementById("over-" + id).style.width = "0";
+    }
+</script>
 <h1>Liste</h1>
 
 <h2>Il y a <?= count($artists); ?> artistes au programme</h2>
+<div class="flex-container">
+    <?php foreach ($artists as $key => $artist) { ?>
+    <div class="container" onmouseover="show(<?= $key; ?>)" onmouseout="leave(<?= $key; ?>)">
+        <img src="<?= $artist['image']; ?>" alt="Avatar" class="image">
+        <a href="?page=info&artistID=<?= $artist['id']; ?>">
+        <div class="overlay" id="over-<?= $key; ?>">
+            <div class="text"><?= $artist['name']; ?></div>
+        </div></a>
+    </div>
+    <?php } ?>
+</div>

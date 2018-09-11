@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Informations de l'artiste </title>
+</head>
+<body>
+<h1>Détails de l'artiste</h1>
+
+<div class="flex-container">
+<div class="container">
+    <img src="<?= $artistID['image']; ?>"  class="image">
+            <div class="name"><?= $artistID['name']; ?></div>
+    <div class="kind"><?= $artistID['kind']; ?></div>
+    <div class="pays"><?= $artistID['pays']; ?></div>
+    <div class="description"><?= $artistID['description']; ?></div>
+</div>
+</div>
+</body>
+</html>

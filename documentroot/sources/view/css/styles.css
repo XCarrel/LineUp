@@ -1,0 +1,143 @@
+.alert {
+  background: #333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 4em;
+}
+
+body {
+  background-image: url("../../../assets/images/body-background-right.png");
+  background-repeat: repeat-y, repeat-y;
+  background-position: 0 0, 100% 0;
+  background-color: #000;
+}
+
+.flex-container {
+  padding: 50px;
+  margin: 50px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-flex-flow: row wrap;
+  justify-content: center;
+}
+
+.container a {
+  text-decoration: none;
+  display: block;
+  color: white;
+}
+
+.text a:hover {
+  text-decoration-line: none;
+  width: 300px;
+  height: 150px;
+}
+
+.container {
+  position: relative;
+  width: 55%;
+  height: auto;
+}
+
+.kind {
+  color: white;
+  line-height: 150px;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
+
+.description {
+  color: white;
+}
+
+.name {
+  color: white;
+  width: 245px;
+  height: 17px;
+  transform: translate(-50%, -230%);
+  top: 50%;
+  left: 50%;
+  line-height: 5px;
+  font-weight: bold;
+  font-size: 7em;
+  margin: auto;
+}
+
+.pays {
+  color: blue;
+  line-height: 80px;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #000;
+}
+
+.text {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  padding: 55px;
+  width: 300px;
+  height: 150px;
+  line-height: 150px;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
+
+@media all and (max-width: 800px) {
+  .flex-container {
+    justify-content: space-around;
+  }
+}
+@media all and (max-width: 600px) {
+  .flex-container {
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    padding: 0;
+  }
+
+  .text a {
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+  }
+
+  .flex-container div:last-of-type a {
+    border-bottom: none;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
