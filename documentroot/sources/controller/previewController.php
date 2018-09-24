@@ -13,5 +13,6 @@ $artistId = (int)$_GET['id'];
 $actualArtist = $artists[$artistId];
 $pathToArtistsImage = pathToArtistsImages() . $actualArtist['imageurl'];
 
+
 require_once ("sources/view/previewView.html");
 ?>

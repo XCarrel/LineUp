@@ -2,6 +2,31 @@
 
 function getArtists()
 {
+    $host = 'localhost';
+    $db   = 'lineup';
+    $user = 'root';
+    $pass = 'root';
+    $charset = 'utf8mb4';
+
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $options = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
+    try {
+        $pdo = new PDO($dsn, $user, $pass, $options);
+    } catch (\PDOException $e) {
+        throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    }
+
+    $stmt = $pdo->prepare('SELECT * FROM Artists ');
+    $stmt->execute();
+    $artists = $stmt->fetchAll();
+    error_log(print_r($artists, 1)); // By putting 1 into print_r, it will output as string
+    return $artists;
+
+    /*
     return [
         [
             "id" => 0,
@@ -43,7 +68,26 @@ function getArtists()
             "description" => "Danitsa a le vent en poupe. Dotée d’un groove incisif, la plus en vogue des rappeuses romandes affiche avec son premier album Ego une volonté de s’ouvrir à des horizons larges. La reine de la nouvelle vague hip-hop helvétique rend honneur à ses origines jamaïcaines en assumant le choix d’un rap scandé dans la langue de Shakespeare, chargé de subtiles influences soul et reggae, auxquelles viennent se greffer des intonations ragga dancehall marquées. Une technicité vocale et une assurance qui permettent à Danitsa de s’affranchir des codes et de réduire en miettes le diktat des étiquettes musicales.",
             "imageurl" => "Danitsa.jpg"
         ]
-    ];
+    ];*/
+}
+
+function getActualLanguage(){
+    return "french";
+}
+
+function getKeyTranslationToSpecificLanguage($language){
+
+    switch($language) {
+        case 'french':
+        default:
+            return ["id" => "",
+                "name" => "Nom",
+                "kind" => "Genre",
+                "country" => "Pays",
+                "description" => "Description",
+                "imageurl" => "Image"];
+            break;
+    }
 }
 
 function pathToImages(){
