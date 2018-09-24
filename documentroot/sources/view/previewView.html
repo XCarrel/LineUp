@@ -1,1 +1,34 @@
 <h1>Preview</h1>
+<!--
+[
+"id" => 0,
+"name" => "Kaleo",
+"kind" => "Blues Rock",
+"country" => "Islande",
+"description" => "D’un côté, l’Islande et ses 300'000 habitants. De l’autre, les États-Unis, pays de la démesure. Et entre les deux, Kaleo. Ces quatre amis d’enfance, originaires des environs de Reykjavik, ont plié bagage pour s’installer au Texas. Entre rock, folk et blues, ils puisent dans l’atmosphère mystique des fjords et dans la chaleur moite des déserts. Leur album A/B révèle leur dualité: entre titres racés et ballades gracieuses, leur cœur balance. Mais il faudrait bien plus que deux faces à cet opus pour illustrer la virtuosité du groupe, qui jongle tant avec les riffs rocailleux ou les aurores boréales qu’avec la poussière d’Austin.",
+"imageurl" => "Kaleo.jpg"
+],-->
+
+<table>
+    <thead>
+    <th colspan="2"><h1><?= $actualArtist['name'] ?></h1></th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Genre</td>
+        <td><?= $actualArtist['kind'] ?></td>
+    </tr>
+    <tr>
+        <td>Pays</td>
+        <td><?= $actualArtist['country'] ?></td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td><?= $actualArtist['description'] ?></td>
+    </tr>
+    <tr>
+        <td>Image</td>
+        <td><img src="<?= $pathToArtistsImage ?>" alt="<?= $actualArtist['name'] ?>" width="500px" /></td>
+    </tr>
+    </tbody>
+</table>
