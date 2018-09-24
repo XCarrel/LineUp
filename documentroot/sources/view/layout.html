@@ -1,23 +1,32 @@
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>LineUp</title>
-    <link rel="stylesheet" type="text/css" href="/sources/view/css/style.scss">
-</head>
-<body>
-<header id="header">
-    <img src="/assets/images/Logo.jpg" width="80px" height="80px">
-    <nav>
-        <a href="?page=home">Accueil</a>
-        <a href="?page=list">Liste</a>
-    </nav>
-</header>
-<div id="page">
-    <div id="content"><?= $content ?></div>
-</div>
+    <head>
+        <meta charset="utf-8">
+        <title>LineUp</title>
+        <link rel="stylesheet" type="text/css" href="/sources/view/css/style.css">
+    </head>
+    <body>
+        <div class="content">
+            <header id="header">
+                <img src="/assets/images/Logo.jpg" id="img">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="?page=home">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="?page=list">Liste</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
 
-<footer id="footer">
-    <?= $appVersion ?> &copy; 2018 <a href="http://www.cpnv.ch">CPNV</a>
-</footer>
-</body>
+            <div id="page">
+                <div id="content"><?= $content ?></div>
+            </div>
+
+            <footer id="footer">
+                <?= $appVersion ?> &copy; 2018 <a href="http://www.cpnv.ch">CPNV</a>
+            </footer>
+        </div>
+    </body>
 </html>
