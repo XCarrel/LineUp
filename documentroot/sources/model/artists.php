@@ -6,9 +6,41 @@
  * Time: 16:35
  */
 
+function connectDB()
+{
+    $host = 'localhost';
+    $db   = 'lineup';
+    $user = 'root';
+    $pass = 'root';
+    $charset = 'utf8';
+
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $options = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
+    try {
+        $pdo = new PDO($dsn, $user, $pass, $options);
+        return $pdo;
+    } catch (\PDOException $e) {
+        throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    }
+}
+
 function getArtists()
 {
-    return [
+    $pdo = connectDB();
+
+    $stmt = $pdo->prepare('SELECT a.id, a.Name as name, a.Description as description, g.Name as kind, c.Name as country, a.Mainpicture as image FROM Artists as a 
+                                    inner join Genders as g on Gender_id = g.id
+                                    inner join Countries as c on Country_id = c.id;');
+    $stmt->execute();
+    $artists = $stmt->fetchAll();
+    //error_log(print_r($artists, 1));
+    return $artists;
+
+    /*return [
         ["id" => "1",
             "name" => "Kaleo",
             "kind" => "Blues Rock",
@@ -30,6 +62,6 @@ function getArtists()
             "description" => "Ce n'est pas parce qu'il fraie avec Catherine Deneuve que Nekfeu a abandonné son amour de la rime. On verra, Reuf, Egérie… Après avoir enchaîné les tubes, Le Fennek a vu son album Cyborg dépasser en à peine deux semaines les 100 000 exemplaires vendus. Un retour à un rap qui fleure bon les 90's et donne des coups de verbe saillants. Et une preuve réconfortante qu'il est encore possible, à notre époque, de produire un album de rap sans auto-tune. Un succès époustouflant pour ce rappeur technique et virtuose, aussi à l'initiative de l'incontournable label Seine Zoo. Allez Feu, allume la mèche.",
             "image" => "nekfeu.jpg"
         ]
-    ];
+    ];*/
 }
 ?>
