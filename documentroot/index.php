@@ -17,6 +17,7 @@ switch ($page)
     case 'list':
         break;
     case 'infos':
+    case 'preview':
         if(!isset($artistid))
         {
             $page = 'error';
