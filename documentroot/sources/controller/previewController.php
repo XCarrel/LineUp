@@ -10,7 +10,7 @@ require_once ("sources/model/artists.php");
 
 $artists = getArtists();
 $artistId = (int)$_GET['id'];
-$actualArtist = $artists[$artistId];
+$actualArtist = $artists[$artistId-1];
 $pathToArtistsImage = pathToArtistsImages() . $actualArtist['imageurl'];
 
 
