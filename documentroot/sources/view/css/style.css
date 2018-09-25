@@ -38,7 +38,7 @@ header nav {
       text-decoration: none; }
 
 #image {
-  width: 600px; }
+  width: 500px; }
 
 #header, #page, #footer {
   background-color: darkgray; }
@@ -58,5 +58,14 @@ header nav {
 
 #description, #country, #kind {
   padding-bottom: 10px; }
+
+.nameArtist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  background-color: #12403E;
+  padding-top: 30px;
+  padding-bottom: 30px; }
 
 /*# sourceMappingURL=style.css.map */

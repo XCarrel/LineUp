@@ -1,7 +1,15 @@
-<h1><?= $artist['name'] ?></h1>
-
 <img id="image" src="../img/<?= $artist['image'] ?>">
+<h1><?= $artist['name'] ?></h1>
 <div id="kind"> <label> Genre : </label> <?= $artist['kind'] ?> </div>
 <div id="country"> <label> Pays : </label> <?= $artist['country'] ?> </div>
 <div id="description"> <label> Description : </label> <?= $artist['description'] ?> </div>
+
+<?php
+    foreach($artist['performances'] as $performance){ ?>
+        <?= $performance['scene'] ?>
+        <?= $performance['datetime'] ?>
+        <?php
+    }
+?>
+
 <a href="?page=preview&id=<?= $artist['id'] ?>">Prévisualisation</a>
