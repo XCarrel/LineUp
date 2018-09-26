@@ -127,6 +127,17 @@ label {
 .bandkind {
   font-size: larger; }
 
+.performances {
+  background-color: cornsilk;
+  opacity: 0.75;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: larger;
+  font-weight: bolder;
+  padding: 10px;
+  transform: rotate(-7deg); }
+
 #pic {
   width: 300px;
   vertical-align: top; }

@@ -6,6 +6,6 @@
 <table>
     <thead><th>Artiste</th><th>Style</th></thead>
     <?php foreach($artists as $artist){ ?>
-        <tr><td><a href="?page=view&id=<?= $artist['id'] ?>"><?= $artist["Name"] ?></a></td><td><?= $artist["kind"] ?></td></tr>
+        <tr><td><a href="?page=view&id=<?= $artist['id'] ?>"><?= $artist["name"] ?></a></td><td><?= $artist["kind"] ?></td></tr>
     <?php } ?>
 </table>
