@@ -6,8 +6,10 @@
  * Time: 16:35
  */
 
-function getArtists()
-{
+require_once('artist.php');
+require_once('performance.php');
+
+function connectDatabase(){
     $host = 'localhost';
     $db   = 'lineup';
     $user = 'root';
@@ -22,22 +24,42 @@ function getArtists()
     ];
     try {
         $pdo = new PDO($dsn, $user, $pass, $options);
+        return $pdo;
     } catch (\PDOException $e) {
         throw new \PDOException($e->getMessage(), (int)$e->getCode());
     }
 
+}
+
+function getArtists()
+{
+    $pdo = connectDatabase();
+
     $stmt = $pdo->prepare('SELECT Artists.id,Artists.Name as artistName, Artists.Description as artistDesc,Genders.Name as artistGender, Countries.Name as artistCountry,Artists.Mainpicture as artistPicture FROM Artists INNER JOIN Genders ON Artists.Gender_id = Genders.id INNER JOIN Countries ON Artists.Country_id = Countries.id;');
     $stmt->execute();
     $artists = $stmt->fetchAll();
-    return $artists;
+
+    foreach($artists as $key=> $artist){
+      $newArtist = new artist($artist['id'],$artist['artistName'],$artist['artistDesc'],$artist['artistGender'],$artist['artistCountry'],$artist['artistPicture']);
+    }
+    error_log(print_r($newArtist,1));
 }
 
-function getArtistPerf($artistid){
-    $artists = getArtists();
+function getArtistPerf(){
+    $pdo = connectDatabase();
 
-    foreach($artists as $key=> $artistid){
+    $stmt = $pdo->prepare('SELECT Date_time as dateTime, Duration as duration, Scenes.Name as sceneName FROM PerformanceDates INNER JOIN Scenes ON Scenes.id = PerformanceDates.Scene_id;');
+    $stmt->execute();
+    $perfs = $stmt->fetchAll();
 
+    foreach($perfs as $key=>$perf){
+        $newPerf = new performance($perf['dateTime'],$perf['duration'],$perf['sceneName']);
+        error_log(print_r($newPerf,1));
     }
+}
+
+function getScenes(){
+
 }
 
 ?>
