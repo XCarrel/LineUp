@@ -1,7 +1,12 @@
 {
-"version": 3,
-"mappings": "",
-"sources": [],
-"names": [],
-"file": "blueTheme.css"
+	"version": 3,
+	"file": "blueTheme.css",
+	"sources": [
+		"blueTheme.scss"
+	],
+	"sourcesContent": [
+		"// Background colors\r\n$navBackgroundColor : #84f;\r\n$linksBackgroundColor : #11c;\r\n$navBackgroundColor : #62f;\r\n$pageBackgroundColor: #ccd;\r\n$footerBackgroundColor: #bbe;\r\n$buttonColor: #22a;\r\n\r\n// Text colors\r\n$linksTextColor : #eee;\r\n"
+	],
+	"names": [],
+	"mappings": ""
 }

@@ -1,11 +1,12 @@
 <h1>Liste</h1>
 
 <h2>Il y a <?= count($artists); ?> artistes au programme</h2>
-
-
-<table>
-    <thead><th>Artiste</th><th>Style</th></thead>
-    <?php foreach($artists as $artist){ ?>
-        <tr><td><a href="?page=view&id=<?= $artist['id'] ?>"><?= $artist["name"] ?></a></td><td><?= $artist["kind"] ?></td></tr>
-    <?php } ?>
-</table>
+<div class="artist_page">
+   <?php foreach($artists as $artist){ ?>
+      <a href="?page=view&id=<?= $artist['id'] ?>"><div class="artist_container">
+         <div class="artist_image" style="background-image: url(/datastorage/pictures/<?= $artist['mainpicture']?>);"></div>
+         <div class="artist_info"><?= $artist["name"] ?></div>
+         <div class="artist_info"><?= $artist["kind"] ?></div>
+      </div></a>
+   <?php } ?>
+</div>

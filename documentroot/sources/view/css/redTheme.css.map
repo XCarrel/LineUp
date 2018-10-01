@@ -1,7 +1,12 @@
 {
-"version": 3,
-"mappings": "",
-"sources": [],
-"names": [],
-"file": "redTheme.css"
+	"version": 3,
+	"file": "redTheme.css",
+	"sources": [
+		"redTheme.scss"
+	],
+	"sourcesContent": [
+		"// Background colors\r\n$navBackgroundColor : #f84;\r\n$linksBackgroundColor : #c11;\r\n$navBackgroundColor : #f62;\r\n$pageBackgroundColor: #dcc;\r\n$footerBackgroundColor: #ebb;\r\n$buttonColor: #a22;\r\n\r\n// Text colors\r\n$linksTextColor : #eee;\r\n"
+	],
+	"names": [],
+	"mappings": ""
 }
