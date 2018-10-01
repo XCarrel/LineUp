@@ -15,6 +15,15 @@ switch ($page)
     case 'home':
     case 'list':
         break;
+    case 'artist':
+    case 'preview':
+        if(isset($_GET["id"])){
+            $artistid = $_GET["id"];
+        }else{
+            $page = 'error';
+            $errormessage = "L'artiste est inexistant";
+        }
+        break;
     default:
         $page = 'error';
         $errormessage = "La page demandée n'existe pas";

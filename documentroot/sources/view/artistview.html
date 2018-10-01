@@ -1,0 +1,21 @@
+<h1><?= $artist['artistName'] ?> </h1>
+<table>
+    <tr>
+        <th>Genre</th>
+        <td><?= $artist['artistGender'] ?></td>
+    </tr>
+    <tr>
+        <th>Pays</th>
+        <td><?= $artist['artistCountry'] ?></td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td><?= $artist['artistDesc'] ?></td>
+    </tr>
+    <tr>
+        <th>Image</th>
+        <td><img id="pic" src="/datastorage/pictures/<?= $artist['artistPicture'] ?>" width="30%" height="50%"></td>
+    </tr>
+</table>
+<br>
+<a href="?page=preview&id=<?= $artistid ?>"><button class="button">Prévisualiser</button></a>
