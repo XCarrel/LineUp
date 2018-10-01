@@ -6,7 +6,7 @@
  * Time: 15:53
  */
 
-require_once ("sources/model/artists.php");
+require_once ("sources/model/artists_old.php");
 
 $artists = getArtists();
 $artistId = (int)$_GET['id'];

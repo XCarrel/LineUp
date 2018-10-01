@@ -1,4 +1,5 @@
 <?php
+require_once "artists_old.php";
 
 function connection(){
     $host = 'localhost';
