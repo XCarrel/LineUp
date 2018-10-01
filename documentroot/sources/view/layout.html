@@ -2,16 +2,27 @@
 <head>
     <meta charset="utf-8">
     <title>LineUp</title>
-    <link rel="stylesheet" type="text/css" href="sources/view/css/styles.scss">
+    <link rel="stylesheet" type="text/css" href="/sources/view/css/styles.css">
 </head>
+<h1><img src="/assets/images/Logo.jpg" width="80px" height="80px"></h1>
+
 <body>
 <header id="header">
-    <img src="/assets/images/Logo.jpg" width="80px" height="80px">
+    <input id="burger" type="checkbox" />
+
+    <label for="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
     <nav>
-        <a href="?page=home">Accueil</a>
-        <a href="?page=list">Liste</a>
+        <ul>
+            <li><a href="?page=home">Accueil</a></li>
+            <li><a href="?page=list">Liste</a></li>
+        </ul>
     </nav>
 </header>
+
 <div id="page">
     <div id="content"><?= $content ?></div>
 </div>

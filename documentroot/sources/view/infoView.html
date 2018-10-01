@@ -5,15 +5,31 @@
     <title>Informations de l'artiste </title>
 </head>
 <body>
-<h1>Détails de l'artiste</h1>
+
 
 <div class="flex-container">
+
 <div class="container">
-    <img src="<?= $artistID['image']; ?>"  class="image">
-            <div class="name"><?= $artistID['name']; ?></div>
-    <div class="kind"><?= $artistID['kind']; ?></div>
-    <div class="pays"><?= $artistID['pays']; ?></div>
-    <div class="description"><?= $artistID['description']; ?></div>
+    <h2>Détail de l'artiste <?= $artist['name']; ?></h2>
+    <img src="./externalData/cover/<?= $artist['mainpicture']; ?>"  class="image" >
+           <div class="name"><?= $artist['name']; ?></div>
+    <div class="kind"><?= $artist['kind']; ?></div>
+    <div class="pays"><?= $artist['country']; ?></div>
+    <div class="description"><?= $artist['description']; ?></div>
+    <label for="performances">Performances</label><div id="performances"></div>
+    <div class="artist">
+        <div class="artistHalfPage">
+            <img src="./externalData/pictures/<?= $artist['mainpicture']?>">
+            <?php if (count($artist['performances']) > 0) { ?>
+            <div class="performances">
+                <?php foreach($artist['performances'] as $perf){ ?>
+                <?= $perf['scene'] ?>, <?= strftime('%A',strtotime($perf['datetime'])) ?> à <?= strftime('%R',strtotime($perf['datetime'])) ?><br>
+                <?php } ?>
+            </div>
+            <?php } ?>
+        </div>
+
+        <a href="?page=preview&id=<?= $artist['id'] ?>"><button class="button">Prévisualiser</button></a>
 </div>
 </div>
 </body>

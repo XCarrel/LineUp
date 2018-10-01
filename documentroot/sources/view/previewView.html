@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<?php setlocale(LC_TIME, "fr_CH.UTF-8"); // nécessite l'installation de la locale sur le serveur ?>
+<div class="flex-container">
+        <img src="/externalData/pictures/<?= $artist['mainpicture']?>">
+        <?php if (count($artist['performances']) > 0) { ?>
+        <div class="performances">
+            <?php foreach($artist['performances'] as $perf){ ?>
+            <?= $perf['scene'] ?>, <?= strftime('%A',strtotime($perf['datetime'])) ?> à <?= strftime('%R',strtotime($perf['datetime'])) ?><br>
+            <?php } ?>
+        </div>
+        <?php } ?>
+</div>
+    <div class="flex-container">
+        <img src="/assets/images/crowd.jpg">
+            <div class="name"><?= $artist['name']?></div>
+            <div class="country"><?= $artist['country']?></div>
+            <div class="kind"><?= $artist['kind']?></div>
+            <br><br>
+            <div class="description"><?= $artist['description']?></div>
+    </div>
+</body>
+</html>

@@ -1,15 +1,14 @@
+html {
+  height: auto;
+  width: auto;
+}
+
 .alert {
-  background: #333;
+  background: white;
 }
 
 * {
   box-sizing: border-box;
-}
-
-h1 {
-  color: white;
-  text-align: center;
-  font-size: 4em;
 }
 
 body {
@@ -17,6 +16,115 @@ body {
   background-repeat: repeat-y, repeat-y;
   background-position: 0 0, 100% 0;
   background-color: #000;
+  height: 100%;
+  width: auto;
+}
+body h1 {
+  position: fixed;
+  top: 20px;
+  left: 30px;
+  z-index: 6;
+  font-size: 20px;
+  font-weight: 900;
+  font-family: sans-serif;
+  text-transform: uppercase;
+}
+body h1 > span {
+  text-transform: none;
+  opacity: 0.5;
+  font-weight: 300;
+  font-size: 12px;
+}
+body h2 {
+  font-size: 40px;
+  font-family: sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  margin: 80px;
+  padding: 70px;
+}
+body input + label {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  height: 20px;
+  width: 15px;
+  z-index: 5;
+}
+body input + label span {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  margin-top: -1px;
+  left: 0;
+  display: block;
+  background: black;
+  transition: 0.5s;
+}
+body input + label span:first-child {
+  top: 3px;
+}
+body input + label span:last-child {
+  top: 16px;
+}
+body label:hover {
+  cursor: pointer;
+}
+body input:checked + label span {
+  opacity: 0;
+  top: 50%;
+}
+body input:checked + label span:first-child {
+  opacity: 1;
+  transform: rotate(405deg);
+}
+body input:checked + label span:last-child {
+  opacity: 1;
+  transform: rotate(-405deg);
+}
+body input ~ nav {
+  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 3;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+  overflow: hidden;
+}
+body input ~ nav > ul {
+  text-align: center;
+  position: absolute;
+  top: 35%;
+  left: 20%;
+  right: 20%;
+}
+body input ~ nav > ul > li {
+  opacity: 0;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+body input ~ nav > ul > li > a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+  font-weight: 700;
+  font-family: sans-serif;
+  display: block;
+  padding: 30px;
+}
+body input:checked ~ nav {
+  height: 100%;
+  transition-delay: 0s;
+}
+body input:checked ~ nav > ul > li {
+  opacity: 1;
+  transition-delay: 0.5s;
 }
 
 .flex-container {
@@ -48,44 +156,56 @@ body {
   position: relative;
   width: 55%;
   height: auto;
+  margin-bottom: 40px;
 }
 
 .kind {
-  color: white;
-  line-height: 150px;
+  color: #333;
   font-weight: bold;
   font-size: 3em;
   text-align: center;
+  background-color: white;
+  border-radius: 85px 100px;
+  padding: 10px;
 }
 
 .description {
-  color: white;
+  color: #333;
+  background-color: white;
+  border-radius: 15px 50px;
+  padding: 30px;
+  width: 100%;
+  min-height: 230px;
+  overflow: hidden;
 }
 
 .name {
   color: white;
   width: 245px;
-  height: 17px;
-  transform: translate(-50%, -230%);
-  top: 50%;
-  left: 50%;
-  line-height: 5px;
+  height: auto;
+  transform: translate(-50%, -700%);
+  line-height: 9px;
   font-weight: bold;
-  font-size: 7em;
+  font-size: 6em;
   margin: auto;
 }
 
 .pays {
-  color: blue;
-  line-height: 80px;
+  color: #333;
   font-weight: bold;
   font-size: 2em;
   text-align: center;
+  background-color: white;
+  border-radius: 85px 10px;
+  padding: 30px;
+  margin: auto;
+  width: 200px;
 }
 
 .image {
   width: 100%;
   height: auto;
+  margin-bottom: 50px;
 }
 
 .overlay {
@@ -108,13 +228,22 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  padding: 55px;
   width: 300px;
-  height: 150px;
+  min-height: 150px;
   line-height: 150px;
   font-weight: bold;
-  font-size: 3em;
+  font-size: 5em;
   text-align: center;
+}
+
+.performances {
+  color: #333;
+  background-color: white;
+  border-radius: 15px 50px;
+  padding: 20px;
+  width: 100%;
+  min-height: 230px;
+  overflow: hidden;
 }
 
 @media all and (max-width: 800px) {

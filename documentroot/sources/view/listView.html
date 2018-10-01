@@ -10,14 +10,15 @@
         document.getElementById("over-" + id).style.width = "0";
     }
 </script>
-<h1>Liste</h1>
 
-<h2>Il y a <?= count($artists); ?> artistes au programme</h2>
+
 <div class="flex-container">
+    <h2>Liste des artistes</h2>
     <?php foreach ($artists as $key => $artist) { ?>
     <div class="container" onmouseover="show(<?= $key; ?>)" onmouseout="leave(<?= $key; ?>)">
-        <img src="<?= $artist['image']; ?>" alt="Avatar" class="image">
-        <a href="?page=info&artistID=<?= $artist['id']; ?>">
+
+        <img src="./externalData/cover/<?= $artist['mainpicture']; ?>" alt="Avatar" class="image" style="height: 600px; width: 900px;">
+        <a href="?page=info&id=<?= $artist['id']; ?>">
         <div class="overlay" id="over-<?= $key; ?>">
             <div class="text"><?= $artist['name']; ?></div>
         </div></a>
