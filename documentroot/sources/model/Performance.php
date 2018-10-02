@@ -12,5 +12,17 @@ class Performance extends Artist
       $this->datetime = $datetime;
       $this->scene = $scene;
    }
+
+   public function getDatetime()
+   {
+      return $this->datetime;
+   }
+
+   public function getScene()
+   {
+      return $this->scene;
+   }
+
+
 }
  ?>

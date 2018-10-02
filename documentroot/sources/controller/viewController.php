@@ -10,7 +10,7 @@ require_once ("sources/model/artists.php");
 
 // find the artist
 foreach (getArtists() as $artist)
-    if ($artist->id == $artistId)
+    if ($artist->GetId() == $artistId)
         break;
 
 require_once ("sources/view/viewView.html");

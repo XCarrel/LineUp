@@ -50,17 +50,18 @@ function getArtists()
       $performances = $req->fetchAll();
       $artists[$key]['performances'] = $performances;
 
+      $performanceObjects = NULL;
       foreach ($performances as $key => $performance)
       {
-         $datetime = $performance['datetime'];
-         $scene = $performance['scene'];
+         $p = new Performance($performance['datetime'], $performance['scene']);
       }
-      $p = new Performance($datetime, $scene);
+
       $a = new Artist($artist['id'], $artist['name'], $artist['description'], $artist['kind'], $artist['country'], $artist['mainpicture'], 'contrat', $p);
       $artistsObjects[]=$a;
+      $performanceObjects[]=$p;
+      $a->setPerformances($performanceObjects);
    }
-   error_log(print_r($a, 1));
+   //error_log(print_r($a, 1));
    return $artistsObjects;
 }
-
 ?>
