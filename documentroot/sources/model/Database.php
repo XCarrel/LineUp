@@ -3,12 +3,10 @@
  * Created by PhpStorm.
  * User: Dardan.Iljazi
  * Date: 01.10.2018
- * Time: 14:21
+ * Time: 15:36
  */
 
-class PerformanceDates
+class Database
 {
-    public function __construct()
-    {
-    }
+
 }

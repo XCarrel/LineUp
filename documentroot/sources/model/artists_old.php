@@ -1,5 +1,7 @@
 <?php
-require_once "artists_old.php";
+
+require_once "Artist.php";
+require_once "Performance.php";
 
 function connection(){
     $host = 'localhost';
@@ -27,23 +29,32 @@ function getArtists()
 {
     $pdo = connection();
 
-
     $stmt = $pdo->prepare('   SELECT Artists.id, Artists.Name AS name, Artists.Description AS description, Artists.Mainpicture as imageurl, Genders.Name AS kind, Countries.Name AS country
-                                        FROM Artists 
+                                        FROM Artists
                                         INNER JOIN Genders ON Artists.Gender_id = Genders.id
                                         INNER JOIN Countries ON Artists.Country_id = Countries.id;');
     $stmt->execute();
-    $artists = $stmt->fetchAll();
 
-    foreach($artists as $key => $artist){
-        $stmt = $pdo->prepare('SELECT Date_time,Scenes.Name as Scene_name
+    $artistsArray = $stmt->fetchAll();
+    $artists = array();
+    foreach($artistsArray as $key => $artistArray){
+        //var_dump($artistArray);
+
+        $stmt = $pdo->prepare('SELECT Date_time,Scenes.Name as Scene_name, Duration
                                         FROM PerformanceDates
                                         INNER JOIN Scenes ON Scenes.id = Scene_id
-                                        WHERE Artist_id = :artist_id;');
+                                        WHERE Artist_id = :artist_id');
 
-        $stmt->execute(["artist_id" => $artist['id']]);
-        $performances = $stmt->fetchAll();
-        $artists[$key]['performances'] = $performances;
+        $stmt->execute(["artist_id" => $artistArray['id']]);
+        $performancesArray = $stmt->fetchAll();
+
+        $performances = array();
+        foreach($performancesArray as $key => $performanceArray) {
+            $performances[] = new Performance($performanceArray["Date_Time"], $performanceArray["Duration"], null);
+        }
+
+        $artist = new Artist($artistArray["id"], $artistArray["name"], $artistArray["kind"], $artistArray["kind"], $artistArray["country"], $artistArray["picture"], null, $performances);
+        $artists[] = $artist;
     }
 
     return $artists;
@@ -53,7 +64,7 @@ function getArtists()
 function getPerformancesDatesForArtistId($id){
     $pdo = connection();
 
-    $stmt = $pdo->prepare('SELECT * FROM PerformanceDates WHERE PerformanceDates.Artist_id = :artist_id;');
+    $stmt = $pdo->prepare('SELECT * FROM Performance WHERE Performance.Artist_id = :artist_id;');
     $stmt->execute(["artist_id" => $id]);
     $performances = $stmt->fetchAll();
     print_r($performances);
