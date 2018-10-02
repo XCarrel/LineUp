@@ -7,7 +7,7 @@
 <label for="performances">Performances</label><div id="performances"></div>
 <table>
 <?php foreach($artist->getPerformances() as $perf){ ?>
-<tr><td><?= $perf->getDatetime() ?></td><td><?= $perf->getScene() ?></td></tr>
+<tr><td><?= $perf->getDatetime()->format('Y-m-d H:i:s') ?></td><td><?= $perf->getScene()->getName() ?></td></tr>
 <?php } ?>
 </table>
 <br>

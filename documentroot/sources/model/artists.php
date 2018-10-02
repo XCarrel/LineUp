@@ -9,6 +9,8 @@
 
 require_once "Artist.php";
 require_once "Performance.php";
+require_once "Coordinate.php";
+require_once "Scene.php";
 
 require_once("database.php"); // for db connection
 
@@ -25,12 +27,10 @@ function getArtists()
     foreach ($artists as $key => $artist)
     {
         $artistObj = new Artist($artist['id'],$artist['name'],$artist['description'],$artist['kind'],$artist['country'],$artist['mainpicture']);
-        $perfs = null; // because we reuse the variable in the loop
-        foreach (getArtistPerformances($pdo,$artistObj->getId()) as $perf)
-            $perfs[] = new Performance($perf['datetime'],$perf['duration'],$perf['scene']);
-        $artistObj->setPerformances($perfs);
+        $artistObj->setPerformances(getArtistPerformances($pdo,$artistObj->getId()));
         $artistObjs[] = $artistObj;
     }
+    error_log(print_r($artistObjs,1));
     return $artistObjs;
 }
 
@@ -39,11 +39,18 @@ function getArtists()
 function getArtistPerformances($pdo,$aid)
 {
     $stmt = $pdo->prepare(
-        'select Date_time as datetime, Duration as duration, S.Name as scene
+        'select Date_time as datetime, Duration as duration, S.Name as scene, S.Localisation
         from PerformanceDates inner join Scenes S on PerformanceDates.Scene_id = S.id
         where Artist_id = :aid;');
     $stmt->execute(['aid' => $aid]);
-    $perfs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($stmt->fetchAll() as $perf)
+    {
+        $coos = preg_split(";",$perf['Localisation']);
+        $coobj = new Coordinate(floatval($coos[0]),floatval($coos[1]));
+        $sceneobj = new Scene($perf['scene'],$coobj);
+        $perfObj = new Performance(new DateTime($perf['datetime']),$perf['duration'],$sceneobj);
+        $perfs[] = $perfObj;
+    }
     return $perfs;
 }
 

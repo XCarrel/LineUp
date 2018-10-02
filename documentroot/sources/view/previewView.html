@@ -5,7 +5,7 @@
         <?php if (count($artist->getPerformances()) > 0) { ?>
             <div class="performances">
                 <?php foreach($artist->getPerformances() as $perf){ ?>
-                    <?= $perf->getScene() ?>, <?= strftime('%A',strtotime($perf->getDatetime())) ?> à <?= strftime('%R',strtotime($perf->getDatetime())) ?><br>
+                    <?= $perf->getScene()->getName() ?>, <?= strftime('%A',strtotime($perf->getDatetime()->format('Y-m-d H:i:s'))) ?> à <?= strftime('%R',strtotime($perf->getDatetime()->format('Y-m-d H:i:s'))) ?><br>
                 <?php } ?>
             </div>
         <?php } ?>
