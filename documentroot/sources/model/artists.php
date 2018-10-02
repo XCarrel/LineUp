@@ -30,7 +30,6 @@ function getArtists()
         $artistObj->setPerformances(getArtistPerformances($pdo,$artistObj->getId()));
         $artistObjs[] = $artistObj;
     }
-    error_log(print_r($artistObjs,1));
     return $artistObjs;
 }
 
