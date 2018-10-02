@@ -5,40 +5,29 @@
  * Date: 02.09.18
  * Time: 16:35
  */
-require_once "vendor/autoload.php";
-$dotenv = new Dotenv\Dotenv($_SERVER['DOCUMENT_ROOT']);
-$dotenv->load();
-
-function connexion(){
-    $host = getenv("SERVER");
-    $db = getenv("DB");
-    $user = getenv("USER");
-    $pass = getenv("PASSWORD");
-    $charset = 'utf8mb4';
-
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-    $options = [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES => false,
-    ];
-
-    try {
-        $pdo = new PDO($dsn, $user, $pass, $options);
-    } catch (\PDOException $e) {
-        throw new \PDOException($e->getMessage(), (int)$e->getCode());
-    }
-    return $pdo;
-}
+require_once("Fonctions.php");
+require_once("database.php");
+require_once ("Artist.php");
 
 function getArtists()
 {
     $pdo = connexion();
-
-    $stmt = $pdo->prepare('SELECT * FROM Artists ');
+    $stmt = $pdo->prepare('select * from Artists ');
     $stmt->execute();
-    return $stmt->fetchAll();
-}
+    $artistsFromDB = $stmt->fetchAll();
+
+    $rules = [
+        "fields" => [
+            0 =>["name"=>'Name', 'function'=>'setName'],
+            1 =>["name"=>'Description', 'function'=>'setDescription']/*'kind','country','Mainpicture','contract'*/]
+    ];
+
+    $artists = hydrate("Artist", $artistsFromDB, $rules);
+
+   // var_dump($artists);
+
+    return $artistsFromDB;
+   }
 
 function getArtistsByID($id){
     $pdo = connexion();
@@ -47,16 +36,14 @@ function getArtistsByID($id){
     $stmt->execute(['id'=>$id]);
     $artist = $stmt->fetch();
 
-    $performance = getPerformance($id);
+    $performance = getPerformance($pdo,$id);
     $artist['performance'] = $performance;
-    error_log(print_r($artist,1));
+    //error_log(print_r($artist,1));
     return $artist;
 }
 
-function getPerformance($id)
+function getPerformance($pdo, $id)
 {
-    $pdo = connexion();
-
     $stmt = $pdo->prepare('SELECT * FROM PerformanceDates where Artist_id = :artistID ');
     $stmt->execute(['artistID'=>$id]);
     return $stmt->fetchALL();
