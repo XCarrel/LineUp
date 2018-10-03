@@ -2,17 +2,25 @@
     <div class="text-title-div">
         <h2 class="text-title">Détails de l'artiste ou du groupe</h2>
     </div>
-    <div class="image-info" style="background-image: url('/externalData/jaquettes/<?= $artist["Mainpicture"] ?>')">
+    <div class="image-info" style="background-image: url('./externalData/jaquettes/<?= $artist->getPicture() ?>')">
         <div class="title-info">
-            <h2 ><?= $artist['Name'] ?></h2>
+            <h2 ><?= $artist->getName() ?></h2>
         </div>
     </div>
 
     <div class="description">
         <h3>Description: </h3>
-        <?= $artist['Description'] ?>
+        <?= $artist->getDescription() ?>
     </div>
 
-<a href="?page=preview&id=<?= $artist['id'] ?>">La Preview</a>
+    <div class="description">
+            <h3>Performance: </h3>
+            <?php foreach($artist->getPerformance() as $performance) {?>
+                <?= $performance->getDatetime() ?>
+                <?= $performance->getScene() ?>
+            <?php } ?>
+        </div>
+
+<a href="?page=preview&id=<?= $artist->getId() ?>">La Preview</a>
 
 </div>

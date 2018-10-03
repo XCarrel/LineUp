@@ -3,21 +3,19 @@
 
     <?php foreach($artists as $key => $artist){
     ?>
-        <a href="?page=info&id=<?= $artist['id'] ?>" class="box">
+        <a href="?page=info&id=<?= $artist->getId(); ?>" class="box">
             <?php if ($key %2 == 0){ ?>
-            <div class="crop" style="background-image:url('./externalData/jaquettes/<?=$artist['Mainpicture']?>'); float: right;position: relative" >
-                <div style="font-size: 50px; float:left;position: relative; bottom:-220px; z-index: 100">
-                    <h2 style="color: white"><?= $artist['Name'];?></h2>
-                </div>
+                <div class="crop" style="background-image:url('./externalData/jaquettes/<?= $artist->getPicture(); ?>'); float: right;position: relative" >
+                    <div style="font-size: 50px; float:left;position: relative; bottom:-220px; z-index: 100">
+                        <h2 style="color: white"><?= $artist->getName(); ?></h2>
+                    </div>
             <?php }else{ ?>
-                <div class="crop" style="background-image:url('./externalData/jaquettes/<?=$artist['Mainpicture']?>'); float: left" >
+                <div class="crop" style="background-image:url('./externalData/jaquettes/<?= $artist->getPicture(); ?>'); float: left" >
                     <div style="font-size: 50px; float:right; position: relative; bottom:-220px;">
-                        <h2 style="color: white"><?= $artist['Name'];?></h2>
+                        <h2 style="color: white"><?= $artist->getName(); ?></h2>
                     </div>
             <?php } ?>
-
             </div>
-
         </a>
     <?php }?>
 </div>

@@ -2,20 +2,29 @@
 <head>
     <meta charset="utf-8">
     <title>LineUp</title>
-    <link rel="stylesheet" href="/sources/view/css/style.css">
+    <link rel="stylesheet" href="./sources/view/css/style.css">
 
 </head>
 <body>
 <header id="header">
     <img src="/assets/images/Logo.jpg" width="40px" height="40px" class="logo">
-    <div id="myNav" class="overlay">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"></a>
-        <div class="overlay-content">
-            <a href="?page=home">Accueil</a>
-            <a href="?page=list">Liste</a>
-        </div>
-    </div>
-    <a id="nav-toggle" onclick="openNav()"><span></span></a>
+
+    <input id="burger" type="checkbox" />
+    <label for="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    <nav>    
+        <ul>
+            <li>
+                <a href="?page=home">Accueil</a>
+            </li>
+            <li>
+                <a href="?page=list">Liste</a>
+            </li>
+        </ul>  
+    </nav>
 </header>
 <div id="page">
     <div id="content"><?= $content ?></div>
@@ -24,17 +33,5 @@
 <footer id="footer">
     <?= $appVersion ?> &copy; 2018 <a href="http://www.cpnv.ch">CPNV</a>
 </footer>
-
-<script>
-    /* Open */
-    function openNav() {
-        document.getElementById("myNav").style.height = "100%";
-    }
-
-    /* Close */
-    function closeNav() {
-        document.getElementById("myNav").style.height = "0%";
-    }
-</script>
 </body>
 </html>
