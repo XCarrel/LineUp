@@ -1,12 +1,12 @@
 <?php
     class Artist {
-        public $id;
-        public $name;
-        public $description;
-        public $kind;
-        public $country;
-        public $picture;
-        public $performances;
+        private $id;
+        private $name;
+        private $description;
+        private $kind;
+        private $country;
+        private $picture;
+        private $performances;
 
         public function __construct($id, $name, $description, $kind, $country, $picture)
         {
@@ -16,7 +16,6 @@
             $this->kind = $kind;
             $this->country = $country;
             $this->picture = $picture;
-            $this->performances = $this->getPerformances();
         }
 
         /**
@@ -34,5 +33,55 @@
         {
             return $this->performances;
         }
+
+        /**
+         * @return mixed
+         */
+        public function getId()
+        {
+            return $this->id;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getDescription()
+        {
+            return $this->description;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getKind()
+        {
+            return $this->kind;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getCountry()
+        {
+            return $this->country;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getPicture()
+        {
+            return $this->picture;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getName()
+        {
+            return $this->name;
+        }
+
+
     }
 ?>

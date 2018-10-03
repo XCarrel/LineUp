@@ -10,8 +10,8 @@
 <?php
     foreach($artists as $artist){ ?>
     <tr>
-        <td><a href="?page=infos&id=<?= $artist['id'] ?>"><?= $artist["name"] ?></a></td>
-        <td><?= $artist["kind"] ?></td>
+        <td><a href="?page=infos&id=<?= $artist->getId() ?>"><?= $artist->getName() ?></a></td>
+        <td><?= $artist->getKind() ?></td>
     </tr> <?php
     }
 ?>

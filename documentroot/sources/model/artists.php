@@ -51,9 +51,10 @@ function getArtists()
         $stmt->execute(['artist_id' => $artist['id']]);
         $performances = $stmt->fetchAll();
 
+        $perfsObj = null;
         foreach($performances as $key => $performance)
         {
-            $perfsObj[] = new Performances($performance['datetime']. $performance['duration'], $performance['scene']);
+            $perfsObj[] = new Performances($performance['datetime'], $performance['duration'], $performance['scene']);
         }
 
         $artObj -> setPerformances($perfsObj);
