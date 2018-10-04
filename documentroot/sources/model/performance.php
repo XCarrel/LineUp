@@ -12,6 +12,54 @@ class performance
     public $duration;
     public $scene;
 
+    /**
+     * @return mixed
+     */
+    public function getDatetime()
+    {
+        return $this->datetime;
+    }
+
+    /**
+     * @param mixed $datetime
+     */
+    public function setDatetime($datetime)
+    {
+        $this->datetime = $datetime;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * @param mixed $duration
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getScene()
+    {
+        return $this->scene;
+    }
+
+    /**
+     * @param mixed $scene
+     */
+    public function setScene($scene)
+    {
+        $this->scene = $scene;
+    }
+
     public function __construct($datetime,$duration,$scene)
     {
         $this->datetime = $datetime;

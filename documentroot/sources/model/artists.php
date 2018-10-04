@@ -8,6 +8,8 @@
 
 require_once('artist.php');
 require_once('performance.php');
+require_once('coordinate.php');
+require_once('scene.php');
 
 function connectDatabase(){
     $host = 'localhost';
@@ -41,21 +43,26 @@ function getArtists()
 
     foreach($artists as $key=> $artist){
       $newArtist = new artist($artist['id'],$artist['artistName'],$artist['artistDesc'],$artist['artistGender'],$artist['artistCountry'],$artist['artistPicture']);
+      $newArtist->setPerformances(getArtistPerf($newArtist->getId()));
+      $artistsObjs[] = $newArtist;
     }
-    error_log(print_r($newArtist,1));
+    return $artistsObjs;
 }
 
-function getArtistPerf(){
+function getArtistPerf($idArtist){
     $pdo = connectDatabase();
 
-    $stmt = $pdo->prepare('SELECT Date_time as dateTime, Duration as duration, Scenes.Name as sceneName FROM PerformanceDates INNER JOIN Scenes ON Scenes.id = PerformanceDates.Scene_id;');
-    $stmt->execute();
-    $perfs = $stmt->fetchAll();
-
-    foreach($perfs as $key=>$perf){
-        $newPerf = new performance($perf['dateTime'],$perf['duration'],$perf['sceneName']);
-        error_log(print_r($newPerf,1));
+    $stmt = $pdo->prepare('SELECT Date_time as dateTime, Duration as duration, Scenes.Name as sceneName, Scene.Localisation as localisation FROM PerformanceDates INNER JOIN Scenes ON Scenes.id = PerformanceDates.Scene_id WHERE PerformanceDates.Artist_id = :idartist;');
+    $stmt->execute(['idartist' =>$idArtist]);
+    foreach ($stmt->fetchAll() as $perf)
+    {
+        $coos = preg_split(";",$perf['localisation']);
+        $coobj = new coordinate(floatval($coos[0]),floatval($coos[1]));
+        $sceneobj = new scene($perf['scene'],$coobj);
+        $perfObj = new performance(new DateTime($perf['datetime']),$perf['duration'],$sceneobj);
+        $perfs[] = $perfObj;
     }
+    return $perfs;
 }
 
 function getScenes(){

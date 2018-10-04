@@ -7,8 +7,8 @@
         foreach($artists as $artist){
     ?>
     <tr>
-        <td><a href="?page=artist&id=<?= $artist['id'] ?>"><?= $artist['artistName'] ?></a></td>
-        <td><?= $artist['artistGender'] ?></td>
+        <td><a href="?page=artist&id=<?= $artist->getId() ?>"><?= $artist->getName() ?></a></td>
+        <td><?= $artist->getKind() ?></td>
     </tr>
     <?php
         }

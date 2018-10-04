@@ -9,7 +9,7 @@
 require_once ("sources/model/artists.php");
 
 foreach (getArtists() as $artist){
-    if($artist['id'] == $artistid) {
+    if($artist->getId() == $artistid) {
         break;
     }
 }

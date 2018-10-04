@@ -16,4 +16,36 @@ class scene
         $this->name = $name;
         $this->localization = $localization;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLocalization()
+    {
+        return $this->localization;
+    }
+
+    /**
+     * @param mixed $localization
+     */
+    public function setLocalization($localization)
+    {
+        $this->localization = $localization;
+    }
 }
