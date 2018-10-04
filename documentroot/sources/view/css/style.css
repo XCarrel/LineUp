@@ -1,0 +1,196 @@
+header {
+  background-color: black;
+}
+
+body {
+  background-color: #232323;
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+
+h1 {
+  font-size: 50px;
+  margin-left: 20px;
+}
+
+.box {
+  width: 100%;
+  text-align: center;
+  margin: 20px;
+  min-height: 250px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.jaquettes {
+  width: 100%;
+}
+
+/*.crop {
+  width: 250px;
+  height: 140px;
+  overflow: hidden;
+}*/
+.crop {
+  width: 50vw;
+  height: 40vh;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  margin: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #232323;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: tomato;
+}
+
+.logo {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.overlay {
+  height: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 56px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+.image-info {
+  height: 50vh;
+  width: 50vw;
+  max-width: 450px;
+  max-heigt: 200px;
+  background-position: center;
+  background-size: cover;
+  margin-left: 10%;
+}
+
+.title-info {
+  position: relative;
+  font-size: 70px;
+  bottom: -47vh;
+  left: 300px;
+}
+
+.description {
+  margin-top: 50px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  text-align: justify;
+  color: lightgray;
+}
+
+h2 {
+  color: white;
+}
+
+.container-description {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 30px;
+}
+
+#nav-toggle span {
+  position: absolute;
+  right: 20px;
+  top: 25px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+  cursor: pointer;
+  border-radius: 10px;
+  height: 3px;
+  width: 35px;
+  background: white;
+  position: absolute;
+  display: block;
+  content: "";
+}
+
+#nav-toggle span:before {
+  top: -10px;
+}
+
+#nav-toggle span:after {
+  bottom: -10px;
+}
+
+.text-title {
+  font-size: 40px;
+  font-weight: lighter;
+}
+
+.text-title-div {
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+/*# sourceMappingURL=style.css.map */
