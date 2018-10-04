@@ -1,3 +1,4 @@
 .idea
 /externalData/jaquettes
 .env
+/vendor
