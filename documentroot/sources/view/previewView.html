@@ -1,14 +1,21 @@
 <div class="artist">
     <div class="artistHalfPage">
-        <img src="/datastorage/pictures/<?= $artist['artistPicture']?>">
+        <img src="/datastorage/pictures/<?= $artist->getPicture() ?>">
+        <?php if (count($artist->getPerformances()) > 0) { ?>
+        <div class="performances">
+            <?php foreach($artist->getPerformances() as $perf){ ?>
+            <?= $perf->getScene()->getName() ?>, <?= strftime('%A',strtotime($perf->getDatetime()->format('Y-m-d H:i:s'))) ?> à <?= strftime('%R',strtotime($perf->getDatetime()->format('Y-m-d H:i:s'))) ?><br>
+            <?php } ?>
+        </div>
+        <?php } ?>
     </div>
     <div class="artistHalfPage">
         <img src="/assets/images/crowd.jpg">
         <div class="descbody">
-            <div class="artistname"><?= $artist['artistName']?></div>
-            <div class="artistcountry"><?= $artist['artistCountry']?></div>
-            <div class="artistgender"><?= $artist['artistGender']?></div><br><br>
-            <?= $artist['artistDesc']?>
+            <div class="artistname"><?= $artist->getName() ?></div>
+            <div class="artistcountry"><?= $artist->getCountry() ?></div>
+            <div class="artistgender"><?= $artist->getKind() ?></div><br><br>
+            <?= $artist->getDescription() ?>
         </div>
     </div>
 </div>

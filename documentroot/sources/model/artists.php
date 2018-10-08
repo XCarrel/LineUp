@@ -52,14 +52,14 @@ function getArtists()
 function getArtistPerf($idArtist){
     $pdo = connectDatabase();
 
-    $stmt = $pdo->prepare('SELECT Date_time as dateTime, Duration as duration, Scenes.Name as sceneName, Scene.Localisation as localisation FROM PerformanceDates INNER JOIN Scenes ON Scenes.id = PerformanceDates.Scene_id WHERE PerformanceDates.Artist_id = :idartist;');
+    $stmt = $pdo->prepare('SELECT Date_time as dateTime, Duration as duration, Scenes.Name as sceneName, Scenes.Localisation as localisation FROM PerformanceDates INNER JOIN Scenes ON Scenes.id = PerformanceDates.Scene_id WHERE PerformanceDates.Artist_id = :idartist;');
     $stmt->execute(['idartist' =>$idArtist]);
     foreach ($stmt->fetchAll() as $perf)
     {
-        $coos = preg_split(";",$perf['localisation']);
+        $coos = preg_split("/;/",$perf['localisation']);
         $coobj = new coordinate(floatval($coos[0]),floatval($coos[1]));
-        $sceneobj = new scene($perf['scene'],$coobj);
-        $perfObj = new performance(new DateTime($perf['datetime']),$perf['duration'],$sceneobj);
+        $sceneobj = new scene($perf['sceneName'],$coobj);
+        $perfObj = new performance(new DateTime($perf['dateTime']),$perf['duration'],$sceneobj);
         $perfs[] = $perfObj;
     }
     return $perfs;
