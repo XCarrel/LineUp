@@ -6,7 +6,7 @@
  * Time: 14:46
  */
 
-class StandardContract
+class StandardContract extends Contract
 {
     private $nbMeals;
 

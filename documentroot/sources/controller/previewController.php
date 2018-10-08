@@ -9,6 +9,7 @@
 require_once ("sources/model/artists_old.php");
 
 
+$artists = getArtists();
+$actualArtist = $artists[$artistId-1];
 
 require_once ("sources/view/previewView.html");
-?>

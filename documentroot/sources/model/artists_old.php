@@ -36,7 +36,10 @@ function getArtists()
     $stmt->execute();
 
     $artistsArray = $stmt->fetchAll();
-    $artists = array();
+
+    //echo 'ArtistsArray: <br />';
+//    var_dump($artistsArray);
+//    $artists = array();
     foreach($artistsArray as $key => $artistArray){
         //var_dump($artistArray);
 
@@ -50,14 +53,28 @@ function getArtists()
 
         $performances = array();
         foreach($performancesArray as $key => $performanceArray) {
-            $performances[] = new Performance($performanceArray["Date_Time"], $performanceArray["Duration"], null);
+            $performances[] = new Performance($performanceArray["Date_time"], $performanceArray["Duration"], null);
         }
 
-        $artist = new Artist($artistArray["id"], $artistArray["name"], $artistArray["kind"], $artistArray["kind"], $artistArray["country"], $artistArray["picture"], null, $performances);
+
+
+        $artist = new Artist($artistArray["id"], $artistArray["name"], $artistArray["kind"], $artistArray["kind"], $artistArray["country"], $artistArray["imageurl"], null, $performances);
         $artists[] = $artist;
     }
 
     return $artists;
+}
+
+function getContract($id){
+    $pdo = connection();
+
+    $stmt = $pdo->prepare('SELECT Name, Contract_id
+                                     FROM Artists
+                                      LEFT JOIN Contracts ON Artists.Contract_id = Contracts.id');
+    $stmt->execute();
+
+    $artistsArray = $stmt->fetchAll();
+
 }
 
 /*
@@ -95,10 +112,10 @@ function pathToImages(){
 }
 
 function pathToExternalData(){
-    return "../../externaldata/";
+    return "datastorage/";
 }
 
 function pathToArtistsImages(){
-    return pathToExternalData() . "artists/";
+    return pathToExternalData() . "pictures/";
 }
-?>
+

@@ -1,25 +1,33 @@
+<?php setlocale(LC_TIME, "fr_CH.UTF-8"); // nécessite l'installation de la locale sur le serveur ?>
+
 <h1>Preview</h1>
 
 <table>
     <thead>
-    <th colspan="2"><h1 data-artistId="<?= $actualArtist['id'] ?>"><?= $actualArtist['name'] ?></h1></th>
+    <th colspan="2"><h1 data-artistId="<?= $actualArtist->getId() ?>"><?= $actualArtist->getName() ?></h1></th>
     </thead>
     <tbody>
     <tr>
         <td>Genre</td>
-        <td><span data-key="kind"><?= $actualArtist['kind'] ?></span></td>
+        <td><span data-key="kind"><?= $actualArtist->getKind(); ?></span></td>
     </tr>
     <tr>
         <td>Pays</td>
-        <td><span data-artistId="<?= $actualArtist['id'] ?>"  data-key="id"><?= $actualArtist['country'] ?></span></td>
+        <td><span data-artistId="<?= $actualArtist->getId() ?>"  data-key="id"><?= $actualArtist->getCountry() ?></span></td>
     </tr>
     <tr>
         <td>Description</td>
-        <td><span data-artistId="<?= $actualArtist['id'] ?>"><?= $actualArtist['description'] ?></span></td>
+        <td><span data-artistId="<?= $actualArtist->getId() ?>"><?= $actualArtist->getDescription() ?></span></td>
     </tr>
     <tr>
         <td>Image</td>
-        <td><img src="<?= $pathToArtistsImage ?>" alt="<?= $actualArtist['name'] ?>" width="500px" /></td>
+        <td><img class="opacity-50" src="<?= pathToArtistsImages() . $actualArtist->getPicture() ?>" alt="<?= $actualArtist->getName() ?>" width="500px" /></td>
+    </tr>
+    <tr>
+        <td>Performances</td>
+        <td>
+
+        </td>
     </tr>
     </tbody>
 </table>

@@ -6,11 +6,11 @@
  * Time: 14:45
  */
 
-class Contract
+abstract Contract implements iPersistable
 {
-    private $signedOn;
-    private $description;
-    private $fee;
+    protected $signedOn;
+    protected $description;
+    protected $fee;
 
     /**
      * Contract constructor.
@@ -18,9 +18,8 @@ class Contract
      * @param $description
      * @param $fee
      */
-    public function __construct($signedOn, $description, $fee)
+    public function __construct($description, $fee)
     {
-        $this->signedOn     = $signedOn;
         $this->description  = $description;
         $this->fee          = $fee;
     }
@@ -73,4 +72,13 @@ class Contract
         $this->fee = $fee;
     }
 
+    public function store()
+    {
+        // TODO: Implement store() method.
+    }
+
+    public function load()
+    {
+        // TODO: Implement load() method.
+    }
 }

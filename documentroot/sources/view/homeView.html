@@ -3,8 +3,10 @@
         <h1>PaléoFestival</h1>
     </div>
 </div>
+
 <section id="next-artists">
     <?php foreach($artists as $artist) : ?>
+
     <a href="?page=preview&id=<?= $artist->getId() ?>">
         <article>
         <img src="<?= pathToArtistsImages() ?><?= $artist->getPicture() ?>" class="artist-img" />

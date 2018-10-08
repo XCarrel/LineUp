@@ -6,19 +6,20 @@
  * Time: 14:45
  */
 
-class VIPContract
+class VIPContract extends Contract
 {
-    private $restaurants;
-    private $car;
+    protected $restaurant;
+    protected $car;
 
     /**
      * VIPContract constructor.
      * @param $restaurants
      * @param $car
      */
-    public function __construct($restaurants, $car)
+    public function __construct($description, $fee, $restaurant, $car)
     {
-        $this->restaurants = $restaurants;
+        parent::__construct($description, $fee);
+        $this->restaurant = $restaurant;
         $this->car = $car;
     }
 
