@@ -7,6 +7,7 @@
         private $country;
         private $picture;
         private $performances;
+        private $contract;
 
         public function __construct($id, $name, $description, $kind, $country, $picture)
         {
@@ -81,6 +82,15 @@
         {
             return $this->name;
         }
+
+        /**
+         * @param mixed $contract
+         */
+        public function setContract($contract)
+        {
+            $this->contract = $contract;
+        }
+
 
 
     }

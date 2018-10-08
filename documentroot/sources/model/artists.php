@@ -8,6 +8,8 @@
 
 require_once "Artist.php";
 require_once "Performances.php";
+require_once "VIPContract.php";
+require_once "StandardContract.php";
 
 function connectDB()
 {
@@ -34,11 +36,26 @@ function connectDB()
 function getArtists()
 {
     $pdo = connectDB();
-    $stmt = $pdo->prepare('SELECT a.id as id, a.Name as name, a.Description as description, g.Name as kind, c.Name as country, a.Mainpicture as image FROM Artists as a 
+    $stmt = $pdo->prepare('SELECT 
+                                    a.id as id, 
+                                    a.Name as name, 
+                                    a.Description as description, 
+                                    g.Name as kind, 
+                                    c.Name as country, 
+                                    a.Mainpicture as image, 
+                                    Contract_id as idcontract,
+                                    co.description as contratDescription,
+                                    co.fee as fee,
+                                    co.restaurant as restaurant,
+                                    co.car as car,
+                                    co.nbMeals as nbMeals
+                                    FROM Artists as a 
                                     inner join Genders as g on Gender_id = g.id
-                                    inner join Countries as c on Country_id = c.id;');
+                                    inner join Countries as c on Country_id = c.id
+                                    left join Contracts as co on co.id = a.contract_id;');
     $stmt->execute();
     $artists = $stmt->fetchAll();
+    //error_log(print_r($artists, 1));
 
     foreach($artists as $key => $artist)
     {
@@ -58,9 +75,27 @@ function getArtists()
         }
 
         $artObj -> setPerformances($perfsObj);
+
+        if($artist['idcontract'] != null)
+        {
+            if($artist['restaurant'] == null && $artist['car'] == null)
+            {
+                $contract = new StandardContract($artist['contratDescription'], $artist['fee'], $artist['nbMeals']);
+            }
+            else
+            {
+                $contract = new VIPContract($artist['contratDescription'], $artist['fee'], $artist['restaurant'], $artist['car']);
+            }
+        }
+        else
+        {
+            $contract = null;
+        }
+
+        $artObj -> setContract($contract);
         $artsObj[] = $artObj;
     }
-    //error_log(print_r($artsObj, 1));
+    error_log(print_r($artsObj, 1));
     return $artsObj;
 }
 
