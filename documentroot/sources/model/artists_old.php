@@ -1,20 +1,22 @@
 <?php
 
 require_once "Artist.php";
+require_once "Scene.php";
 require_once "Performance.php";
 
-function connection(){
+function connection()
+{
     $host = 'localhost';
-    $db   = 'lineup';
+    $db = 'lineup';
     $user = 'root';
     $pass = 'root';
     $charset = 'utf8mb4';
 
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
     $options = [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES   => false,
+        PDO::ATTR_EMULATE_PREPARES => false,
     ];
     try {
         $pdo = new PDO($dsn, $user, $pass, $options);
@@ -40,22 +42,24 @@ function getArtists()
     //echo 'ArtistsArray: <br />';
 //    var_dump($artistsArray);
 //    $artists = array();
-    foreach($artistsArray as $key => $artistArray){
+    foreach ($artistsArray as $key => $artistArray) {
         //var_dump($artistArray);
 
-        $stmt = $pdo->prepare('SELECT Date_time,Scenes.Name as Scene_name, Duration
-                                        FROM PerformanceDates
-                                        INNER JOIN Scenes ON Scenes.id = Scene_id
-                                        WHERE Artist_id = :artist_id');
+            $stmt = $pdo->prepare('SELECT PerformanceDates.Date_time, 
+                                             PerformanceDates.Duration, Scenes.Name as Scene_name, 
+                                             Scenes.Localisation
+                                                FROM PerformanceDates
+                                                INNER JOIN Scenes ON Scenes.id = Scene_id
+                                                WHERE Artist_id = :artist_id');
 
         $stmt->execute(["artist_id" => $artistArray['id']]);
-        $performancesArray = $stmt->fetchAll();
+        $performancesAndScenesArray = $stmt->fetchAll();
 
         $performances = array();
-        foreach($performancesArray as $key => $performanceArray) {
-            $performances[] = new Performance($performanceArray["Date_time"], $performanceArray["Duration"], null);
+        foreach ($performancesAndScenesArray as $key => $performanceAndSceneArray) {
+            $scene = new Scene($performanceAndSceneArray["Scene_name"], $performanceAndSceneArray["Localisation"]);
+            $performances[] = new Performance(new DateTime($performanceAndSceneArray["Date_time"]), $performanceAndSceneArray["Duration"], $scene);
         }
-
 
 
         $artist = new Artist($artistArray["id"], $artistArray["name"], $artistArray["kind"], $artistArray["kind"], $artistArray["country"], $artistArray["imageurl"], null, $performances);
@@ -65,7 +69,8 @@ function getArtists()
     return $artists;
 }
 
-function getContract($id){
+function getContract($id)
+{
     $pdo = connection();
 
     $stmt = $pdo->prepare('SELECT Name, Contract_id
@@ -88,13 +93,15 @@ function getPerformancesDatesForArtistId($id){
     return $performances;
 }*/
 
-function getActualLanguage(){
+function getActualLanguage()
+{
     return "french";
 }
 
-function getKeyTranslationToSpecificLanguage($language){
+function getKeyTranslationToSpecificLanguage($language)
+{
 
-    switch($language) {
+    switch ($language) {
         case 'french':
         default:
             return ["id" => "",
@@ -107,15 +114,18 @@ function getKeyTranslationToSpecificLanguage($language){
     }
 }
 
-function pathToImages(){
+function pathToImages()
+{
     return "../../assets/images/";
 }
 
-function pathToExternalData(){
+function pathToExternalData()
+{
     return "datastorage/";
 }
 
-function pathToArtistsImages(){
+function pathToArtistsImages()
+{
     return pathToExternalData() . "pictures/";
 }
 

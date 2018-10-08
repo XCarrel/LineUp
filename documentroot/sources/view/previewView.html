@@ -13,7 +13,8 @@
     </tr>
     <tr>
         <td>Pays</td>
-        <td><span data-artistId="<?= $actualArtist->getId() ?>"  data-key="id"><?= $actualArtist->getCountry() ?></span></td>
+        <td><span data-artistId="<?= $actualArtist->getId() ?>" data-key="id"><?= $actualArtist->getCountry() ?></span>
+        </td>
     </tr>
     <tr>
         <td>Description</td>
@@ -21,12 +22,19 @@
     </tr>
     <tr>
         <td>Image</td>
-        <td><img class="opacity-50" src="<?= pathToArtistsImages() . $actualArtist->getPicture() ?>" alt="<?= $actualArtist->getName() ?>" width="500px" /></td>
+        <td><img class="opacity-50" src="<?= pathToArtistsImages() . $actualArtist->getPicture() ?>"
+                 alt="<?= $actualArtist->getName() ?>" width="500px"/></td>
     </tr>
     <tr>
         <td>Performances</td>
         <td>
+            <?php if (count($actualArtist->getPerformances()) > 0) { ?>
 
+            <?php foreach($actualArtist->getPerformances() as $perf){ ?>
+            <?= var_dump(); ?>
+            <?= $perf->getScene()->getName() ?>, <?= strftime('%A %d %B %Y',$perf->getDatetime()->getTimestamp()) ?> à <?= strftime('%R',$perf->getDatetime()->getTimestamp()) ?><br>
+            <?php } ?>
+            <?php } ?>
         </td>
     </tr>
     </tbody>
