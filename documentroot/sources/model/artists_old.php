@@ -71,8 +71,8 @@ function getArtists()
         $contractArray = $stmt->fetchAll();
 
         $contract = null;
-        echo print_r($contractArray) . '<br /><br />';
-        echo print_r($contractArray["contract_type"]) . '<br /><br />';
+//        echo print_r($contractArray) . '<br /><br />';
+//        echo print_r($contractArray["contract_type"]) . '<br /><br />';
 //        if ($contractArray["contract_type"] == 1) { // VIPContract
 //            echo 'contract_type === 1';
 //            $contract = new VIPContract($contractArray["description"], $contractArray["fee"], $contractArray["restaurant"], $contractArray["car"]);
