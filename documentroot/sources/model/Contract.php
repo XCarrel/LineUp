@@ -5,21 +5,24 @@
  * Date: 01.10.2018
  * Time: 14:45
  */
+require_once "iPersistable.php";
 
-abstract Contract implements iPersistable
+abstract class Contract implements iPersistable
 {
     protected $signedOn;
     protected $description;
     protected $fee;
+    protected $type;
 
     /**
      * Contract constructor.
-     * @param $signedOn
+     * @param $type
      * @param $description
      * @param $fee
      */
-    public function __construct($description, $fee)
+    public function __construct($type, $description, $fee)
     {
+        $this->type = $type;
         $this->description  = $description;
         $this->fee          = $fee;
     }
@@ -80,5 +83,21 @@ abstract Contract implements iPersistable
     public function load()
     {
         // TODO: Implement load() method.
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 }

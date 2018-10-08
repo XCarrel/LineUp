@@ -32,9 +32,18 @@
 
             <?php foreach($actualArtist->getPerformances() as $perf){ ?>
             <?= var_dump(); ?>
-            <?= $perf->getScene()->getName() ?>, <?= strftime('%A %d %B %Y',$perf->getDatetime()->getTimestamp()) ?> à <?= strftime('%R',$perf->getDatetime()->getTimestamp()) ?><br>
+            <?= $perf->getScene()->getName() ?>, <?= strftime('%A %d %B %Y',$perf->getDatetime()->getTimestamp()) ?>
+            à <?= strftime('%R',$perf->getDatetime()->getTimestamp()) ?><br>
             <?php } ?>
             <?php } ?>
+        </td>
+
+    </tr>
+    <tr>
+        <td>Contract</td>
+        <td>
+            <?= var_dump($actualArtist->getContract()); ?>
+            <?= ($actualArtist->getContract()->getType() === 2) ? "StandardContract" : "VIPContract" ?>
         </td>
     </tr>
     </tbody>
