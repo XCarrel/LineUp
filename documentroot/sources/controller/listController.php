@@ -6,7 +6,7 @@
  * Time: 16:42
  */
 //
-require_once ("sources/model/artists_old.php");
+require_once ("sources/model/artists.php");
 
 $artists = getArtists();
 

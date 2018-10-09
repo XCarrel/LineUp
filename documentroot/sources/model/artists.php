@@ -40,6 +40,19 @@ function getArtists()
                                         INNER JOIN Countries ON Artists.Country_id = Countries.id;');
     $stmt->execute();
 
+//    SELECT Artists.id,
+//       Artists.Name AS name,
+//       Artists.Description AS description,
+//       Artists.Mainpicture as imageurl,
+//       Artists.Contract_id,
+//       Genders.Name AS kind,
+//       Countries.Name as country,
+//       Contracts.*
+//FROM Artists
+//            INNER JOIN Genders           ON Artists.Gender_id = Genders.id
+//            INNER JOIN Countries         ON Artists.Country_id = Countries.id
+//            INNER JOIN Contracts         ON Artists.Contract_id = Contracts.id
+
     $artistsArray = $stmt->fetchAll();
     $artists = null;
 
@@ -69,6 +82,7 @@ function getArtists()
 
         $stmt->execute(["artist_id" => $artistArray['id']]);
         $contractArray = $stmt->fetchAll();
+
 
         $contract = null;
 //        echo print_r($contractArray) . '<br /><br />';

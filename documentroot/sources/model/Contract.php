@@ -90,7 +90,7 @@ abstract class Contract implements iPersistable
      */
     public function getType()
     {
-        return $this->type;
+        return get_class($this);
     }
 
     /**
