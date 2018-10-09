@@ -22,5 +22,7 @@
     <tr><td><?= $perf->getDatetime()->format('Y-m-d H:i:s') ?></td><td><?= $perf->getScene()->getName() ?></td></tr>
     <?php } ?>
 </table>
+
+<label for="contract">Contrat</label><div id="contract"><?= $artist->getContract()->getType() ?></div>
 <br>
 <a href="?page=preview&id=<?= $artistid ?>"><button class="button">Prévisualiser</button></a>

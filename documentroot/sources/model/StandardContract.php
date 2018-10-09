@@ -6,6 +6,8 @@
  * Time: 14:45
  */
 
+require_once('Contract.php');
+
 class StandardContract extends Contract
 {
     protected $nbMeals;

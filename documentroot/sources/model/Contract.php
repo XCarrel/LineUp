@@ -12,6 +12,11 @@ abstract class Contract
     protected $description;
     protected $fee;
 
+    function __construct($description, $fee)
+    {
+        $this->description = $description;
+        $this->fee = $fee;
+    }
     /**
      * @return mixed
      */
@@ -44,5 +49,19 @@ abstract class Contract
         $this->fee = $fee;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getSignedOn()
+    {
+        return $this->signedOn;
+    }
+
+    /**
+     * @return string Classe hérité utilisé
+     */
+    public function getType(){
+        return get_class($this);
+    }
 
 }

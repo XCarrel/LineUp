@@ -6,6 +6,8 @@
  * Time: 14:41
  */
 
+require_once('Contract.php');
+
 class VIPContract extends Contract
 {
     protected $restaurant;

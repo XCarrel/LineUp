@@ -15,6 +15,7 @@ class artist
     private $country;
     private $picture;
     private $performances;
+    private $contract;
 
     /**
      * @return mixed
@@ -22,6 +23,22 @@ class artist
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContract()
+    {
+        return $this->contract;
+    }
+
+    /**
+     * @param mixed $contract
+     */
+    public function setContract($contract)
+    {
+        $this->contract = $contract;
     }
 
 
