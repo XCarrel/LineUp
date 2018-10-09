@@ -1,12 +1,19 @@
 <h1>Liste</h1>
 
-<h2>Il y a <?= count($artists); ?> artistes au programme</h2>
+<h2>Il y a
+   <?= count($artists); ?> artistes au programme</h2>
 <div class="artist_page">
    <?php foreach($artists as $artist){ ?>
-      <a href="?page=view&id=<?= $artist->GetId() ?>"><div class="artist_container">
+   <a href="?page=view&id=<?= $artist->GetId() ?>">
+      <div class="artist_container">
          <div class="artist_image" style="background-image: url(/datastorage/pictures/<?= $artist->GetPicture() ?>);"></div>
-         <div class="artist_info"><?= $artist->GetName() ?></div>
-         <div class="artist_info"><?= $artist->GetKind() ?></div>
-      </div></a>
+         <div class="artist_info">
+            <?= $artist->GetName() ?>
+         </div>
+         <div class="artist_info">
+            <?= $artist->GetKind() ?>
+         </div>
+      </div>
+   </a>
    <?php } ?>
 </div>

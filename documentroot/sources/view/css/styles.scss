@@ -1,205 +1,198 @@
-@import "fonts.css";
-//@import "blueTheme.scss";
-@import "redTheme.scss";
-//@import "greenTheme.scss";
+@import "fonts.css"; //@import "blueTheme.scss";
+@import "redTheme.scss"; //@import "greenTheme.scss";
 
 body {
-  font-family: 'abel', Fallback, sans-serif;
-  margin: 0px;
-  display: flex;
-  flex-direction: column;
+   font-family: 'abel', Fallback, sans-serif;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
 }
 
 header {
-  padding:20px;
-  background-image: url("/assets/images/crowd.jpg");
-  background-size: contain;
+   padding: 20px;
+   background-image: url("/assets/images/crowd.jpg");
+   background-size: contain;
 }
-
 // Menu stuff
-
 $menuHeight: 50px;
 
 nav {
-  height: $menuHeight;
-  font-family: 'riffic', Fallback, sans-serif;
-  background-color: $navBackgroundColor;
-  border-radius: 10px;
-  font-size: larger;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  vertical-align: middle;
-  opacity: 0.8;
+   height: $menuHeight;
+   font-family: 'riffic', Fallback, sans-serif;
+   background-color: $navBackgroundColor;
+   border-radius: 10px;
+   font-size: larger;
+   display: flex;
+   align-items: center;
+   justify-content: left;
+   vertical-align: middle;
+   opacity: 0.8;
 
-  a {
-    height: $menuHeight;
-    margin-right: 10px;
-    margin-left: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: $linksTextColor;
-    text-decoration: none; // remove underline
-  }
+   a {
+      height: $menuHeight;
+      margin-right: 10px;
+      margin-left: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      color: $linksTextColor;
+      text-decoration: none; // remove underline
+   }
 
-  a:hover {
-    background-color: $linksBackgroundColor;
-  }
+   a:hover {
+      background-color: $linksBackgroundColor;
+   }
 }
 
 .logo {
-  width: 40px;
-  height: 40px;
-  float: left;
-  margin: 2px;
+   width: 40px;
+   height: 40px;
+   float: left;
+   margin: 2px;
 }
 
 #page {
-  background-color: $pageBackgroundColor;
-  padding: 15px;
-  flex-grow: 2;
+   background-color: $pageBackgroundColor;
+   padding: 15px;
+   flex-grow: 2;
 }
 
 footer {
-  background-color: $footerBackgroundColor;
-  padding-left: 20px;
+   background-color: $footerBackgroundColor;
+   padding-left: 20px;
 }
-
 // Table stuff
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  background-color: darken($pageBackgroundColor, 5%);
 
-  th {
-    background-color: darken($pageBackgroundColor, 15%);
-  }
+table,
+td,
+th {
+   border: 1px solid black;
+   border-collapse: collapse;
+   background-color: darken($pageBackgroundColor, 5%);
 
-  tr {
-    cursor: pointer;
-  }
+   th {
+      background-color: darken($pageBackgroundColor, 15%);
+   }
 
-  td {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
+   tr {
+      cursor: pointer;
+   }
 
-  a {
-    text-decoration: none; // we want links in tables to be handled in js
-    color: $linksTextColor;
-  }
+   td {
+      padding-left: 10px;
+      padding-right: 10px;
+   }
+
+   a {
+      text-decoration: none; // we want links in tables to be handled in js
+      color: $linksTextColor;
+   }
 }
-
 // Form stuff
-
-input:read-only, textarea:read-only {
-  background-color: $pageBackgroundColor;
-  border: none;
-  font-family: 'abel', Fallback, sans-serif;
-  font-size: large;
-  vertical-align: top;
+input:read-only,
+textarea:read-only {
+   background-color: $pageBackgroundColor;
+   border: none;
+   font-family: 'abel', Fallback, sans-serif;
+   font-size: large;
+   vertical-align: top;
 }
 
 label {
-  display: inline-block;
-  font-size: large;
-  width: 100px;
-  text-align: right;
-  padding-right: 15px;
+   display: inline-block;
+   font-size: large;
+   width: 100px;
+   text-align: right;
+   padding-right: 15px;
 }
 
 .button {
-  background-color: #24a;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  padding: 15px 32px;
-  margin: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  float: right;
+   background-color: #24a;
+   border: none;
+   border-radius: 5px;
+   color: white;
+   padding: 15px 32px;
+   margin: 5px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   float: right;
 }
-
 // Artist page
-
-$skew : 15deg;
+$skew: 15deg;
 
 .artist {
-  display: flex;
-  flex-direction: column;
+   display: flex;
+   flex-direction: column;
 
-  img {
-    width: 100%;
-    margin: 0px;
-  }
+   img {
+      width: 100%;
+      margin: 0;
+   }
 }
 
 .artistHalfPage {
-  position: relative;
+   position: relative;
 }
 
 .descbody {
-  position: absolute;
-  background-color: white;
-  align-content: center;
-  width: 400px;
-  padding: 15px;
-  left: 30%;
-  height: auto;
-  top: -150;
-  text-align: justify;
-  text-justify: inter-word;
-  transform: skew(15deg);
+   position: absolute;
+   background-color: white;
+   align-content: center;
+   width: 400px;
+   padding: 15px;
+   left: 30%;
+   height: auto;
+   top: -150;
+   text-align: justify;
+   text-justify: inter-word;
+   transform: skew(15deg);
 }
 
 %banddiv {
-  margin-left: 100px;
-  transform: rotate(-7deg);
+   margin-left: 100px;
+   transform: rotate(-7deg);
 }
 
 .bandname {
-  @extend %banddiv;
-  color: deeppink;
-  font-size: 40px;
-  font-weight: bolder;
+   @extend %banddiv;
+   color: deeppink;
+   font-size: 40px;
+   font-weight: bolder;
 }
 
 .bandcountry {
-  @extend %banddiv;
-  font-size: x-large;
+   @extend %banddiv;
+   font-size: x-large;
 }
 
 .bandkind {
-  @extend %banddiv;
-  font-size: larger;
+   @extend %banddiv;
+   font-size: larger;
 }
 // specific
 
 #pic {
-  width: 300px;
-  vertical-align: top;
+   width: 300px;
+   vertical-align: top;
 }
 
 #homepic {
-  text-align: center;
+   text-align: center;
 }
-
 // List of artist on flex boxes
-
-.artist_page{
+.artist_page {
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
    width: 100%;
 
-   a{
+   a {
       text-decoration: none;
    }
 }
 
-.artist_container{
+.artist_container {
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
@@ -211,9 +204,9 @@ $skew : 15deg;
    overflow: hidden;
 }
 
-.artist_image{
+.artist_image {
    height: 170px;
-   width:100%;
+   width: 100%;
    background-size: 105%;
    opacity: 0.6;
    background-repeat: no-repeat;
@@ -221,7 +214,7 @@ $skew : 15deg;
    overflow: hidden;
 }
 
-.artist_info{
+.artist_info {
    height: 30px;
    width: 50%;
    text-align: center;
@@ -230,7 +223,7 @@ $skew : 15deg;
    z-index: 1;
 }
 
-.artist_image:hover{
+.artist_image:hover {
    opacity: 1;
    transform: scale(1.3);
 }

@@ -7,6 +7,8 @@
  */
 require_once "Artist.php";
 require_once "Performance.php";
+require_once "VIPContract.php";
+require_once "StandardContract.php";
 
 function connectdb(){
    $host = 'localhost';
@@ -32,11 +34,9 @@ function connectdb(){
 function getArtists()
 {
    $pdo = connectdb();
-   $req = $pdo->prepare('SELECT Artists.id, Artists.Name as name, Artists.Description as
-      description, Countries.Name as country, Genders.Name as kind, Artists.Mainpicture as
-      mainpicture FROM lineup.Artists
-      INNER JOIN Genders ON Artists.Gender_id = Genders.id
-      INNER JOIN Countries ON Artists.Country_id = Countries.id');
+   $req = $pdo->prepare('SELECT Artists.id, Artists.Name AS name, Mainpicture AS mainpicture, Artists.Description AS description, G.Name AS kind, C.Name AS country,Con.id AS Contact_id, Con.signedOn,Con.description AS descContrat, Con.fee , Con.car, Con.restaurant , Con.nbMeals from Artists
+   INNER JOIN Countries C ON Artists.Country_id = C.id
+   INNER JOIN Genders G ON Artists.Gender_id = G.id LEFT JOIN  Contracts Con ON Artists.Contract_id = Con.id');
    $req->execute();
    $artists = $req->fetchAll();
 
@@ -57,11 +57,21 @@ function getArtists()
       }
 
       $a = new Artist($artist['id'], $artist['name'], $artist['description'], $artist['kind'], $artist['country'], $artist['mainpicture'], 'contrat', $p);
+      if($artist['nbMeals'] == NULL)
+      {
+         $c = new VIPContract($artist['signedOn'], $artist['description'], $artist['fee'], $artist['restaurant'], $artist['car']);
+      }
+      else
+      {
+         $c = new StandardContract($artist['signedOn'], $artist['description'], $artist['fee'], $artist['nbMeals']);
+      }
+
       $artistsObjects[]=$a;
       $performanceObjects[]=$p;
       $a->setPerformances($performanceObjects);
+      $a->setContract($c);
    }
-   //error_log(print_r($a, 1));
+   error_log(print_r($a, 1));
    return $artistsObjects;
 }
 ?>

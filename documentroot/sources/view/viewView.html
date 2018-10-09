@@ -1,4 +1,6 @@
-<h1><?= $artist->GetName() ?></h1>
+<h1>
+   <?= $artist->GetName() ?>
+</h1>
 
 <label for="kind">Genre</label><input type="text" name="kind" id="kind" value="<?= $artist->GetKind() ?>" readonly><br>
 <label for="country">Pays</label><input type="text" name="country" id="country" value="<?= $artist->GetCountry() ?>" readonly><br>
@@ -6,16 +8,17 @@
 <label for="pic">Image</label><img id="pic" src="/datastorage/pictures/<?= $artist->GetPicture()?>"><br>
 <table>
    <?php foreach($artist->getPerformances() as $performance){ ?>
-      <label for="performance">Performance</label>
-         <tr>
-            <td>
-               <?= $performance->GetDatetime() ?>
-            </td>
-            <td>
-               <?= $performance->GetScene() ?>
-            </td>
-         </tr>
+   <label for="performance">Performance</label>
+   <tr>
+      <td>
+         <?= $performance->GetDatetime() ?>
+      </td>
+      <td>
+         <?= $performance->GetScene() ?>
+      </td>
+   </tr>
    <?php } ?>
 </table>
+<label for="Contract"><?= $artist->getContract()->getType()?></label>
 
 <a href="?page=preview&id=<?= $artist->GetId() ?>"><button class="button">Prévisualiser</button></a>

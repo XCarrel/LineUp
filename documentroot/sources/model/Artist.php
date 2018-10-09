@@ -13,7 +13,7 @@ class Artist
    private $contract;
    private $performances;
 
-   function __construct($id, $name, $description, $kind, $country, $picture, $contract, $performances)
+   function __construct($id, $name, $description, $kind, $country, $picture, $contract)
    {
       $this->id = $id;
       $this->name = $name;
@@ -22,7 +22,6 @@ class Artist
       $this->country = $country;
       $this->picture = $picture;
       $this->contract = $contract;
-      $this->performances = $this->getPerformances();
    }
 
    public function getId()
@@ -30,19 +29,9 @@ class Artist
       return $this->id;
    }
 
-   public function setId($id)
-   {
-      $this->id = $id;
-   }
-
    public function getName()
    {
       return $this->name;
-   }
-
-   public function setName($name)
-   {
-      $this->name = $name;
    }
 
    public function getDescription()
@@ -50,19 +39,9 @@ class Artist
       return $this->description;
    }
 
-   public function setDescription($description)
-   {
-      $this->description = $description;
-   }
-
    public function getKind()
    {
       return $this->kind;
-   }
-
-   public function setKind($kind)
-   {
-      $this->kind = $kind;
    }
 
    public function getCountry()
@@ -70,19 +49,9 @@ class Artist
       return $this->country;
    }
 
-   public function setCountry($country)
-   {
-      $this->country = $country;
-   }
-
    public function getPicture()
    {
       return $this->picture;
-   }
-
-   public function setPicture($picture)
-   {
-      $this->picture = $picture;
    }
 
    public function getContract()
@@ -90,9 +59,9 @@ class Artist
       return $this->contract;
    }
 
-   public function setContract($contract)
+   public function setContract($Contract)
    {
-      $this->contract = $contract;
+      $this->contract = $Contract;
    }
 
    public function getPerformances()
@@ -104,5 +73,6 @@ class Artist
    {
       $this->performances = $performances;
    }
+
 }
 ?>
