@@ -14,6 +14,7 @@ class Artist
     private $kind;
     private $country;
     private $picture;
+    private $contract;
     private $performances;
 
     /**
@@ -91,6 +92,10 @@ class Artist
     {
         return $this->performances;
     }
+    public function getContract()
+    {
+        return $this->contract;
+    }
 
     /**
      * @param mixed $performances
@@ -98,6 +103,10 @@ class Artist
     public function setPerformances($performances)
     {
         $this->performances = $performances;
+    }
+    public function setContract($contract)
+    {
+        $this->contract = $contract;
     }
 
 }
