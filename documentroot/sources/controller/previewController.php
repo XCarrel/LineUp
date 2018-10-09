@@ -12,7 +12,7 @@ $artistId = $_GET['id'];
 
 // find the artist
 foreach (getArtists() as $artist)
-    if ($artist["id"] == $artistId)
+    if ($artist->getId() == $artistId)
         break;
 
 require_once ("sources/view/previewView.html");

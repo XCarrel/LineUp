@@ -9,6 +9,7 @@
 
 class Artist
 {
+    private $id;
     private $name;
     private $description;
     private $kind;
@@ -27,17 +28,22 @@ class Artist
      * @param $contract
      * @param $performances
      */
-    public function __construct($name, $description, $kind, $country, $picture, $contract, $performances)
+    public function __construct($id, $name, $description, $kind, $country, $picture, $contract)
     {
+
+        $this->id = $id;
         $this->name = $name;
         $this->description = $description;
         $this->kind = $kind;
         $this->country = $country;
         $this->picture = $picture;
-        $this->contract = $contract;
-        $this->performances = $performances;
 
 
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -48,13 +54,6 @@ class Artist
         return $this->name;
     }
 
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
 
     /**
      * @return mixed
@@ -64,13 +63,6 @@ class Artist
         return $this->description;
     }
 
-    /**
-     * @param mixed $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
 
     /**
      * @return mixed
@@ -80,13 +72,6 @@ class Artist
         return $this->kind;
     }
 
-    /**
-     * @param mixed $kind
-     */
-    public function setKind($kind)
-    {
-        $this->kind = $kind;
-    }
 
     /**
      * @return mixed
@@ -96,13 +81,6 @@ class Artist
         return $this->country;
     }
 
-    /**
-     * @param mixed $country
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
-    }
 
     /**
      * @return mixed
@@ -112,13 +90,6 @@ class Artist
         return $this->picture;
     }
 
-    /**
-     * @param mixed $picture
-     */
-    public function setPicture($picture)
-    {
-        $this->picture = $picture;
-    }
 
     /**
      * @return mixed

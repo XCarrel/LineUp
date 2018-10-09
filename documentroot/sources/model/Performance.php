@@ -33,13 +33,6 @@ class Performance
         return $this->datetime;
     }
 
-    /**
-     * @param mixed $datetime
-     */
-    public function setDatetime($datetime)
-    {
-        $this->datetime = $datetime;
-    }
 
     /**
      * @return mixed
@@ -49,13 +42,6 @@ class Performance
         return $this->duration;
     }
 
-    /**
-     * @param mixed $duration
-     */
-    public function setDuration($duration)
-    {
-        $this->duration = $duration;
-    }
 
     /**
      * @return mixed
@@ -65,13 +51,6 @@ class Performance
         return $this->scene;
     }
 
-    /**
-     * @param mixed $scene
-     */
-    public function setScene($scene)
-    {
-        $this->scene = $scene;
-    }
 
 
 }

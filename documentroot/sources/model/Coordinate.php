@@ -32,13 +32,6 @@ class Coordinate
         return $this->Lat;
     }
 
-    /**
-     * @param mixed $Lat
-     */
-    public function setLat($Lat)
-    {
-        $this->Lat = $Lat;
-    }
 
     /**
      * @return mixed
@@ -48,13 +41,6 @@ class Coordinate
         return $this->Long;
     }
 
-    /**
-     * @param mixed $Long
-     */
-    public function setLong($Long)
-    {
-        $this->Long = $Long;
-    }
 
 
 }

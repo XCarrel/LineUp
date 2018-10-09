@@ -11,8 +11,17 @@ $artistId = $_GET['id'];
 
 // find the artist
 foreach (getArtists() as $artist)
-    if ($artist["id"] == $artistId)
+    if ($artist->getId() == $artistId)
         break;
+
+// Prepare contract type for display
+if ($artist->hasContract())
+    if (get_class($artist->getContract()) == 'VIPContract')
+        $contractType = "VIP";
+    else
+        $contractType = "Standard";
+else
+    $contractType = "Aucun";
 
 require_once ("sources/view/infoView.html");
 

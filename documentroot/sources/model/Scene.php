@@ -30,13 +30,7 @@ class Scene
         return $this->name;
     }
 
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
+
 
     /**
      * @return mixed
@@ -46,12 +40,5 @@ class Scene
         return $this->localization;
     }
 
-    /**
-     * @param mixed $localization
-     */
-    public function setLocalization($localization)
-    {
-        $this->localization = $localization;
-    }
 
 }
