@@ -5,8 +5,9 @@
  * Date: 01.10.18
  * Time: 14:07
  */
+require_once ("sources/model/iPersistable.php");
 
-class Artist
+class Artist implements iPersistable
 {
     private $id;
     private $name;
@@ -15,6 +16,9 @@ class Artist
     private $country;
     private $picture;
     private $performances;
+    private $contract;
+
+    private $pdo;
 
     /**
      * Artist constructor.
@@ -34,6 +38,7 @@ class Artist
         $this->kind = $kind;
         $this->country = $country;
         $this->picture = $picture;
+        $this->pdo = Database::dbConnection();
     }
 
     /**
@@ -100,4 +105,81 @@ class Artist
         $this->performances = $performances;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getContract()
+    {
+        return $this->contract;
+    }
+
+    /**
+     * @param mixed $contract
+     */
+    public function setContract($contract)
+    {
+        $this->contract = $contract;
+    }
+
+    public function hasContract()
+    {
+        return $this->contract != null;
+    }
+
+    /**
+     * Load the object's members with the data of the database record with the given id
+     * if the id member was set before the call, it is overwritten
+     *
+     * @param $id
+     * @return void
+     * @throws exception if the record wasn't found
+     */
+    public function load($id)
+    {
+        // TODO: Implement load() method.
+    }
+
+    /**
+     * Load the object's members with the data of the database record with the id given by the id member
+     *
+     * @return void
+     * @throws exception if the record wasn't found
+     */
+    public function reload()
+    {
+        // TODO: Implement reload() method.
+    }
+
+    /**
+     * Creates record(s) in the db for the object state. The id member is updated with the value picked by the db
+     *
+     * @return void
+     * @throws exception if the record wasn't created because of some db constraint violation
+     */
+    public function create()
+    {
+        // TODO: Implement create() method.
+    }
+
+    /**
+     * Stores the state of the object in the db record(s)
+     *
+     * @return void
+     * @throws exception if the record wasn't created because of some db constraint violation
+     */
+    public function store()
+    {
+        // TODO: Implement store() method.
+    }
+
+    /**
+     * Deletes the db record(s)
+     *
+     * @return void
+     * @throws exception if the record couldn't be deleted because of some db constraint violation
+     */
+    public function destroy()
+    {
+        // TODO: Implement destroy() method.
+    }
 }

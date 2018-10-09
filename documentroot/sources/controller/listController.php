@@ -6,9 +6,9 @@
  * Time: 16:42
  */
 
-require_once ("sources/model/artists.php");
+require_once ("sources/model/ArtistProvider.php");
 
-$artists = getArtists();
+$artists = ArtistProvider::getArtists();
 
 require_once ("sources/view/listView.html");
 
