@@ -44,6 +44,7 @@ function getArtists()
                                     c.Name as country, 
                                     a.Mainpicture as image, 
                                     Contract_id as idcontract,
+                                    co.signedOn as signOn,
                                     co.description as contratDescription,
                                     co.fee as fee,
                                     co.restaurant as restaurant,
@@ -80,11 +81,11 @@ function getArtists()
         {
             if($artist['restaurant'] == null && $artist['car'] == null)
             {
-                $contract = new StandardContract($artist['contratDescription'], $artist['fee'], $artist['nbMeals']);
+                $contract = new StandardContract($artist['signOn'], $artist['contratDescription'], $artist['fee'], $artist['nbMeals']);
             }
             else
             {
-                $contract = new VIPContract($artist['contratDescription'], $artist['fee'], $artist['restaurant'], $artist['car']);
+                $contract = new VIPContract($artist['signOn'], $artist['contratDescription'], $artist['fee'], $artist['restaurant'], $artist['car']);
             }
         }
         else
@@ -95,7 +96,7 @@ function getArtists()
         $artObj -> setContract($contract);
         $artsObj[] = $artObj;
     }
-    error_log(print_r($artsObj, 1));
+    //error_log(print_r($artsObj, 1));
     return $artsObj;
 }
 
