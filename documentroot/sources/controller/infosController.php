@@ -10,6 +10,22 @@ foreach (getArtists() as $artist)
     }
 }
 
+if($artist->getContract())
+{
+    if(get_class($artist->getContract()) == 'VIPContract')
+    {
+        $contract = "VIP";
+    }
+    else
+    {
+        $contract = "Standard";
+    }
+}
+else
+{
+    $contract = 'Aucun';
+}
+
 require_once ("sources/view/infosView.html");
 
 ?>

@@ -4,9 +4,9 @@
     class StandardContract extends Contract {
         protected $nbMeals;
 
-        public function __construct($description, $fee, $nbMeals)
+        public function __construct($signOn, $description, $fee, $nbMeals)
         {
-            parent::__construct($description, $fee);
+            parent::__construct($signOn, $description, $fee);
             $this->nbMeals = $nbMeals;
         }
 
