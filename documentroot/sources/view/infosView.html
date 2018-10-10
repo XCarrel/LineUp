@@ -1,15 +1,21 @@
-<img id="image" src="../img/<?= $artist->getPicture()  ?>">
+<img id="image" src="/documentroot/img/<?= $artist->getPicture()  ?>">
 <h1><?= $artist->getName() ?></h1>
 <div id="kind"> <label> Genre : </label> <?= $artist->getKind() ?> </div>
 <div id="country"> <label> Pays : </label> <?= $artist->getCountry() ?> </div>
 <div id="description"> <label> Description : </label> <?= $artist->getDescription() ?> </div>
 
-<?php
-    foreach($artist->getPerformances() as $performance){ ?>
-        <?= $performance->getScene() ?>
-        <?= $performance->getDatetime() ?>
+<table>
         <?php
-    }
-?>
+            foreach($artist->getPerformances() as $performance){ ?>
+                <tr>
+                        <td><?= $performance->getScene() ?></td>
+                        <td><?= $performance->getDatetime() ?></td>
+                </tr>
+                <?php
+            }
+        ?>
+</table>
 
-<a href="?page=preview&id=<?= $artist->getId()  ?>">Prévisualisation</a>
+<div id="contrat"> <label> Contrat : </label> <?= $contract ?> </div>
+
+<a href="?page=preview&id=<?= $artist->getId() ?>">Prévisualisation</a>
