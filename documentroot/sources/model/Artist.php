@@ -91,6 +91,14 @@
             $this->contract = $contract;
         }
 
+        /**
+         * @return mixed
+         */
+        public function getContract()
+        {
+            return $this->contract;
+        }
+
 
 
     }
