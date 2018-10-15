@@ -6,6 +6,12 @@
  * Time: 15:51
  */
 
+/*/ Unit test. Uncomment to execute
+
+require_once "sources/unittest/UnitTests.php";
+UnitTests::testPersistableOnArtist();
+
+//*/
 $appVersion = "v1.0";
 
 $page = isset($_GET["page"]) ? $_GET["page"] : "home";

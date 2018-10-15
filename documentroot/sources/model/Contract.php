@@ -27,4 +27,14 @@ abstract class Contract
     {
         $this->signedOn = new DateTime();
     }
+
+    /**
+     * Returns the contract type for display.
+     * Assumes that the subclasses are name 'xxxContract'
+     */
+    public function get_type()
+    {
+        $cls = get_class($this);
+        return substr($cls,0,strpos($cls,"Contract"));
+    }
 }

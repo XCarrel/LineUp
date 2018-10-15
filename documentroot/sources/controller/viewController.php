@@ -6,21 +6,10 @@
  * Time: 16:42
  */
 
-require_once ("sources/model/ArtistProvider.php");
+require_once ("sources/model/Artist.php");
 
-// find the artist
-foreach (ArtistProvider::getArtists() as $artist)
-    if ($artist->getId() == $artistId)
-        break;
-
-// Prepare contract type for display
-if ($artist->hasContract())
-    if (get_class($artist->getContract()) == 'VIPContract')
-        $contractType = "VIP";
-    else
-        $contractType = "Standard";
-else
-    $contractType = "Aucun";
+$artist = new Artist();
+$artist->load($artistId);
 
 require_once ("sources/view/viewView.html");
 

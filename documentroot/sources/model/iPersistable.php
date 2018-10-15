@@ -9,6 +9,12 @@
 interface iPersistable
 {
     /**
+     * Returns the list of all objects read from the database
+     * @return mixed
+     */
+    public static function All();
+
+    /**
      * Load the object's members with the data of the database record with the given id
      * if the id member was set before the call, it is overwritten
      *
