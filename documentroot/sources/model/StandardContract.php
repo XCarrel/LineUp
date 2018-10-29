@@ -1,20 +1,26 @@
 <?php
 /**
- *
+ * Created by PhpStorm.
+ * User: Xavier
+ * Date: 08.10.18
+ * Time: 09:55
  */
-require_once "Contract.php";
+
 class StandardContract extends Contract
 {
-   private $nbMeals;
-
-   function __construct($nbMeals)
-   {
-      $this->nbMeals = $nbMeals;
-   }
+    protected $nbMeals;
 
     /**
-     * Get the value of Nb Meals
-     *
+     * StandardContract constructor.
+     * @param $nbMeals
+     */
+    public function __construct($description, $fee, $nbMeals)
+    {
+        parent::__construct($description, $fee);
+        $this->nbMeals = $nbMeals;
+    }
+
+    /**
      * @return mixed
      */
     public function getNbMeals()
@@ -22,6 +28,12 @@ class StandardContract extends Contract
         return $this->nbMeals;
     }
 
-}
+    /**
+     * @param mixed $nbMeals
+     */
+    public function setNbMeals($nbMeals)
+    {
+        $this->nbMeals = $nbMeals;
+    }
 
-?>
+}

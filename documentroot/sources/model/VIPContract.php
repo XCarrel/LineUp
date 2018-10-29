@@ -1,22 +1,29 @@
 <?php
 /**
- *
+ * Created by PhpStorm.
+ * User: Xavier
+ * Date: 08.10.18
+ * Time: 09:55
  */
-require_once "Contract.php";
+
 class VIPContract extends Contract
 {
-   private $restaurant;
-   private $car;
-
-   function __construct($restaurant, $car)
-   {
-      $this->restaurant = $restaurant;
-      $this->car = $car;
-   }
+    protected $restaurant;
+    protected $car;
 
     /**
-     * Get the value of Restaurant
-     *
+     * VIPContract constructor.
+     * @param $restaurant
+     * @param $car
+     */
+    public function __construct($description, $fee, $restaurant, $car)
+    {
+        parent::__construct($description, $fee);
+        $this->restaurant = $restaurant;
+        $this->car = $car;
+    }
+
+    /**
      * @return mixed
      */
     public function getRestaurant()
@@ -25,8 +32,14 @@ class VIPContract extends Contract
     }
 
     /**
-     * Get the value of Car
-     *
+     * @param mixed $restaurant
+     */
+    public function setRestaurant($restaurant)
+    {
+        $this->restaurant = $restaurant;
+    }
+
+    /**
      * @return mixed
      */
     public function getCar()
@@ -34,6 +47,13 @@ class VIPContract extends Contract
         return $this->car;
     }
 
-}
+    /**
+     * @param mixed $car
+     */
+    public function setCar($car)
+    {
+        $this->car = $car;
+    }
 
-?>
+
+}

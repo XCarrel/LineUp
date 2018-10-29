@@ -6,12 +6,10 @@
  * Time: 16:42
  */
 
-require_once ("sources/model/artists.php");
+require_once ("sources/model/Artist.php");
 
-// find the artist
-foreach (getArtists() as $artist)
-    if ($artist->GetId() == $artistId)
-        break;
+$artist = new Artist();
+$artist->load($artistId);
 
 require_once ("sources/view/viewView.html");
 

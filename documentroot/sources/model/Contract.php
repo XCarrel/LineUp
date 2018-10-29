@@ -1,54 +1,40 @@
 <?php
 /**
- *
+ * Created by PhpStorm.
+ * User: Xavier
+ * Date: 08.10.18
+ * Time: 09:55
  */
+
 abstract class Contract
 {
-   private $signedOn;
-   private $description;
-   private $fee;
-
-   function __construct($signedOn, $description, $fee)
-   {
-      $this->signedOn = $signedOn;
-      $this->description = $description;
-      $this->fee = $fee;
-   }
-
+    protected $signedOn;
+    protected $description;
+    protected $fee;
 
     /**
-     * Get the value of Signed On
-     *
-     * @return mixed
+     * Contract constructor.
+     * @param $description
+     * @param $fee
      */
-    public function getSignedOn()
+    public function __construct($description, $fee)
     {
-        return $this->signedOn;
+        $this->description = $description;
+        $this->fee = $fee;
+    }
+
+    public function sign()
+    {
+        $this->signedOn = new DateTime();
     }
 
     /**
-     * Get the value of Description
-     *
-     * @return mixed
+     * Returns the contract type for display.
+     * Assumes that the subclasses are name 'xxxContract'
      */
-    public function getDescription()
+    public function get_type()
     {
-        return $this->description;
-    }
-
-    /**
-     * Get the value of Fee
-     *
-     * @return mixed
-     */
-    public function getFee()
-    {
-        return $this->fee;
-    }
-
-    public function getType()
-    {
-      return get_class($this);
+        $cls = get_class($this);
+        return substr($cls,0,strpos($cls,"Contract"));
     }
 }
-?>
