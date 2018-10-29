@@ -2,6 +2,7 @@
 
 <h2>Il y a <?= count($artists); ?> artistes au programme</h2>
 
+<<<<<<< HEAD
 <table class="artistslist">
     <?php
         foreach($artists as $artist){
@@ -13,4 +14,12 @@
     <?php
         }
     ?>
+=======
+
+<table>
+    <thead><th>Artiste</th><th>Style</th></thead>
+    <?php foreach($artists as $artist){ ?>
+        <tr><td><a href="?page=view&id=<?= $artist->getId() ?>"><?= $artist->getName() ?></a></td><td><?= $artist->getKind() ?></td></tr>
+    <?php } ?>
+>>>>>>> master
 </table>
