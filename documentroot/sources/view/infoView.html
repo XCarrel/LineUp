@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Informations de l'artiste </title>
+    <title>Info</title>
 </head>
 <body>
 
 
 <div class="flex-container">
-<?= var_dump($artist); ?>
 <div class="container">
     <h2>Détail de l'artiste <?= $artist->getName(); ?></h2>
     <img src="./externalData/cover/<?= $artist->getPicture() ?>"  class="image" >
@@ -16,17 +15,15 @@
     <div class="kind"><?= $artist->getKind(); ?></div>
     <div class="pays"><?= $artist->getCountry(); ?></div>
     <div class="description"><?= $artist->getDescription(); ?></div>
-    <div class="description"><?= $artist->getContract()->getType(); ?></div>
+    <label for="contract">Contrat</label><div class="description"><span id="contract"><?= $artist->getContract() == null ? "Aucun" : $artist->getContract()->get_type() ?></span></div><br>
+
     <label for="performances">Performances</label><div id="performances"></div>
     <div class="artist">
-        <div class="artistHalfPage">
-            <?php if (count($artist->getPerformances()) > 0) { ?>
-            <div class="performances">
-                <?php foreach($artist->getPerformances() as $perf){ ?>
-                <?= $perf->getScene() ?>, <?= strftime('%A',strtotime($perf->getDatetime())) ?> à <?= strftime('%R',strtotime($perf->getDatetime())) ?><br>
-                <?php } ?>
-            </div>
+        <table>
+            <?php foreach($artist->getPerformances() as $perf){ ?>
+            <tr><td><?= $perf->getDatetime()->format('Y-m-d H:i:s') ?></td><td><?= $perf->getScene()->getName() ?></td></tr>
             <?php } ?>
+        </table>
         </div>
 
         <a href="?page=preview&id=<?= $artist->getId() ?>"><button class="button">Prévisualiser</button></a>

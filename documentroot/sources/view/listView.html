@@ -1,6 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste</title>
+</head>
+<body>
 <div class="flex-container">
     <h2>Liste des artistes</h2>
-    <?php foreach ($artists as $key => $artist) { ?>
+    <?= foreach ($artists as $artist) { ?>
         <figure class="snip1091 red"><img src="./externalData/cover/<?= $artist->getPicture(); ?>" alt="sq-sample6"/>
             <figcaption>
                 <h3><?= $artist->getName(); ?></h3>
@@ -8,3 +15,5 @@
         </figure>
     <?php } ?>
 </div>
+</body>
+</html>

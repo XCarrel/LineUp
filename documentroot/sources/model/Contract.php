@@ -11,71 +11,27 @@ abstract class Contract
     protected $signedOn;
     protected $description;
     protected $fee;
-    protected $Type;
-
     /**
      * Contract constructor.
-     * @param $signedOn
      * @param $description
      * @param $fee
      */
-    public function __construct($signedOn, $description, $fee)
+    public function __construct($description, $fee)
     {
-        $this->signedOn = $signedOn;
         $this->description = $description;
         $this->fee = $fee;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getSignedOn()
+    public function sign()
     {
-        return $this->signedOn;
+        $this->signedOn = new DateTime();
     }
-
-
     /**
-     * @return mixed
+     * Returns the contract type for display.
+     * Assumes that the subclasses are name 'xxxContract'
      */
-    public function getDescription()
+    public function get_type()
     {
-        return $this->description;
+        $cls = get_class($this);
+        return substr($cls,0,strpos($cls,"Contract"));
     }
-
-    /**
-     * @param mixed $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFee()
-    {
-        return $this->fee;
-    }
-
-    /**
-     * @param mixed $fee
-     */
-    public function setFee($fee)
-    {
-        $this->fee = $fee;
-
-        return $this;
-    }
-
-    public function getType() {
-
-        return get_class($this);
-    }
-
-
-
-
-
 }

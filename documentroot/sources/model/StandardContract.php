@@ -20,5 +20,18 @@ class StandardContract extends Contract
         $this->nbMeals = $nbMeals;
     }
 
-
+    /**
+     * @return mixed
+     */
+    public function getNbMeals()
+    {
+        return $this->nbMeals;
+    }
+    /**
+     * @param mixed $nbMeals
+     */
+    public function setNbMeals($nbMeals)
+    {
+        $this->nbMeals = $nbMeals;
+    }
 }
