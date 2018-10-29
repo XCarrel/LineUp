@@ -10,8 +10,6 @@ require_once ("sources/model/Artist.php");
 
 $artists = Artist::All();
 
-$perfs = getArtistPerf();
-
 require_once ("sources/view/listView.html");
 
 ?>

@@ -21,15 +21,6 @@ switch ($page)
     case 'home':
     case 'list':
         break;
-<<<<<<< HEAD
-    case 'artist':
-    case 'preview':
-        if(isset($_GET["id"])){
-            $artistid = $_GET["id"];
-        }else{
-            $page = 'error';
-            $errormessage = "L'artiste est inexistant";
-=======
     case 'view':
     case 'preview':
         if (isset($_GET["id"]))
@@ -38,7 +29,6 @@ switch ($page)
         {
             $page = 'error';
             $errormessage = "Format incorrect (manque l'id de l'artiste)";
->>>>>>> master
         }
         break;
     default:
