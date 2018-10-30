@@ -1,3 +1,11 @@
 $(document).ready(function() {
-    console.log('tcho')
+    $("#save").hide();
+
+    $('#selectGender').change(function() {
+        $("#save").show();
+    });
+
+    $('#selectCountries').change(function() {
+        $("#save").show();
+    });
 });

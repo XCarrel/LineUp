@@ -1,14 +1,14 @@
 <h1><?= $artist->getName() ?></h1>
 
 <label for="kind">Genre</label>
-<select>
+<select id="selectGender">
     <?php foreach($genders as $gender) { ?>
         <option type="text" name="kind" id="kind" value="<?= $gender->getId() ?>" <?= $artist->getKind() == $gender->getName() ? "selected" : "" ?>><?= $gender->getName() ?></option>
     <?php } ?>
 </select>
 <br>
 <label for="country">Pays</label>
-<FORM>
+<FORM id="selectCountries">
     <?php foreach($countries as $country) { ?>
         <input type="radio" name="country" id="country" value="<?= $country->getId() ?>" <?= $artist->getCountry() == $country->getName() ? "checked" : "" ?>> <?= $country->getName() ?>
     <?php } ?>
@@ -27,3 +27,4 @@
 <br>
 
 <a href="?page=view&id=<?= $artist->getId() ?>"><button class="button">Annuler</button></a>
+<a href="?page=view&id=<?= $artist->getId() ?>"><button class="button" id="save">Sauver</button></a>
