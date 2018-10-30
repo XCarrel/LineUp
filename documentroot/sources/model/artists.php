@@ -76,6 +76,7 @@ function getArtistPerf($idArtist){
     return $perfs;
 }
 
+
 function getScenes(){
 
 }
