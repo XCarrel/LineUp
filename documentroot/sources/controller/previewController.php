@@ -1,14 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Dardan.Iljazi
- * Date: 10.09.2018
- * Time: 15:53
+ * User: Xavier
+ * Date: 02.09.18
+ * Time: 16:42
  */
 
-require_once ("sources/model/artists.php");
+require_once("sources/model/Artist.php");
 
-$artists = getArtists();
-$actualArtist = $artists[$artistId-1];
+$actualArtist = new Artist();
+$actualArtist->load($artistId);
 
-require_once ("sources/view/previewView.html");
+require_once("sources/view/previewView.html");
+

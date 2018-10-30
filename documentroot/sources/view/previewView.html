@@ -22,28 +22,27 @@
     </tr>
     <tr>
         <td>Image</td>
-        <td><img class="opacity-50" src="<?= pathToArtistsImages() . $actualArtist->getPicture() ?>"
+        <td><img class="opacity-50" src="<?= $actualArtist->pathToArtistsImages() . $actualArtist->getPicture() ?>"
                  alt="<?= $actualArtist->getName() ?>" width="500px"/></td>
     </tr>
     <tr>
         <td>Performances</td>
         <td>
+
             <?php if (count($actualArtist->getPerformances()) > 0) { ?>
 
             <?php foreach($actualArtist->getPerformances() as $perf){ ?>
-            <?= var_dump(); ?>
+
             <?= $perf->getScene()->getName() ?>, <?= strftime('%A %d %B %Y',$perf->getDatetime()->getTimestamp()) ?>
             à <?= strftime('%R',$perf->getDatetime()->getTimestamp()) ?><br>
             <?php } ?>
             <?php } ?>
         </td>
-
     </tr>
     <tr>
         <td>Contract</td>
         <td>
-            <!--<?= var_dump($actualArtist->getContract()); ?>-->
-            <!--<?= ($actualArtist->getContract()->getType() === 2) ? "StandardContract" : "VIPContract" ?>-->
+            <?= ($actualArtist->getContract() == null) ? "Aucun" : "Youpi"; ?>
         </td>
     </tr>
     </tbody>

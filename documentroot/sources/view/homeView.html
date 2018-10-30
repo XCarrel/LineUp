@@ -9,7 +9,7 @@
 
     <a href="?page=preview&id=<?= $artist->getId() ?>">
         <article>
-        <img src="<?= pathToArtistsImages() ?><?= $artist->getPicture() ?>" class="artist-img" />
+        <img src="<?= $artist->pathToArtistsImages() ?><?= $artist->getPicture() ?>" class="artist-img" />
         <div class="artist-overlay">
             <h2 class="artist-title"><?= $artist->getName() ?></h2>
         </div>

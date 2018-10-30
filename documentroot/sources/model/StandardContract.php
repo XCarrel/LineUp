@@ -1,14 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Dardan.Iljazi
- * Date: 01.10.2018
- * Time: 14:46
+ * User: Xavier
+ * Date: 08.10.18
+ * Time: 09:55
  */
 
 class StandardContract extends Contract
 {
-    private $nbMeals;
+    protected $nbMeals;
 
     /**
      * StandardContract constructor.
@@ -16,7 +16,7 @@ class StandardContract extends Contract
      */
     public function __construct($description, $fee, $nbMeals)
     {
-        parent::__construct(2, $description, $fee);
+        parent::__construct($description, $fee);
         $this->nbMeals = $nbMeals;
     }
 
@@ -35,4 +35,5 @@ class StandardContract extends Contract
     {
         $this->nbMeals = $nbMeals;
     }
+
 }

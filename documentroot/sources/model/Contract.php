@@ -1,103 +1,40 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Dardan.Iljazi
- * Date: 01.10.2018
- * Time: 14:45
+ * User: Xavier
+ * Date: 08.10.18
+ * Time: 09:55
  */
-require_once "iPersistable.php";
 
-abstract class Contract implements iPersistable
+abstract class Contract
 {
     protected $signedOn;
     protected $description;
     protected $fee;
-    protected $type;
 
     /**
      * Contract constructor.
-     * @param $type
      * @param $description
      * @param $fee
      */
-    public function __construct($type, $description, $fee)
-    {
-        $this->type = $type;
-        $this->description  = $description;
-        $this->fee          = $fee;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSignedOn()
-    {
-        return $this->signedOn;
-    }
-
-    /**
-     * @param mixed $signedOn
-     */
-    public function setSignedOn($signedOn)
-    {
-        $this->signedOn = $signedOn;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param mixed $description
-     */
-    public function setDescription($description)
+    public function __construct($description, $fee)
     {
         $this->description = $description;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFee()
-    {
-        return $this->fee;
-    }
-
-    /**
-     * @param mixed $fee
-     */
-    public function setFee($fee)
-    {
         $this->fee = $fee;
     }
 
-    public function store()
+    public function sign()
     {
-        // TODO: Implement store() method.
-    }
-
-    public function load()
-    {
-        // TODO: Implement load() method.
+        $this->signedOn = new DateTime();
     }
 
     /**
-     * @return mixed
+     * Returns the contract type for display.
+     * Assumes that the subclasses are name 'xxxContract'
      */
-    public function getType()
+    public function get_type()
     {
-        return get_class($this);
-    }
-
-    /**
-     * @param mixed $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
+        $cls = get_class($this);
+        return substr($cls,0,strpos($cls,"Contract"));
     }
 }

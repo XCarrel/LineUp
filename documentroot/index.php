@@ -9,13 +9,20 @@
 $appVersion = "v1.0";
 
 $page = isset($_GET["page"]) ? $_GET["page"] : "home";
-
 switch ($page)
 {
     case 'home':
     case 'list':
         break;
     case 'preview':
+        if(isset($_GET["id"])) {
+            $artistId = $_GET["id"];
+        }else{
+            $page = 'error';
+            $errormessage = "Format incorrect (manque l'id de l'artiste)";
+        }
+        break;
+    case 'edit':
         if(isset($_GET["id"])) {
             $artistId = $_GET["id"];
         }else{
@@ -32,8 +39,4 @@ ob_start();
 include("sources/controller/$page"."Controller.php"); // "call" to the controller
 $content = ob_get_contents();
 ob_end_clean();
-
 include("sources/view/layout.html");
-
-
-?>

@@ -7,5 +7,3 @@
  */
 
 require_once ("sources/view/errorView.html");
-
-?>

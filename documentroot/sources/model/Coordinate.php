@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Dardan.Iljazi
- * Date: 01.10.2018
- * Time: 14:41
+ * User: Xavier
+ * Date: 02.10.18
+ * Time: 14:59
  */
 
 class Coordinate
@@ -22,6 +22,7 @@ class Coordinate
         $this->long = $long;
     }
 
+
     /**
      * @return mixed
      */
@@ -31,29 +32,12 @@ class Coordinate
     }
 
     /**
-     * @param mixed $lat
-     */
-    public function setLat($lat)
-    {
-        $this->lat = $lat;
-    }
-
-    /**
      * @return mixed
      */
     public function getLong()
     {
         return $this->long;
     }
-
-    /**
-     * @param mixed $long
-     */
-    public function setLong($long)
-    {
-        $this->long = $long;
-    }
-
 
 
 }

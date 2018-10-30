@@ -1,0 +1,47 @@
+<h1>Edit</h1>
+
+<table>
+    <thead>
+    <th colspan="2"><h1 data-artistId="<?= $actualArtist->getId() ?>"><?= $actualArtist->getName() ?></h1></th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Genre</td>
+        <td><span data-key="kind"><?= $actualArtist->getKind(); ?></span></td>
+    </tr>
+    <tr>
+        <td>Pays</td>
+        <td><span data-artistId="<?= $actualArtist->getId() ?>" data-key="id"><?= $actualArtist->getCountry() ?></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td><span data-artistId="<?= $actualArtist->getId() ?>"><?= $actualArtist->getDescription() ?></span></td>
+    </tr>
+    <tr>
+        <td>Image</td>
+        <td><img class="opacity-50" src="<?= $actualArtist->pathToArtistsImages() . $actualArtist->getPicture() ?>"
+                 alt="<?= $actualArtist->getName() ?>" width="500px"/></td>
+    </tr>
+    <tr>
+        <td>Performances</td>
+        <td>
+
+            <?php if (count($actualArtist->getPerformances()) > 0) { ?>
+
+            <?php foreach($actualArtist->getPerformances() as $perf){ ?>
+
+            <?= $perf->getScene()->getName() ?>, <?= strftime('%A %d %B %Y',$perf->getDatetime()->getTimestamp()) ?>
+            à <?= strftime('%R',$perf->getDatetime()->getTimestamp()) ?><br>
+            <?php } ?>
+            <?php } ?>
+        </td>
+    </tr>
+    <tr>
+        <td>Contract</td>
+        <td>
+            <?= ($actualArtist->getContract() == null) ? "Aucun" : "Youpi"; ?>
+        </td>
+    </tr>
+    </tbody>
+</table>

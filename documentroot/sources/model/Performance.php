@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Dardan.Iljazi
- * Date: 01.10.2018
- * Time: 14:21
+ * User: Xavier
+ * Date: 01.10.18
+ * Time: 15:31
  */
 
 class Performance
@@ -34,27 +34,11 @@ class Performance
     }
 
     /**
-     * @param mixed $datetime
-     */
-    public function setDatetime($datetime)
-    {
-        $this->datetime = $datetime;
-    }
-
-    /**
      * @return mixed
      */
     public function getDuration()
     {
         return $this->duration;
-    }
-
-    /**
-     * @param mixed $duration
-     */
-    public function setDuration($duration)
-    {
-        $this->duration = $duration;
     }
 
     /**
@@ -65,12 +49,5 @@ class Performance
         return $this->scene;
     }
 
-    /**
-     * @param mixed $scene
-     */
-    public function setScene($scene)
-    {
-        $this->scene = $scene;
-    }
 
 }

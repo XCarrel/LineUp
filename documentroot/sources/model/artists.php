@@ -84,18 +84,16 @@ function getArtists()
         $contractArray = $stmt->fetchAll();
 
 
+
         $contract = null;
-//        echo print_r($contractArray) . '<br /><br />';
-//        echo print_r($contractArray["contract_type"]) . '<br /><br />';
-//        if ($contractArray["contract_type"] == 1) { // VIPContract
-//            echo 'contract_type === 1';
-//            $contract = new VIPContract($contractArray["description"], $contractArray["fee"], $contractArray["restaurant"], $contractArray["car"]);
-//        } else if ($contractArray["contract_type"] == 2 OR is_null($contractArray["contract_type"])) { // StandardContract
-//            echo 'contract_type === 2';
-//            $contract = new StandardContract($contractArray["description"], $contractArray["fee"], $contractArray["nbMeals"]);
-//        } else {
-//            var_dump("Contract not taken in consideration yet!");
-//        }
+        if ($contractArray["contract_type"] == 1) { // VIPContract
+            echo 'contract_type === 1';
+            $contract = new VIPContract($contractArray["description"], $contractArray["fee"], $contractArray["restaurant"], $contractArray["car"]);
+        } else if ($contractArray["contract_type"] == 2 OR is_null($contractArray["contract_type"])) { // StandardContract
+            echo 'contract_type === 2';
+            $contract = new StandardContract($contractArray["description"], $contractArray["fee"], $contractArray["nbMeals"]);
+        } else {
+        }
 
         $artist = new Artist($artistArray["id"], $artistArray["name"], $artistArray["kind"], $artistArray["kind"], $artistArray["country"], $artistArray["imageurl"], $contract, $performances);
         $artists[] = $artist;

@@ -1,12 +1,12 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Dardan.Iljazi
- * Date: 01.10.2018
- * Time: 14:41
+ * User: Xavier
+ * Date: 02.10.18
+ * Time: 15:21
  */
 
-class Scene
+class Scene implements iPersistable
 {
     private $name;
     private $localization;
@@ -31,14 +31,6 @@ class Scene
     }
 
     /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
      * @return mixed
      */
     public function getLocalization()
@@ -46,14 +38,70 @@ class Scene
         return $this->localization;
     }
 
+
     /**
-     * @param mixed $localization
+     * Load the object's members with the data of the database record with the given id
+     * if the id member was set before the call, it is overwritten
+     *
+     * @param $id
+     * @return void
+     * @throws exception if the record wasn't found
      */
-    public function setLocalization($localization)
+    public function load($id)
     {
-        $this->localization = $localization;
+        // TODO: Implement load() method.
     }
 
+    /**
+     * Load the object's members with the data of the database record with the id given by the id member
+     *
+     * @return void
+     * @throws exception if the record wasn't found
+     */
+    public function reload()
+    {
+        // TODO: Implement reload() method.
+    }
 
+    /**
+     * Creates record(s) in the db for the object state. The id member is updated with the value picked by the db
+     *
+     * @return void
+     * @throws exception if the record wasn't created because of some db constraint violation
+     */
+    public function create()
+    {
+        // TODO: Implement create() method.
+    }
 
+    /**
+     * Stores the state of the object in the db record(s)
+     *
+     * @return void
+     * @throws exception if the record wasn't created because of some db constraint violation
+     */
+    public function store()
+    {
+        // TODO: Implement store() method.
+    }
+
+    /**
+     * Deletes the db record(s)
+     *
+     * @return void
+     * @throws exception if the record couldn't be deleted because of some db constraint violation
+     */
+    public function destroy()
+    {
+        // TODO: Implement destroy() method.
+    }
+
+    /**
+     * Returns the list of all objects read from the database
+     * @return mixed
+     */
+    public static function All()
+    {
+        // TODO: Implement All() method.
+    }
 }

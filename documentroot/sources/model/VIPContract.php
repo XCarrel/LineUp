@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Dardan.Iljazi
- * Date: 01.10.2018
- * Time: 14:45
+ * User: Xavier
+ * Date: 08.10.18
+ * Time: 09:55
  */
 
 class VIPContract extends Contract
@@ -13,14 +13,12 @@ class VIPContract extends Contract
 
     /**
      * VIPContract constructor.
-     * @param $description
-     * @param $fee
      * @param $restaurant
      * @param $car
      */
     public function __construct($description, $fee, $restaurant, $car)
     {
-        parent::__construct(1, $description, $fee);
+        parent::__construct($description, $fee);
         $this->restaurant = $restaurant;
         $this->car = $car;
     }
@@ -28,17 +26,17 @@ class VIPContract extends Contract
     /**
      * @return mixed
      */
-    public function getRestaurants()
+    public function getRestaurant()
     {
-        return $this->restaurants;
+        return $this->restaurant;
     }
 
     /**
-     * @param mixed $restaurants
+     * @param mixed $restaurant
      */
-    public function setRestaurants($restaurants)
+    public function setRestaurant($restaurant)
     {
-        $this->restaurants = $restaurants;
+        $this->restaurant = $restaurant;
     }
 
     /**
@@ -56,5 +54,6 @@ class VIPContract extends Contract
     {
         $this->car = $car;
     }
+
 
 }

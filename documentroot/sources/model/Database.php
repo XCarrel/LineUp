@@ -1,12 +1,32 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Dardan.Iljazi
- * Date: 01.10.2018
- * Time: 15:36
+ * User: Xavier
+ * Date: 26.09.18
+ * Time: 11:03
  */
+class Database {
+    static function dbConnection()
+    {
+        $host = 'localhost';
+        $db   = 'lineup';
+        $user = 'root';
+        $pass = 'root';
+        $charset = 'utf8mb4';
 
-class Database
-{
-
+        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+        $options = [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ];
+        try {
+            return new PDO($dsn, $user, $pass, $options);
+        } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage(), (int)$e->getCode());
+        }
+    }
 }
+
+
+?>
