@@ -23,6 +23,7 @@ switch ($page)
         break;
     case 'view':
     case 'preview':
+    case 'edit':
         if (isset($_GET["id"]))
             $artistId = $_GET["id"];
         else
