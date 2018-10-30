@@ -6,22 +6,29 @@
  * Time: 15:51
  */
 
+/*/ Unit test. Uncomment to execute
+
+require_once "sources/unittest/UnitTests.php";
+UnitTests::testPersistableOnArtist();
+
+//*/
 $appVersion = "v1.0";
 
 $page = isset($_GET["page"]) ? $_GET["page"] : "home";
-$artistid = $_GET["id"];
 
 switch ($page)
 {
     case 'home':
     case 'list':
         break;
-    case 'infos':
+    case 'view':
     case 'preview':
-        if(!isset($artistid))
+        if (isset($_GET["id"]))
+            $artistId = $_GET["id"];
+        else
         {
             $page = 'error';
-            $errormessage = "Manque l'id de l'artiste";
+            $errormessage = "Format incorrect (manque l'id de l'artiste)";
         }
         break;
     default:

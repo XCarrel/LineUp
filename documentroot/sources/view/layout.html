@@ -1,34 +1,25 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>LineUp</title>
-        <link rel="stylesheet" type="text/css" href="/sources/view/css/style.css">
-        <script src="/node_modules/jquery/dist/jquery.js"></script>
-        <script src="/sources/js/main.js"></script>
-    </head>
-    <body>
-        <div class="content">
-            <header id="header">
-                <img src="/assets/images/Logo.jpg" id="img">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="?page=home">Accueil</a>
-                        </li>
-                        <li>
-                            <a href="?page=list">Liste</a>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
+<head>
+    <meta charset="utf-8">
+    <title>LineUp</title>
+    <link rel="stylesheet" href="/sources/view/css/fonts.css">
+    <link rel="stylesheet" href="/sources/view/css/styles.css">
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/sources/js/main.js"></script>
+</head>
+<body>
+<header id="header">
+    <nav>
+        <a href="?page=home"><img src="/assets/images/Logo.png" class="logo"></a>
+        <a href="?page=list">Liste</a>
+    </nav>
+</header>
+<div id="page">
+    <div id="content"><?= $content ?></div>
+</div>
 
-            <div id="page">
-                <div id="content"><?= $content ?></div>
-            </div>
-
-            <footer id="footer">
-                <?= $appVersion ?> &copy; 2018 <a href="http://www.cpnv.ch">CPNV</a>
-            </footer>
-        </div>
-    </body>
+<footer id="footer">
+    <?= $appVersion ?> &copy; 2018 <a href="http://www.cpnv.ch">CPNV</a>
+</footer>
+</body>
 </html>

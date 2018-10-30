@@ -1,0 +1,23 @@
+<?php setlocale(LC_TIME, "fr_CH.UTF-8"); // nécessite l'installation de la locale sur le serveur ?>
+<div class="artist">
+    <div class="artistHalfPage">
+        <img src="/datastorage/pictures/<?= $artist->getPicture() ?>">
+        <?php if (count($artist->getPerformances()) > 0) { ?>
+            <div class="performances">
+                <?php foreach($artist->getPerformances() as $perf){ ?>
+                    <?= $perf->getScene()->getName() ?>, <?= strftime('%A',strtotime($perf->getDatetime()->format('Y-m-d H:i:s'))) ?> à <?= strftime('%R',strtotime($perf->getDatetime()->format('Y-m-d H:i:s'))) ?><br>
+                <?php } ?>
+            </div>
+        <?php } ?>
+    </div>
+    <div class="artistHalfPage">
+        <img src="/assets/images/crowd.jpg">
+        <div class="descbody">
+            <div class="bandname"><?= $artist->getName() ?></div>
+            <div class="bandcountry"><?= $artist->getCountry() ?></div>
+            <div class="bandkind"><?= $artist->getKind() ?></div>
+            <br><br>
+            <?= $artist->getDescription() ?>
+        </div>
+    </div>
+</div>

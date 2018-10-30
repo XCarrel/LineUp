@@ -8,8 +8,9 @@
 
 require_once ("sources/model/Artist.php");
 
-$artists = Artist::All();
+$artist = new Artist();
+$artist->load($artistId);
 
-require_once ("sources/view/listView.html");
+require_once ("sources/view/previewView.html");
 
 ?>
