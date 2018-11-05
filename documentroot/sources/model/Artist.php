@@ -46,6 +46,30 @@ class Artist implements iPersistable
     }
 
     /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGenderId()
+    {
+        return $this->gender_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCountryId()
+    {
+        return $this->country_id;
+    }
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -259,11 +283,28 @@ class Artist implements iPersistable
      */
     public function store()
     {
+        error_log("Storing: ['name' => {$this->name},'descr' => {$this->description},'gender' => {$this->gender_id},'country' => {$this->country_id},'contract' => {$this->contract_id},'pic' => {$this->picture}, 'id' => {$this->id}]");
         $stmt = $this->pdo->prepare('
                     update Artists set Name = :name, Description = :descr, Gender_id = :gender, Country_id = :country, Contract_id = :contract, Mainpicture = :pic
                     where id = :id
         ');
         $stmt->execute(['name' => $this->name,'descr' => $this->description,'gender' => $this->gender_id,'country' => $this->country_id,'contract' => $this->contract_id,'pic' => $this->picture, 'id' => $this->id]);
+    }
+
+    /**
+     * @param mixed $gender_id
+     */
+    public function setGenderId($gender_id)
+    {
+        $this->gender_id = $gender_id;
+    }
+
+    /**
+     * @param mixed $country_id
+     */
+    public function setCountryId($country_id)
+    {
+        $this->country_id = $country_id;
     }
 
     /**
