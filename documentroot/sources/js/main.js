@@ -22,9 +22,9 @@ $(document).ready(function() {
                 id:$('#idArtist').val(),
                 kind:$("#selectGender option:selected").val(),
                 countries:$('input[name=country]:checked').val(),
-                description:$('#description').text(),
+                description:$('#description').val(),
             },
-            success : function(data) {
+            success : function() {
                 $("#result").show();
                 setTimeout(function() { $("#result").hide(); }, 2000);
                 $("#save").hide();
