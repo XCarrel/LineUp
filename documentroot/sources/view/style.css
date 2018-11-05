@@ -164,6 +164,31 @@ table tbody td a {
   font-size: 110%;
 }
 
+#countries-list {
+  display: flex;
+  flex-direction: row;
+}
+#countries-list input {
+  display: flex;
+  flex-direction: row;
+  display: inline-block;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+button {
+  background-color: #e94285;
+  min-height: 50px;
+  padding: 20px;
+  margin-top: 10px;
+  border: none;
+}
+button:hover {
+  cursor: pointer;
+}
+
 footer {
   display: flex;
   justify-content: center;

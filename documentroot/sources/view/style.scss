@@ -189,6 +189,33 @@ table{
   }
 }
 
+#countries-list{
+  display: flex;
+  flex-direction: row;
+
+  input{
+    display: flex;
+    flex-direction: row;
+    display: inline-block;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+button {
+  background-color: $paleoPink;
+  min-height: 50px;
+  padding: 20px;
+  margin-top: 10px;
+  border: none;
+
+  &:hover{
+    cursor: pointer;
+  }
+}
+
 footer{
   display: flex;
   justify-content: center;
@@ -197,5 +224,6 @@ footer{
   height: 15vh;
   margin-top: 10vh;
 }
+
 
 

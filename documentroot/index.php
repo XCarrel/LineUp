@@ -30,6 +30,10 @@ switch ($page)
             $errormessage = "Format incorrect (manque l'id de l'artiste)";
         }
         break;
+    case 'api':
+        include("sources/controller/apiController.php"); // "call" to the controller
+        die();
+        break;
     default:
         $page = 'error';
         $errormessage = "La page demandée n'existe pas";

@@ -14,6 +14,7 @@ require_once "sources/model/Performance.php";
 require_once "sources/model/Contract.php";
 require_once "sources/model/VIPContract.php";
 require_once "sources/model/StandardContract.php";
+require_once "sources/model/Gender.php";
 
 class Artist implements iPersistable
 {
@@ -298,6 +299,17 @@ class Artist implements iPersistable
         return $perfs;
     }
 
+    public function getGenderId(){
+        return $this->gender_id;
+    }
+
+    public function getCountryId(){
+        return $this->country_id;
+    }
+
+
+
+
     public function pathToImages()
     {
         return "../../assets/images/";
@@ -312,7 +324,4 @@ class Artist implements iPersistable
     {
         return self::pathToExternalData() . "pictures/";
     }
-
-
-
 }

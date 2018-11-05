@@ -10,13 +10,15 @@ require_once ("sources/model/Artist.php");
 require_once ("sources/model/Gender.php");
 require_once ("sources/model/Country.php");
 
-$actualArtist = new Artist();
-$actualArtist->load($artistId);
 
-$gender = new Gender();
-$country = new Country();
+$gender         = $_POST['gender'];
+$country        = $_POST['country'];
+$description    = $_POST['description'];
+$artistId       = $_POST['artistId'];
 
-$backToPage = "?page=preview&id=" . $artistId;
+$artist = new Artist();
+$artist->store();
+
 
 require_once ("sources/view/editView.html");
 
