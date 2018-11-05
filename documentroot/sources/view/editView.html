@@ -1,5 +1,6 @@
 <h1><?= $artist->getName() ?></h1>
 
+<input type="hidden" value="<?= $artist->getId() ?>" id="idArtist">
 <label for="kind">Genre</label>
 <select id="selectGender">
     <?php foreach($genders as $gender) { ?>
@@ -26,5 +27,7 @@
 </table>
 <br>
 
+<input type="text" id="result" value="Update OK">
+
 <a href="?page=view&id=<?= $artist->getId() ?>"><button class="button">Annuler</button></a>
-<a href="?page=view&id=<?= $artist->getId() ?>"><button class="button" id="save">Sauver</button></a>
+<button class="button" id="save">Sauver</button>

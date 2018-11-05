@@ -78,6 +78,14 @@ class Artist implements iPersistable
     }
 
     /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
      * @return mixed
      */
     public function getKind()
@@ -86,11 +94,27 @@ class Artist implements iPersistable
     }
 
     /**
+     * @param mixed $gender_id
+     */
+    public function setGenderId($gender_id)
+    {
+        $this->gender_id = $gender_id;
+    }
+
+    /**
      * @return mixed
      */
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * @param mixed $country_id
+     */
+    public function setCountryId($country_id)
+    {
+        $this->country_id = $country_id;
     }
 
     /**
