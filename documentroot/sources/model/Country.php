@@ -2,7 +2,7 @@
 /**
  *
  */
-class Gender
+class Country
 {
    private $name;
    private $pdo;
@@ -13,7 +13,7 @@ class Gender
    }
 
     /**
-     * Get the value of Gender
+     * Get the value of Name
      *
      * @return mixed
      */
@@ -23,9 +23,9 @@ class Gender
     }
 
     /**
-     * Set the value of Gender
+     * Set the value of Name
      *
-     * @param mixed gender
+     * @param mixed name
      *
      * @return self
      */
@@ -47,24 +47,24 @@ class Gender
     public static function All()
     {
         $pdo = Database::dbConnection();
-        $stmt = $pdo->prepare('select id from Genders');
+        $stmt = $pdo->prepare('select id from Countries');
         $stmt->execute();
         foreach ($stmt->fetchAll() as $item)
         {
-            $gender = new Gender();
-            $gender->load($item['id']);
-            $res[] = $gender;
+            $country = new Country();
+            $country->load($item['id']);
+            $res[] = $country;
         }
         return $res;
     }
 
     public function load($id){
-      $stmt = $this->pdo->prepare('select Genders.Name from Genders WHERE id = :id');
+      $stmt = $this->pdo->prepare('select Countries.Name from Countries WHERE id = :id');
       $stmt->execute(['id' => $id]);
       extract($stmt->fetch(PDO::FETCH_ASSOC)); //$Name
       $this->name = $Name;
    }
-   
+
     public function reload(){}
     public function create(){}
     public function store(){}

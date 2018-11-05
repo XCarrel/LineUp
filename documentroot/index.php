@@ -22,6 +22,7 @@ switch ($page)
    case 'list':
       break;
    case 'view':
+   case 'edit':
    case 'preview':
       if (isset($_GET["id"]))
          $artistId = $_GET["id"];
@@ -31,14 +32,9 @@ switch ($page)
          $errormessage = "Format incorrect (manque l'id de l'artiste)";
       }
       break;
-   case 'edit':
-      if (isset($_GET["id"]))
-         $artistId = $_GET["id"];
-      else
-      {
-         $page = 'error';
-         $errormessage = "Format incorrect (manque l'id de l'artiste)";
-      }
+   case 'api' :
+      include('sources/api/ApiController.php');
+      die();
       break;
    default:
       $page = 'error';
