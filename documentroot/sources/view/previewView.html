@@ -1,7 +1,7 @@
 <?php setlocale(LC_TIME, "fr_CH.UTF-8"); // nécessite l'installation de la locale sur le serveur ?>
 <div class="artist">
     <div class="artistHalfPage">
-        <img src="/datastorage/pictures/<?= $artist->getPicture() ?>">
+        <img src="/documentroot/datastorage/pictures/<?= $artist->getPicture() ?>">
         <?php if (count($artist->getPerformances()) > 0) { ?>
             <div class="performances">
                 <?php foreach($artist->getPerformances() as $perf){ ?>
@@ -11,7 +11,7 @@
         <?php } ?>
     </div>
     <div class="artistHalfPage">
-        <img src="/assets/images/crowd.jpg">
+        <img src="/documentroot/assets/images/crowd.jpg">
         <div class="descbody">
             <div class="bandname"><?= $artist->getName() ?></div>
             <div class="bandcountry"><?= $artist->getCountry() ?></div>
