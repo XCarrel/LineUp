@@ -21,9 +21,9 @@ switch ($page)
     case 'home':
     case 'list':
         break;
+    case 'edit':
     case 'view':
     case 'preview':
-    case 'edit':
         if (isset($_GET["id"]))
             $artistId = $_GET["id"];
         else
@@ -33,8 +33,8 @@ switch ($page)
         }
         break;
     case 'api':
-        include ("sources/controller/apiController.php");
-        die();
+        include("sources/api/APIController.php"); // "call" to the controller
+        die(); // we don't want to return the layout html on the API
         break;
     default:
         $page = 'error';

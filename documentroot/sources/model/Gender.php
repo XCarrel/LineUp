@@ -2,11 +2,9 @@
 /**
  * Created by PhpStorm.
  * User: Xavier
- * Date: 01.10.18
- * Time: 14:07
+ * Date: 02.10.18
+ * Time: 15:21
  */
-require_once "sources/model/Database.php";
-require_once "sources/model/iPersistable.php";
 
 class Gender implements iPersistable
 {
@@ -16,14 +14,9 @@ class Gender implements iPersistable
     private $pdo; // Need database connection
 
     /**
-     * Artist constructor.
-     * @param $id
+     * Scene constructor.
      * @param $name
-     * @param $description
-     * @param $kind
-     * @param $country
-     * @param $picture
-     * @param $performances
+     * @param $localization
      */
     public function __construct()
     {
@@ -33,40 +26,9 @@ class Gender implements iPersistable
     /**
      * @return mixed
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Returns the list of all objects read from the database
-     *
-     * This implementation is not optimal in termes of performance since it causes numerous database
-     * queries. But it has DRY advantages
-     *
-     * @return mixed
-     */
-    public static function All()
-    {
-        $pdo = Database::dbConnection();
-        $stmt = $pdo->prepare('select id, Name from Genders');
-        $stmt->execute();
-        foreach ($stmt->fetchAll() as $item)
-        {
-            $gender = new Gender();
-            $gender->id = $item['id'];
-            $gender->name = $item['Name'];
-            $res[] = $gender;
-        }
-        return $res;
     }
 
     /**
@@ -79,7 +41,11 @@ class Gender implements iPersistable
      */
     public function load($id)
     {
-
+        $stmt = $this->pdo->prepare('select id, name  from Genders where Genders.id = :id');
+        $stmt->execute(['id' => $id]);
+        extract($stmt->fetch(PDO::FETCH_ASSOC)); // $id, $name
+        $this->id = $id;
+        $this->name = $name;
     }
 
     /**
@@ -90,7 +56,7 @@ class Gender implements iPersistable
      */
     public function reload()
     {
-
+        // TODO: Implement reload() method.
     }
 
     /**
@@ -101,7 +67,7 @@ class Gender implements iPersistable
      */
     public function create()
     {
-
+        // TODO: Implement create() method.
     }
 
     /**
@@ -112,7 +78,7 @@ class Gender implements iPersistable
      */
     public function store()
     {
-
+        // TODO: Implement store() method.
     }
 
     /**
@@ -123,6 +89,32 @@ class Gender implements iPersistable
      */
     public function destroy()
     {
+        // TODO: Implement destroy() method.
+    }
 
+    /**
+     * Returns the list of all objects read from the database
+     * @return mixed
+     */
+    public static function All()
+    {
+        $pdo = Database::dbConnection();
+        $stmt = $pdo->prepare('select id from Genders');
+        $stmt->execute();
+        foreach ($stmt->fetchAll() as $item)
+        {
+            $gender = new Gender();
+            $gender->load($item['id']);
+            $res[] = $gender;
+        }
+        return $res;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

@@ -1,0 +1,33 @@
+<h1><?= $artist->getName() ?></h1>
+
+<input type="hidden" value="<?= $artist->getId() ?>" id="idArtist">
+<label for="kind">Genre</label>
+<select id="selectGender">
+    <?php foreach($genders as $gender) { ?>
+        <option type="text" name="kind" id="kind" value="<?= $gender->getId() ?>" <?= $artist->getKind() == $gender->getName() ? "selected" : "" ?>><?= $gender->getName() ?></option>
+    <?php } ?>
+</select>
+<br>
+<label for="country">Pays</label>
+<FORM id="selectCountries">
+    <?php foreach($countries as $country) { ?>
+        <input type="radio" name="country" id="country" value="<?= $country->getId() ?>" <?= $artist->getCountry() == $country->getName() ? "checked" : "" ?>> <?= $country->getName() ?>
+    <?php } ?>
+</FORM><br>
+
+<label for="description">Description</label><textarea rows="10" cols="60" name="description" id="description"><?= $artist->getDescription() ?></textarea><br>
+
+<label for="pic">Image</label><img id="pic" src="/datastorage/pictures/<?= $artist->getPicture() ?>"><br>
+<label for="contract">Contrat</label><span id="contract"><?= $artist->getContract() == null ? "Aucun" : $artist->getContract()->get_type() ?></span><br>
+<label for="performances">Performances</label><div id="performances"></div>
+<table>
+<?php foreach($artist->getPerformances() as $perf){ ?>
+<tr><td><?= $perf->getDatetime()->format('Y-m-d H:i:s') ?></td><td><?= $perf->getScene()->getName() ?></td></tr>
+<?php } ?>
+</table>
+<br>
+
+<input type="text" id="result" value="Update OK">
+
+<a href="?page=view&id=<?= $artist->getId() ?>"><button class="button">Annuler</button></a>
+<button class="button" id="save">Sauver</button>

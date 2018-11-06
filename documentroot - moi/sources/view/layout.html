@@ -1,0 +1,25 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>LineUp</title>
+    <link rel="stylesheet" href="/sources/view/css/fonts.css">
+    <link rel="stylesheet" href="/sources/view/css/styles.css">
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/sources/js/main.js"></script>
+</head>
+<body>
+<header id="header">
+    <nav>
+        <a href="?page=home"><img src="/assets/images/Logo.png" class="logo"></a>
+        <a href="?page=list">Liste</a>
+    </nav>
+</header>
+<div id="page">
+    <div id="content"><?= $content ?></div>
+</div>
+
+<footer id="footer">
+    <?= $appVersion ?> &copy; 2018 <a href="http://www.cpnv.ch">CPNV</a>
+</footer>
+</body>
+</html>

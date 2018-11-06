@@ -8,13 +8,14 @@
 
 require_once ("sources/model/Artist.php");
 require_once ("sources/model/Gender.php");
-require_once ("sources/model/Countries.php");
-
-$artist = new Artist();
-$artist->load($artistId);
+require_once ("sources/model/Country.php");
+require_once ("sources/model/ContractType.php");
 
 $genders = Gender::All();
-$countries = Countries::All();
+$countries = Country::All();
+$contractTypes = ContractType::All();
+$artist = new Artist();
+$artist->load($artistId);
 
 require_once ("sources/view/editView.html");
 

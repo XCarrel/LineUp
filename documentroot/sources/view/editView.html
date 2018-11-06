@@ -1,23 +1,23 @@
 <h1><?= $artist->getName() ?></h1>
 
-<input type="hidden" value="<?= $artist->getId() ?>" id="idArtist">
-<label for="kind">Genre</label>
-<select id="selectGender">
-    <?php foreach($genders as $gender) { ?>
-        <option type="text" name="kind" id="kind" value="<?= $gender->getId() ?>" <?= $artist->getKind() == $gender->getName() ? "selected" : "" ?>><?= $gender->getName() ?></option>
+<label for="dpdGender">Genre</label>
+<select id="dpdGender">
+    <?php foreach ($genders as $gender) { ?>
+    <option value="<?= $gender->getId() ?>" <?= $gender->getId() == $artist->getGenderId() ? 'selected' : '' ?> ><?= $gender->getName() ?></option>
     <?php } ?>
-</select>
-<br>
-<label for="country">Pays</label>
-<FORM id="selectCountries">
-    <?php foreach($countries as $country) { ?>
-        <input type="radio" name="country" id="country" value="<?= $country->getId() ?>" <?= $artist->getCountry() == $country->getName() ? "checked" : "" ?>> <?= $country->getName() ?>
+</select><br>
+
+<label for="rbtcountry">Pays</label>
+<span id="rbtcountry">
+    <?php foreach ($countries as $country) { ?>
+    <input type="radio" data-cid="<?= $country->getId() ?>" name="rbtCountry" <?= $country->getId() == $artist->getCountryId() ? 'checked' : '' ?> ><?= $country->getName() ?>
     <?php } ?>
-</FORM><br>
+</span><br>
 
 <label for="description">Description</label><textarea rows="10" cols="60" name="description" id="description"><?= $artist->getDescription() ?></textarea><br>
-
+ 
 <label for="pic">Image</label><img id="pic" src="/datastorage/pictures/<?= $artist->getPicture() ?>"><br>
+
 <label for="contract">Contrat</label><span id="contract"><?= $artist->getContract() == null ? "Aucun" : $artist->getContract()->get_type() ?></span><br>
 <label for="performances">Performances</label><div id="performances"></div>
 <table>
@@ -27,7 +27,11 @@
 </table>
 <br>
 
-<input type="text" id="result" value="Update OK">
-
-<a href="?page=view&id=<?= $artist->getId() ?>"><button class="button">Annuler</button></a>
-<button class="button" id="save">Sauver</button>
+<button id="cmdCancel" class="button">Annuler</button>
+<button id="cmdSave" class="button hidden">Enregistrer</button>
+<input type="hidden" id="artistid" value="<?= $artist->getId() ?>">
+</div>
+<div id="lblSaved" class="flashmsg hidden">
+    <h4>Données enregistrées</h4>
+</div>
+<script src="sources/js/editView.js"></script>

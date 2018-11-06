@@ -1,0 +1,200 @@
+@import "fonts.css";
+@import "blueTheme";
+//@import "redTheme";
+//@import "greenTheme";
+
+body {
+  font-family: 'abel', Fallback, sans-serif;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding:20px;
+  background-image: url("/assets/images/crowd.jpg");
+  background-size: contain;
+}
+
+// Menu stuff
+
+$menuHeight: 50px;
+
+nav {
+  height: $menuHeight;
+  font-family: 'riffic', Fallback, sans-serif;
+  background-color: $navBackgroundColor;
+  border-radius: 10px;
+  font-size: larger;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  vertical-align: middle;
+  opacity: 0.8;
+
+  a {
+    height: $menuHeight;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: $linksTextColor;
+    text-decoration: none; // remove underline
+  }
+
+  a:hover {
+    background-color: $linksBackgroundColor;
+  }
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin: 2px;
+}
+
+#page {
+  background-color: $pageBackgroundColor;
+  padding: 15px;
+  flex-grow: 2;
+}
+
+footer {
+  background-color: $footerBackgroundColor;
+  padding-left: 20px;
+}
+
+// Table stuff
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: darken($pageBackgroundColor, 5%);
+
+  th {
+    background-color: darken($pageBackgroundColor, 15%);
+  }
+
+  tr {
+    cursor: pointer;
+  }
+
+  td {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  a {
+    text-decoration: none; // we want links in tables to be handled in js
+    color: $linksTextColor;
+  }
+}
+
+// Form stuff
+
+input:read-only, textarea:read-only {
+  background-color: $pageBackgroundColor;
+  border: none;
+  font-family: 'abel', Fallback, sans-serif;
+  font-size: large;
+  vertical-align: top;
+}
+
+label {
+  display: inline-block;
+  font-size: large;
+  width: 100px;
+  text-align: right;
+  padding-right: 15px;
+}
+
+.button {
+  background-color: #24a;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 32px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  float: right;
+}
+
+// Artist page
+
+$skew : 15deg;
+
+.artist {
+  display: flex;
+  flex-direction: column;
+
+  img {
+    width: 100%;
+    margin: 0px;
+  }
+}
+
+.artistHalfPage {
+  position: relative;
+}
+
+.descbody {
+  position: absolute;
+  background-color: white;
+  align-content: center;
+  width: 400px;
+  padding: 15px;
+  left: 30%;
+  height: auto;
+  top: -150;
+  text-align: justify;
+  text-justify: inter-word;
+  transform: skew(15deg);
+}
+
+%banddiv {
+  margin-left: 100px;
+  transform: rotate(-7deg);
+}
+
+.bandname {
+  @extend %banddiv;
+  color: deeppink;
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+.bandcountry {
+  @extend %banddiv;
+  font-size: x-large;
+}
+
+.bandkind {
+  @extend %banddiv;
+  font-size: larger;
+}
+
+.performances {
+  background-color: cornsilk;
+  opacity: 0.75;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: larger;
+  font-weight: bolder;
+  padding: 10px;
+  transform: rotate(-7deg);
+}
+// specific
+
+#pic {
+  width: 300px;
+  vertical-align: top;
+}
+
+#homepic {
+  text-align: center;
+}
+
