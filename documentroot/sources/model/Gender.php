@@ -1,31 +1,29 @@
 <?php
 /**
- *
+ * Created by PhpStorm.
+ * User: Xavier
+ * Date: 02.10.18
+ * Time: 15:21
  */
-class Gender
+
+class Gender implements iPersistable
 {
-   private $id;
-   private $name;
-   private $pdo;
+    private $id;
+    private $name;
 
-   function __construct()
-   {
-      $this->pdo = Database::dbConnection();
-   }
-
-   /**
-    * Get the value of Gender
-    *
-    * @return mixed
-    */
-   public function getId()
-   {
-       return $this->id;
-   }
+    private $pdo; // Need database connection
 
     /**
-     * Get the value of Gender
-     *
+     * Scene constructor.
+     * @param $name
+     * @param $localization
+     */
+    public function __construct()
+    {
+        $this->pdo = Database::dbConnection();
+    }
+
+    /**
      * @return mixed
      */
     public function getName()
@@ -34,25 +32,68 @@ class Gender
     }
 
     /**
-     * Set the value of Gender
+     * Load the object's members with the data of the database record with the given id
+     * if the id member was set before the call, it is overwritten
      *
-     * @param mixed gender
-     *
-     * @return self
+     * @param $id
+     * @return void
+     * @throws exception if the record wasn't found
      */
-    public function setName($name)
+    public function load($id)
     {
+        $stmt = $this->pdo->prepare('select id, name  from Genders where Genders.id = :id');
+        $stmt->execute(['id' => $id]);
+        extract($stmt->fetch(PDO::FETCH_ASSOC)); // $id, $name
+        $this->id = $id;
         $this->name = $name;
+    }
 
-        return $this;
+    /**
+     * Load the object's members with the data of the database record with the id given by the id member
+     *
+     * @return void
+     * @throws exception if the record wasn't found
+     */
+    public function reload()
+    {
+        // TODO: Implement reload() method.
+    }
+
+    /**
+     * Creates record(s) in the db for the object state. The id member is updated with the value picked by the db
+     *
+     * @return void
+     * @throws exception if the record wasn't created because of some db constraint violation
+     */
+    public function create()
+    {
+        // TODO: Implement create() method.
+    }
+
+    /**
+     * Stores the state of the object in the db record(s)
+     *
+     * @return void
+     * @throws exception if the record wasn't created because of some db constraint violation
+     */
+    public function store()
+    {
+        // TODO: Implement store() method.
+    }
+
+    /**
+     * Deletes the db record(s)
+     *
+     * @return void
+     * @throws exception if the record couldn't be deleted because of some db constraint violation
+     */
+    public function destroy()
+    {
+        // TODO: Implement destroy() method.
     }
 
     /**
      * Returns the list of all objects read from the database
-     *
-     * This implementation is not optimal in termes of performance since it causes numerous database
-     * queries. But it has DRY advantages
-     *
      * @return mixed
      */
     public static function All()
@@ -69,17 +110,11 @@ class Gender
         return $res;
     }
 
-    public function load($id){
-      $stmt = $this->pdo->prepare('select Genders.Name from Genders WHERE id = :id');
-      $stmt->execute(['id' => $id]);
-      extract($stmt->fetch(PDO::FETCH_ASSOC)); //$Name
-      $this->id = $id;
-      $this->name = $Name;
-   }
-
-    public function reload(){}
-    public function create(){}
-    public function store(){}
-    public function destroy(){}
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
-?>

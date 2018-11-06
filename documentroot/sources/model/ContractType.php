@@ -6,7 +6,7 @@
  * Time: 15:21
  */
 
-class Country implements iPersistable
+class ContractType implements iPersistable
 {
     private $id;
     private $name;
@@ -41,7 +41,7 @@ class Country implements iPersistable
      */
     public function load($id)
     {
-        $stmt = $this->pdo->prepare('select id, name  from Countries where id = :id');
+        $stmt = $this->pdo->prepare('select id, name  from ContractTypes where id = :id');
         $stmt->execute(['id' => $id]);
         extract($stmt->fetch(PDO::FETCH_ASSOC)); // $id, $name
         $this->id = $id;
@@ -99,13 +99,13 @@ class Country implements iPersistable
     public static function All()
     {
         $pdo = Database::dbConnection();
-        $stmt = $pdo->prepare('select id from Countries');
+        $stmt = $pdo->prepare('select id from ContractTypes');
         $stmt->execute();
         foreach ($stmt->fetchAll() as $item)
         {
-            $country = new Country();
-            $country->load($item['id']);
-            $res[] = $country;
+            $type = new ContractType();
+            $type->load($item['id']);
+            $res[] = $type;
         }
         return $res;
     }

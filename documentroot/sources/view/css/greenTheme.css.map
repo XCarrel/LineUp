@@ -1,12 +1,7 @@
 {
-	"version": 3,
-	"file": "greenTheme.css",
-	"sources": [
-		"greenTheme.scss"
-	],
-	"sourcesContent": [
-		"// Background colors\r\n$navBackgroundColor : #8f4;\r\n$linksBackgroundColor : #1c1;\r\n$navBackgroundColor : #6f2;\r\n$pageBackgroundColor: #cdc;\r\n$footerBackgroundColor: #beb;\r\n$buttonColor: #2a2;\r\n\r\n// Text colors\r\n$linksTextColor : #111;\r\n"
-	],
-	"names": [],
-	"mappings": ""
+"version": 3,
+"mappings": "",
+"sources": [],
+"names": [],
+"file": "greenTheme.css"
 }
