@@ -7,6 +7,14 @@
             <h2 ><?= $artist->getName() ?></h2>
         </div>
     </div>
+    <div class="description">
+        <h3>Pays: </h3>
+        <?= $artist->getCountry()?>
+    </div>
+    <div class="description">
+        <h3>Genre: </h3>
+        <?= $artist->getKind()?>
+    </div>
 
     <div class="description">
         <h3>Description: </h3>
@@ -14,13 +22,16 @@
     </div>
 
     <div class="description">
-            <h3>Performance: </h3>
-            <?php foreach($artist->getPerformance() as $performance) {?>
-                <?= $performance->getDatetime() ?>
-                <?= $performance->getScene() ?>
-            <?php } ?>
-        </div>
+        <h3>Performance: </h3>
+        <?php foreach($artist->performances as $performance) { ?>
+            Date: <?= $performance->getDatetime()->format('D M Y') ?> 
+            Heure: <?= $performance->getDatetime()->format('H:i') ?>  
+            Scene: <?= $performance->getScene()->getName() ?>
+        <?php } ?>
+    </div>
 
-<a href="?page=preview&id=<?= $artist->getId() ?>">La Preview</a>
-
+    <div style="text-align:center; margin-top:60px">
+        <a href="?page=preview&id=<?= $artist->getId() ?>" class="button">La Preview</a>
+        <a href="?page=edit&id=<?= $artist->getId() ?>" class="button">Modifier</a>
+    </div>
 </div>

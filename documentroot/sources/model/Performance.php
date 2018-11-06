@@ -14,7 +14,6 @@ class Performance
 
     /**
      * Performance constructor.
-     * @param $name
      * @param $datetime
      * @param $duration
      * @param $scene
