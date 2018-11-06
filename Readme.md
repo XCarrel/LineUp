@@ -10,3 +10,15 @@ This is a simple project designed to explore some of the foundations of web deve
 The project stays intentionally away from frameworks and plugins. The idea is to reinvent the wheel ! Or better put: to understand why the wheel was invented.
 
 The theme used is the management (in fact a simple CRUD) of the list of artists who will perform in a music festival.
+
+To test this solution, you need:
+Clone the repository
+Go to documentroot
+```
+cd documentRoot
+```
+Install dependecies
+ ```
+ composer install
+ ```
+Copy paste and rename the .env.exemple into .env 

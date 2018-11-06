@@ -2,6 +2,7 @@
 /externalData/jaquettes
 .env
 .DS_Store
+documentroot/node_modules
 documentroot/externalData/jaquettes/artists-main-kaleo.jpg
 documentroot/externalData/jaquettes/artists-main-nekfeu.png
 documentroot/externalData/jaquettes/artists-main-txarango.jpg

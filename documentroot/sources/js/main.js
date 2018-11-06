@@ -68,7 +68,12 @@ function isDitry(){
             if($("#genderSave").val()!= $("#gender option:selected").val()){
                 return 1;
             }else{
-               return 0;
+                error_log(var_dump($("#descriptionSave").val().localeCompare($("#description").val())));
+                if($("#descriptionSave").val().localeCompare($("#description").val())){
+                    return 1;
+                }else{
+                    return 0;
+                }
             }
         }
     }

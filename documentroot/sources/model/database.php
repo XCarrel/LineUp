@@ -1,19 +1,16 @@
 <?php
+
 require_once "vendor/autoload.php";
-//$dotenv = new Dotenv\Dotenv($_SERVER['DOCUMENT_ROOT']);
-//$dotenv->load();
+$dotenv = new Dotenv\Dotenv($_SERVER['DOCUMENT_ROOT']);
+$dotenv->load();
 
 class Database {
     static function dbConnection()
     {
-         /*$host = getenv("SERVER");
+        $host = getenv("SERVER");
         $db = getenv("DB");
         $user = getenv("USER");
-        $pass = getenv("PASSWORD");*/
-        $host = "127.0.0.1";
-        $db = "lineup";
-        $user = "root";
-        $pass = "root";
+        $pass = getenv("PASSWORD");
         $charset = 'utf8mb4';
         $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
         $options = [

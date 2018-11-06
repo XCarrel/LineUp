@@ -6,8 +6,12 @@
  * Time: 15:51
  */
 
-$appVersion = "v1.0";
+require_once "vendor/autoload.php";
+$dotenv = new Dotenv\Dotenv($_SERVER['DOCUMENT_ROOT']);
+$dotenv->load();
 
+$appVersion = getenv("VERSION");
+$auteur = getenv("AUTEUR");
 $page = isset($_GET["page"]) ? $_GET["page"] : "home";
 
 switch ($page)

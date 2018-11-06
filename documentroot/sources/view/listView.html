@@ -1,16 +1,15 @@
-<h1>Voici tous les artistes qui vous feront vibrer cet été !!</h1>
 <div class="container">
 
     <?php foreach($artists as $key => $artist){
     ?>
         <a href="?page=info&id=<?= $artist->getId(); ?>" class="box">
             <?php if ($key %2 == 0){ ?>
-                <div class="crop" style="background-image:url('./externalData/jaquettes/<?= $artist->getPicture(); ?>'); float: right;position: relative" >
+                <div class="crop" style="background-image:url('../../externalData/jaquettes/<?= $artist->getPicture(); ?>'); float: right;position: relative" >
                     <div style="font-size: 50px; float:left;position: relative; bottom:-220px; z-index: 100">
                         <h2 style="color: white"><?= $artist->getName(); ?></h2>
                     </div>
             <?php }else{ ?>
-                <div class="crop" style="background-image:url('./externalData/jaquettes/<?= $artist->getPicture(); ?>'); float: left" >
+                <div class="crop" style="background-image:url('../../externalData/jaquettes/<?= $artist->getPicture(); ?>'); float: left" >
                     <div style="font-size: 50px; float:right; position: relative; bottom:-220px;">
                         <h2 style="color: white"><?= $artist->getName(); ?></h2>
                     </div>

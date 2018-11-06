@@ -22,6 +22,11 @@
     </div>
 
     <div class="description">
+        <h3>Contrat: </h3>
+        <?= $artist->getContract() == null ? "Aucun" : $artist->getContract()->get_type() ?>
+    </div>
+
+    <div class="description">
         <h3>Performance: </h3>
         <?php foreach($artist->performances as $performance) { ?>
             Date: <?= $performance->getDatetime()->format('D M Y') ?> 

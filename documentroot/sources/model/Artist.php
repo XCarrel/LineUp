@@ -5,7 +5,7 @@
  * Date: 01.10.2018
  * Time: 14:39
  */
-require_once "sources/model/Database.php";
+require_once "sources/model/database.php";
 require_once "sources/model/iPersistable.php";
 require_once "sources/model/Coordinate.php";
 require_once "sources/model/Scene.php";
