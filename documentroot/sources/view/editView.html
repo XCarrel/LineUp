@@ -1,14 +1,14 @@
 <h1><?= $artist->getName() ?></h1>
-
+<input type="text" name="id" class="id"value="<?= $artist->getId() ?>" hidden>
 <label for="kind">Genre</label>
 <select name="gender" class="gender">
    <?php foreach ($genders as $gender) { ?>
-      <option value="<?= $gender->getName() ?>"><?= $gender->getName() ?></option>
+      <option value="<?= $gender->getId() ?>"><?= $gender->getName() ?></option>
    <?php } ?>
 </select><br>
 <label for="country">Pays</label>
 <?php foreach ($countries as $country) { ?>
-   <input type="radio" name="country" class="country" value="<?= $country->getName() ?>"><?= $country->getName() ?>
+   <input type="radio" name="country" class="country" value="<?= $country->getId() ?>"><?= $country->getName() ?>
 <?php } ?><br>
 <label for="description">Description</label><textarea rows="10" cols="60" name="description" class="description" id="description" value="<?= $artist->getDescription() ?>"><?= $artist->getDescription() ?></textarea><br>
 <label for="pic">Image</label><img id="pic" src="/datastorage/pictures/<?= $artist->getPicture() ?>"><br>

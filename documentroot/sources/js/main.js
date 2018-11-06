@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
    $(".gender").change(function (){
-      $("#SaveButton").removeclass('disable');
+      $("#SaveButton").removeClass('disable');
    })
 
    $(".country").change(function (){
@@ -13,6 +13,7 @@ $(document).ready(function(){
    })
 
    $("#SaveButton").click(function (){
+      $("#SaveButton").addClass('disable');
       sendAjaxData();
    })
 
@@ -21,8 +22,9 @@ $(document).ready(function(){
          method : 'POST',
          url : "?page=api",
          data : {
-            gender: $(".gender option:selected").val(),
-            country : $("input[name='country']:checked").val(),
+            id : $(".id").val(),
+            gender : $(".gender option:selected").val(),
+            country : $('input[name=country]:checked').val(),
             description : $(".description").val(),
          },
          success : function(data){

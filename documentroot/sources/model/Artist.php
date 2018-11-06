@@ -70,6 +70,14 @@ class Artist implements iPersistable
     }
 
     /**
+     * @param mixed $description
+     */
+     public function setDescription($description)
+     {
+          $this->description = $description;
+     }
+
+    /**
      * @return mixed
      */
     public function getDescription()
@@ -116,6 +124,20 @@ class Artist implements iPersistable
     {
         $this->performances = $performances;
     }
+    /**
+     * @param mixed $gender_id
+     */
+      public function setGenderId($gender_id)
+      {
+           $this->gender_id = $gender_id;
+      }
+      /**
+      * @param mixed $performances
+      */
+        public function setCountryId($country_id)
+        {
+             $this->country_id = $country_id;
+        }
 
     /**
      * @return mixed
@@ -193,8 +215,8 @@ class Artist implements iPersistable
               Countries on Artists.Country_id = Countries.id inner join
               Genders on Artists.Gender_id = Genders.id left join
                 (Contracts inner join
-                ContractTypes on Contracts.contractType_id = ContractTypes.id) 
-                on Artists.Contract_id = Contracts.id 
+                ContractTypes on Contracts.contractType_id = ContractTypes.id)
+                on Artists.Contract_id = Contracts.id
             where Artists.id = :id
         ');
         $stmt->execute(['id' => $id]);

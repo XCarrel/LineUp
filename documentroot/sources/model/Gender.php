@@ -4,12 +4,23 @@
  */
 class Gender
 {
+   private $id;
    private $name;
    private $pdo;
 
    function __construct()
    {
       $this->pdo = Database::dbConnection();
+   }
+
+   /**
+    * Get the value of Gender
+    *
+    * @return mixed
+    */
+   public function getId()
+   {
+       return $this->id;
    }
 
     /**
@@ -62,9 +73,10 @@ class Gender
       $stmt = $this->pdo->prepare('select Genders.Name from Genders WHERE id = :id');
       $stmt->execute(['id' => $id]);
       extract($stmt->fetch(PDO::FETCH_ASSOC)); //$Name
+      $this->id = $id;
       $this->name = $Name;
    }
-   
+
     public function reload(){}
     public function create(){}
     public function store(){}

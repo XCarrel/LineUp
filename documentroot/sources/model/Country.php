@@ -4,6 +4,7 @@
  */
 class Country
 {
+   private $id;
    private $name;
    private $pdo;
 
@@ -11,6 +12,16 @@ class Country
    {
       $this->pdo = Database::dbConnection();
    }
+
+   /**
+    * Get the value of Name
+    *
+    * @return mixed
+    */
+     public function getId()
+     {
+          return $this->id;
+     }
 
     /**
      * Get the value of Name
@@ -62,6 +73,7 @@ class Country
       $stmt = $this->pdo->prepare('select Countries.Name from Countries WHERE id = :id');
       $stmt->execute(['id' => $id]);
       extract($stmt->fetch(PDO::FETCH_ASSOC)); //$Name
+      $this->id = $id;
       $this->name = $Name;
    }
 
