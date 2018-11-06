@@ -12,7 +12,7 @@ require_once "sources/unittest/UnitTests.php";
 UnitTests::testPersistableOnArtist();
 
 //*/
-$appVersion = "v1.0";
+$appVersion = "v1.0 Philippe Baumann";
 
 $page = isset($_GET["page"]) ? $_GET["page"] : "home";
 
