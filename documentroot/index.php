@@ -14,8 +14,21 @@ switch ($page)
 {
     case 'home':
     case 'list':
+        break;
     case 'info':
     case 'preview':
+    case 'edit':
+        if (isset($_GET["id"]))
+            $artistId = $_GET["id"];
+        else
+        {
+            $page = 'error';
+            $errormessage = "Format incorrect (manque l'id de l'artiste)";
+        }
+        break;
+    case 'api':
+        include("sources/controller/$page"."Controller.php");
+        die();
         break;
     default:
         $page = 'error';
@@ -23,9 +36,9 @@ switch ($page)
 }
 
 ob_start();
-include("sources/controller/$page"."Controller.php"); // "call" to the controller
+include("sources/controller/$page"."Controller.php");
 $content = ob_get_contents();
 ob_end_clean();
-
 include("sources/view/layout.html");
+
 ?>

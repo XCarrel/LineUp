@@ -1,17 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Xavier
+ * User: David Niembro
  * Date: 02.09.18
  * Time: 16:42
  */
 
-require_once ("sources/model/artists.php");
+require_once ("sources/model/Artist.php");
 
-$artists = getArtists();
-foreach ($artists as $artist)
-    if ($artist->getId() == $_GET['id'])
-        break;
+$artist = new Artist();
+$artist->load($artistId);
 //$artist = getArtistsByID($_GET['id']);
 
 require_once ("sources/view/infoView.html");

@@ -7,9 +7,26 @@
             <h2 ><?= $artist->getName() ?></h2>
         </div>
     </div>
+    <div class="description">
+        <h3>Pays: </h3>
+        <?= $artist->getCountry()?>
+    </div>
+    <div class="description">
+        <h3>Genre: </h3>
+        <?= $artist->getKind()?>
+    </div>
 
     <div class="description">
         <h3>Description: </h3>
         <?= $artist->getDescription() ?>
+    </div>
+
+    <div class="description">
+        <h3>Performance: </h3>
+        <?php foreach($artist->performances as $performance) { ?>
+            Date: <?= $performance->getDatetime()->format('D M Y') ?> 
+            Heure: <?= $performance->getDatetime()->format('H:i') ?>  
+            Scene: <?= $performance->getScene()->getName() ?>
+        <?php } ?>
     </div>
 </div>

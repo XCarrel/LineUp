@@ -7,6 +7,16 @@ body {
   padding: 0;
   margin: 0;
   color: white;
+  .description{
+    margin-top:5px;
+    margin-bottom:5px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px;
+    text-align: justify;
+    color: lightgray;
+  }
   header{
     h1 {
       position: fixed;
@@ -119,14 +129,59 @@ body {
       }
     } 
   }
+  .container-description{
+    padding:20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .image-info{
+    height: 50vh;
+    width: 50vw;
+    max-width: 450px;
+    max-height: 200px;
+    background-position: center;
+    background-size: cover;
+    margin-left: 10%;
+  }
+
   @media screen and (max-height: 350px) {
     input ~ nav {
       height: 120px;
     }
   }
 }
-
-
+.notification{
+  width: 100%; 
+  height: 100%;  
+  z-index: 9999; 
+  position: fixed; 
+  top:0px;
+  text-align: center;
+  vertical-align: middle;
+  display: none;
+   transition: display .25s ease-in-out;
+   -moz-transition: display .25s ease-in-out;
+   -webkit-transition: display .25s ease-in-out;
+}
+.notification-text{
+  color: white; 
+  font-size: 50px;
+  position: fixed;
+  top: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.success{
+  background-color: green; 
+}
+.inputBlack{
+  background-color: #020304;
+  color: white;
+  border: none;
+  padding-bottom:10px;
+  border-bottom: 1px solid red;
+}
 
 
 h1{
@@ -175,6 +230,20 @@ a:hover
   color: tomato;
 }
 
+.button{
+  border: 1px solid white;
+  background-color: white;  
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 20px;
+  margin: 10px;
+  display: inline;
+}
+.buttonSumbit{
+  display: none;
+}
 
 @media screen and (max-height: 450px) {
 
@@ -196,7 +265,8 @@ a:hover
 
   }
   .description{
-    margin-top:50px;
+    margin-top:20px;
+    margin-bottom:50px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;

@@ -1,0 +1,57 @@
+<div class="container-description">
+    <div class="text-title-div">
+        <h2 class="text-title">Détails de l'artiste ou du groupe</h2>
+    </div>
+    <div class="image-info" style="background-image: url('./externalData/jaquettes/<?= $artist->getPicture() ?>')">
+    </div>
+    <input id="id" name="id" hidden value="<?= $artist->getId()?>"/>        
+
+    <div class="description">
+            <h3>Nom: </h3>
+            <input id="nameSave" name="nameSave" hidden value="<?= $artist->getName()?>"/>        
+            <input id="name" name="name" class="inputBlack" value="<?= $artist->getName()?>"/>        
+    </div>
+
+    <div class="description">
+        <h3>Pays: </h3>
+        <input id="countrySave" name="countrySave" hidden value="<?= $artist->getCountryID()?>"/>        
+        <?php foreach($countries as $country) {?>
+            <input type="radio" name="country" value="<?= $country->getId()?>" <?= $country->getId() == $artist->getCountryID() ? 'checked' : '' ?>><?= $country->getName() ?>
+        <?php } ?>
+
+    </div>
+
+    <div class="description">
+        <h3>Genre: </h3>
+        <input id="genderSave" name="genderSave" hidden value="<?= $artist->getGender()?>"/>        
+        <select id="gender" name="gender" size="1">
+                <?php foreach($genders as $gender) {?>
+                    <option value="<?= $gender->getId() ?>" <?= $artist->getGender() == $gender->getId() ? 'selected': '' ?> ><?= $gender->getName()?>
+                <?php } ?>
+        </select>
+    </div>   
+
+    <div class="description">
+        <h3>Description: </h3>
+        <input id="descriptionSave" name="descriptionSave" hidden value="<?= $artist->getDescription()?>"/>        
+        <textarea id="description" rows="20" cols="50" class="inputBlack" ><?= $artist->getDescription() ?>
+        </textarea>
+        
+    </div>
+
+    <div class="description">
+        <h3>Performance: </h3>
+        <?php foreach($artist->performances as $performance) { ?>
+            Date: <?= $performance->getDatetime()->format('D M Y') ?> 
+            Heure: <?= $performance->getDatetime()->format('H:i') ?>  
+            Scene: <?= $performance->getScene()->getName() ?>
+        <?php } ?>
+    </div>
+
+    <div style="text-align:center; margin-top:60px">
+        <a href="?page=info&id=<?= $artist->getId() ?>" class="button">Retour</a>
+        <div class="button buttonSumbit" style="width: 150px; color: black; cursor: pointer" id="buttonSumbit">Sauvegarder</div>
+    </div>
+ 
+</div>
+<div class="notification success" id="notification"><span class="notification-text" id="notification-text">test</span></div>
