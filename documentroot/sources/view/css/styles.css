@@ -10,6 +10,9 @@ header {
   background-image: url("/assets/images/crowd.jpg");
   background-size: contain; }
 
+.hidden {
+  display: none !important; }
+
 nav {
   height: 50px;
   font-family: 'riffic', Fallback, sans-serif;
@@ -62,6 +65,12 @@ table, th, td {
     text-decoration: none;
     color: #eee; }
 
+.flashmsg {
+  width: 250px;
+  background-color: #88ff44;
+  border-radius: 4px;
+  text-align: center; }
+
 input:read-only, textarea:read-only {
   background-color: #ccd;
   border: none;
@@ -86,8 +95,15 @@ label {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  float: right; }
+  font-size: 16px; }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* remove default arrow */
+  padding: 5px;
+  border-radius: 0px; }
 
 .artist {
   display: flex;
