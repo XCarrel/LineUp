@@ -13,6 +13,8 @@
 </table>
 
 <br>
-    <label for="contract">Contrat</label><input type="text" name="contract" id="contract" value="<?=  $artist->getContract() ? getType() :"aucun" ; ?>" readonly>
+
+
+    <label for="contract">Contrat</label><div id="contract"><?= $artist->getContract()->getType() ?></div>
 
 <a href="?page=preview&id=<?= $artist->getId() ?>"><button class="button">Prévisualiser</button></a>
