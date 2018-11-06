@@ -6,6 +6,12 @@
  * Time: 15:51
  */
 
+/*/ Unit test. Uncomment to execute
+
+require_once "sources/unittest/UnitTests.php";
+UnitTests::testPersistableOnArtist();
+
+//*/
 $appVersion = "v1.0";
 
 $page = isset($_GET["page"]) ? $_GET["page"] : "home";
@@ -15,6 +21,7 @@ switch ($page)
     case 'home':
     case 'list':
         break;
+    case 'edit':
     case 'view':
     case 'preview':
         if (isset($_GET["id"]))
@@ -24,6 +31,10 @@ switch ($page)
             $page = 'error';
             $errormessage = "Format incorrect (manque l'id de l'artiste)";
         }
+        break;
+    case 'api':
+        include("sources/api/APIController.php"); // "call" to the controller
+        die(); // we don't want to return the layout html on the API
         break;
     default:
         $page = 'error';

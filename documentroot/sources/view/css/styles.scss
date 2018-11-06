@@ -1,5 +1,5 @@
 @import "fonts.css";
-@import "redTheme.scss";
+@import "blueTheme";
 //@import "redTheme";
 //@import "greenTheme";
 
@@ -16,6 +16,9 @@ header {
   background-size: contain;
 }
 
+.hidden {
+  display: none !important;
+}
 // Menu stuff
 
 $menuHeight: 50px;
@@ -90,6 +93,12 @@ table, th, td {
   }
 }
 
+.flashmsg {
+  width: 250px;
+  background-color: #88ff44;
+  border-radius: 4px;
+  text-align: center;
+}
 // Form stuff
 
 input:read-only, textarea:read-only {
@@ -119,7 +128,14 @@ label {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  float: right;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;       /* remove default arrow */
+  padding: 5px;
+  border-radius: 0px;
 }
 
 // Artist page
@@ -197,3 +213,4 @@ $skew : 15deg;
 #homepic {
   text-align: center;
 }
+

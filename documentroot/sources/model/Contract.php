@@ -1,74 +1,40 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Xavier
+ * Date: 08.10.18
+ * Time: 09:55
+ */
+
+abstract class Contract
+{
+    protected $signedOn;
+    protected $description;
+    protected $fee;
 
     /**
-     *
+     * Contract constructor.
+     * @param $description
+     * @param $fee
      */
-    abstract class Contract
+    public function __construct($description, $fee)
     {
-        protected $description;
-        protected $fee;
+        $this->description = $description;
+        $this->fee = $fee;
+    }
 
-        function __construct($description, $fee)
-        {
-            $this->description = $description;
-            $this->fee = $fee;
+    public function sign()
+    {
+        $this->signedOn = new DateTime();
+    }
 
-        }
-        //abstract function sign();
-
-        /**
-         * Get the value of Description
-         *
-         * @return mixed
-         */
-        public function getDescription()
-        {
-            return $this->description;
-        }
-
-        /**
-         * Set the value of Description
-         *
-         * @param mixed description
-         *
-         * @return self
-         */
-        public function setDescription($description)
-        {
-            $this->description = $description;
-
-            return $this;
-        }
-
-        /**
-         * Get the value of Fee
-         *
-         * @return mixed
-         */
-        public function getFee()
-        {
-            return $this->fee;
-        }
-
-        /**
-         * Set the value of Fee
-         *
-         * @param mixed fee
-         *
-         * @return self
-         */
-        public function setFee($fee)
-        {
-            $this->fee = $fee;
-
-            return $this;
-        }
-        public function getType()
-        {
-            return get_class($this);
-        }
-
+    /**
+     * Returns the contract type for display.
+     * Assumes that the subclasses are name 'xxxContract'
+     */
+    public function get_type()
+    {
+        $cls = get_class($this);
+        return substr($cls,0,strpos($cls,"Contract"));
+    }
 }
-
-
- ?>

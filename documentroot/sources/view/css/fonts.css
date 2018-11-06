@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'riffic';
+    src: url('../../../assets/fonts/riffic-bold-webfont.woff2') format('woff2'),
+    url('../../../assets/fonts/riffic-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'abel';
+    src: url('../../../assets/fonts/abel-regular.ttf') format('truetype')
+}
+
+
