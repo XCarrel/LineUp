@@ -14,9 +14,9 @@ class StandardContract extends Contract
      * StandardContract constructor.
      * @param $nbMeals
      */
-    public function __construct($description, $signedOn, $fee, $nbMeals)
+    public function __construct($description,  $fee, $nbMeals)
     {
-        parent::$this->__construct($description, $signedOn, $fee);
+        parent::__construct($description, $fee);
         $this->nbMeals = $nbMeals;
     }
 

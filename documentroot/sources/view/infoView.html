@@ -15,18 +15,18 @@
     <div class="kind"><?= $artist->getKind(); ?></div>
     <div class="pays"><?= $artist->getCountry(); ?></div>
     <div class="description"><?= $artist->getDescription(); ?></div>
-    <label for="contract">Contrat</label><div class="description"><span id="contract"><?= $artist->getContract() == null ? "Aucun" : $artist->getContract()->get_type() ?></span></div><br>
+    <h3>Contrat :</h3></label><div class="contract"><?= $artist->getContract() == null ? "Aucun" : $artist->getContract()->get_type() ?></div><br>
 
-    <label for="performances">Performances</label><div id="performances"></div>
+    <h3>Performances :</h3><div id="performances"></div>
     <div class="artist">
-        <table>
+        <table class="table">
             <?php foreach($artist->getPerformances() as $perf){ ?>
             <tr><td><?= $perf->getDatetime()->format('Y-m-d H:i:s') ?></td><td><?= $perf->getScene()->getName() ?></td></tr>
             <?php } ?>
         </table>
         </div>
 
-        <a href="?page=preview&id=<?= $artist->getId() ?>"><button class="button">Prévisualiser</button></a>
+    <center><a href="?page=preview&id=<?= $artist->getId() ?>"><button class="button">Prévisualiser</button></a><a href="?page=edit&id=<?= $artist->getId() ?>"><button class="button">Editer</button></a></center>
 </div>
 </div>
 </body>

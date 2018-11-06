@@ -7,14 +7,14 @@
  */
 
 
-require_once "/sources/model/Database.php";
-require_once "/sources/model/iPersistable.php";
-require_once "/sources/model/Coordinate.php";
-require_once "/sources/model/Scene.php";
-require_once "/sources/model/Performance.php";
-require_once "/sources/model/Contract.php";
-require_once "/sources/model/VIPContract.php";
-require_once "/sources/model/StandardContract.php";
+require_once "sources/model/Database.php";
+require_once "sources/model/iPersistable.php";
+require_once "sources/model/Coordinate.php";
+require_once "sources/model/Scene.php";
+require_once "sources/model/Performance.php";
+require_once "sources/model/Contract.php";
+require_once "sources/model/VIPContract.php";
+require_once "sources/model/StandardContract.php";
 class Artist implements iPersistable
 {
     private $id;
@@ -49,6 +49,71 @@ class Artist implements iPersistable
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCountryId()
+    {
+        return $this->country_id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @param mixed $gender_id
+     */
+    public function setGenderId($gender_id)
+    {
+        $this->gender_id = $gender_id;
+    }
+
+    /**
+     * @param mixed $country_id
+     */
+    public function setCountryId($country_id)
+    {
+        $this->country_id = $country_id;
+    }
+
+    /**
+     * @param mixed $picture
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+    }
+
+    /**
+     * @param mixed $contract_id
+     */
+    public function setContractId($contract_id)
+    {
+        $this->contract_id = $contract_id;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getGenderId()
+    {
+        return $this->gender_id;
     }
     /**
      * @return mixed
@@ -114,6 +179,13 @@ class Artist implements iPersistable
         return $this->contract;
     }
     /**
+     * @return mixed
+     */
+    public function getContractId()
+    {
+        return $this->contract_id;
+    }
+    /**
      * @param mixed $contract
      */
     public function setContract($contract)
@@ -124,6 +196,8 @@ class Artist implements iPersistable
     {
         return $this->contract != null;
     }
+
+
     /**
      * Returns the list of all objects read from the database
      *

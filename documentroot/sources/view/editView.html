@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page d'édition</title>
+</head>
+<body>
+
+
+<div class="flex-container">
+    <div class="container">
+        <h2>Détail de l'artiste <?= $artist->getName(); ?></h2>
+        <img src="/externalData/cover/<?= $artist->getPicture() ?>"  class="image">
+            <div class="name"><?= $artist->getName(); ?></div>
+        <input id="prodId" name="prodId" type="hidden" value="<?= $artist->getId() ?>">
+        <form name="artistes" method="post">
+            <h3>Genre :</h3>
+            <select class="custom-dropdown__select custom-dropdown__select--white" id="gender_list">
+                <?php foreach ($genders as $gender) { ?>
+                    <option name="kind" value="<?= $gender->getId() ?>"<?= $gender->getId() == $artist->getGenderId() ? 'selected' : '' ?>><?= $gender->getName() ?>
+                <?php } ?>
+            </select>
+        <br />
+            <h3>Pays :</h3>
+            <?php foreach ($countries as $country) { ?>
+            <div class="control-group">
+                <label class="control control--radio" id="kind_list"><?= $country->getName(); ?>
+                    <input type="radio" name="radio" id="kind" value="<?= $country->getId() ?>"<?= $country->getId() == $artist->getCountryId() ? 'checked' : '' ?>/>
+                    <div class="control__indicator"></div>
+                </label>
+            </div>
+            <?php } ?>
+        </form>
+        <div class="description"><?= $artist->getDescription(); ?></div>
+        <h3>Contrat :</h3><div class="contract"><?= $artist->getContract() == null ? "Aucun" : $artist->getContract()->get_type() ?></div><br>
+        <input id="contract_id" name="prodId" type="hidden" value="<?= $artist->getContractId() ?>">
+        <h3>Performances :</h3><div id="performances"></div>
+        <div class="artist">
+            <table class="table">
+                <?php foreach($artist->getPerformances() as $perf){ ?>
+                <tr><td><?= $perf->getDatetime()->format('Y-m-d H:i:s') ?></td><td><?= $perf->getScene()->getName() ?></td></tr>
+                <?php } ?>
+            </table>
+        </div>
+
+        <center><a href="?page=info&id=<?= $artist->getId() ?>"><button class="button">Précédent</button></a><button class="button" id="save">Enregistrer</button></center>
+    </div>
+</div>
+
+</body>
+</html>
+<script src="/sources/controller/js/editView.js"></script>

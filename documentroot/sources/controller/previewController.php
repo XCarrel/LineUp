@@ -6,10 +6,10 @@
  * Time: 14:52
  */
 
-require_once ("/sources/model/Artist.php");
+require_once ("sources/model/Artist.php");
 
 $artist = new Artist();
 $artist->load($artistId);
 
-require_once ("/sources/view/previewView.html");
+require_once ("sources/view/previewView.html");
 ?>

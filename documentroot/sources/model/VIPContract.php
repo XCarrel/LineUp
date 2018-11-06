@@ -16,9 +16,9 @@ class VIPContract extends Contract
      * @param $restaurant
      * @param $car
      */
-    public function __construct($description, $signedOn,$fee, $restaurant, $car)
+    public function __construct($description, $fee, $restaurant, $car)
     {
-        parent::$this->__construct($description,$signedOn, $fee);
+        parent::__construct($description, $fee);
         $this->restaurant = $restaurant;
         $this->car = $car;
     }
