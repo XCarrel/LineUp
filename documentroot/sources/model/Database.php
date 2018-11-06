@@ -26,25 +26,6 @@ class Database {
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
         }
     }
-    static function getAllGender(){
-            $pdo = self::dbConnection();
-
-            $stmt = $pdo->prepare('SELECT id,Name as GenderName FROM Genders;');
-            $stmt->execute();
-            $genders = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            return $genders;
-    }
-
-    static function getAllCountries(){
-        $pdo = self::dbConnection();
-
-        $stmt = $pdo->prepare('SELECT id,Name as CountryName FROM Countries;');
-        $stmt->execute();
-        $countries = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        return $countries;
-    }
 }
 
 
