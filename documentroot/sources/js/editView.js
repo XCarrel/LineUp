@@ -60,7 +60,11 @@ function save() {
 
     $.post(
         "?page=api",
-        {"artistid": $('#artistid').val(), "description" : $('#description').val(), "countryid" : cid, "genderid" : $('#dpdGender').val()},
+        {
+            "artistid": $('#artistid').val(),
+            "description" : $('#description').val(),
+            "countryid" : cid,
+            "genderid" : $('#dpdGender').val()},
         function () {
             $('#lblSaved').removeClass('hidden')
             $('#cmdSave').addClass('hidden')
