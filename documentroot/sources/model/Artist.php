@@ -283,7 +283,6 @@ class Artist implements iPersistable
      */
     public function store()
     {
-        error_log("Storing: ['name' => {$this->name},'descr' => {$this->description},'gender' => {$this->gender_id},'country' => {$this->country_id},'contract' => {$this->contract_id},'pic' => {$this->picture}, 'id' => {$this->id}]");
         $stmt = $this->pdo->prepare('
                     update Artists set Name = :name, Description = :descr, Gender_id = :gender, Country_id = :country, Contract_id = :contract, Mainpicture = :pic
                     where id = :id

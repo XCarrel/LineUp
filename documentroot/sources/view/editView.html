@@ -15,7 +15,7 @@
 </span><br>
 
 <label for="description">Description</label><textarea rows="10" cols="60" name="description" id="description"><?= $artist->getDescription() ?></textarea><br>
-
+ 
 <label for="pic">Image</label><img id="pic" src="/datastorage/pictures/<?= $artist->getPicture() ?>"><br>
 
 <label for="contract">Contrat</label><span id="contract"><?= $artist->getContract() == null ? "Aucun" : $artist->getContract()->get_type() ?></span><br>

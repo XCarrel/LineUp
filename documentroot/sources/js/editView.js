@@ -52,15 +52,14 @@ function touch() {
 
 // Save the current values on the server using a post over ajax
 function save() {
-    // find out the country id
-    let cid = 0
-    $('input:radio').each( function() {
-        if ($(this).prop('checked')) cid = $(this).data('cid')
-    })
-
     $.post(
         "?page=api",
-        {"artistid": $('#artistid').val(), "description" : $('#description').val(), "countryid" : cid, "genderid" : $('#dpdGender').val()},
+        {
+            "artistid": $('#artistid').val(),
+            "description" : $('#description').val(),
+            "countryid" : $('input[name=rbtCountry]:checked').data('cid'),
+            "genderid" : $('#dpdGender').val()
+        },
         function () {
             $('#lblSaved').removeClass('hidden')
             $('#cmdSave').addClass('hidden')
