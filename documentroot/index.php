@@ -12,7 +12,7 @@ require_once "sources/unittest/UnitTests.php";
 UnitTests::testPersistableOnArtist();
 
 //*/
-$appVersion = "v1.1";
+$appVersion = "v1.0 Senistan Jegarajasingam";
 
 $page = isset($_GET["page"]) ? $_GET["page"] : "home";
 
