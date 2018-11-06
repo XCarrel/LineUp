@@ -7,45 +7,53 @@
  */
 require_once("Fonctions.php");
 require_once("database.php");
-require_once ("Artist.php");
 
 function getArtists()
 {
     $pdo = connexion();
-    $stmt = $pdo->prepare('select * from Artists ');
+
+    $stmt = $pdo->prepare(
+        'select Artists.id as id, Artists.Name as name, Mainpicture as picture, Description as description, G.Name as kind, C.Name as country 
+         from Artists inner join Countries C on Artists.Country_id = C.id inner join Genders G on Artists.Gender_id = G.id');
     $stmt->execute();
     $artistsFromDB = $stmt->fetchAll();
 
     $rules = [
         "fields" => [
-            0 =>["name"=>'Name', 'function'=>'setName'],
-            1 =>["name"=>'Description', 'function'=>'setDescription']/*'kind','country','Mainpicture','contract'*/]
+            0 =>["name"=>'id', 'function'=>'setId'],
+            1 =>["name"=>'name', 'function'=>'setName'],
+            2 =>["name"=>'description', 'function'=>'setDescription'],
+            3 =>["name"=>'kind', 'function'=>'setKind'],
+            4 =>["name"=>'country', 'function'=>'setCountry'],
+            5 =>["name"=>'picture', 'function'=>'setPicture']
+
+        ]
     ];
 
     $artists = hydrate("Artist", $artistsFromDB, $rules);
-
-   // var_dump($artists);
-
-    return $artistsFromDB;
+    foreach($artists as $key=> $artist){    
+        $Performance = getPerformance($pdo,$artist->getId());
+        $artist->setPerformance($Performance);
+    }
+    return $artists;
    }
-
-function getArtistsByID($id){
-    $pdo = connexion();
-
-    $stmt = $pdo->prepare('SELECT * FROM Artists where id = :id ');
-    $stmt->execute(['id'=>$id]);
-    $artist = $stmt->fetch();
-
-    $performance = getPerformance($pdo,$id);
-    $artist['performance'] = $performance;
-    //error_log(print_r($artist,1));
-    return $artist;
-}
 
 function getPerformance($pdo, $id)
 {
-    $stmt = $pdo->prepare('SELECT * FROM PerformanceDates where Artist_id = :artistID ');
-    $stmt->execute(['artistID'=>$id]);
-    return $stmt->fetchALL();
+    $stmt = $pdo->prepare('select Date_time as datetime, Duration as duration, S.Name as scene 
+    from PerformanceDates inner join Scenes S on PerformanceDates.Scene_id = S.id where Artist_id = :id;');
+    $stmt->execute(['id' => $id]);
+    $performancesFromDB = $stmt->fetchALL();
+
+    $rules = [
+        "fields" => [
+            0 =>["name"=>'datetime', 'function'=>'setDatetime'],
+            1 =>["name"=>'duration', 'function'=>'setDuration'],
+            2 =>["name"=>'scene', 'function'=>'setScene'],
+        ]
+    ];
+
+    $performances = hydrate("Performance", $performancesFromDB, $rules);
+    return $performances;
 }
 ?>

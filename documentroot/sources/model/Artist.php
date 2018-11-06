@@ -8,15 +8,18 @@
 
 class Artist
 {
+    private $id;
     private $name;
     private $description;
     private $kind;
     private $country;
     private $picture;
     private $contract;
+    private $performance;
 
     /**
      * Artist constructor.
+     * @param $id
      * @param $name
      * @param $description
      * @param $kind
@@ -24,16 +27,34 @@ class Artist
      * @param $picture
      * @param $contract
      */
-    public function __construct($name=null, $description=null, $kind=null, $country=null, $picture=null, $contract=null)
+    public function __construct($id=null, $name=null, $description=null, $kind=null, $country=null, $picture=null, $contract=null, $performance=null)
     {
+        $this->id = $id;
         $this->name = $name;
         $this->description = $description;
         $this->kind = $kind;
         $this->country = $country;
         $this->picture = $picture;
         $this->contract = $contract;
+        $this->performance = $performance;
     }
 
+     /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+    
     /**
      * @return mixed
      */
@@ -130,6 +151,21 @@ class Artist
         $this->contract = $contract;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPerformance()
+    {
+        return $this->performance;
+    }
+
+    /**
+     * @param mixed $performance
+     */
+    public function setPerformance($performance)
+    {
+        $this->performance = $performance;
+    }
 
 
 }

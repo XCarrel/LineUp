@@ -9,7 +9,11 @@
 
 require_once ("sources/model/artists.php");
 
-$artist = getArtistsByID($_GET['id']);
+$artists = getArtists();
+foreach ($artists as $artist)
+    if ($artist->getId() == $_GET['id'])
+        break;
+//$artist = getArtistsByID($_GET['id']);
 
 require_once ("sources/view/previewView.html");
 

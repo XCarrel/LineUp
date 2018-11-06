@@ -1,4 +1,7 @@
 .idea
 /externalData/jaquettes
 .env
-/vendor
+.DS_Store
+documentroot/externalData/jaquettes/artists-main-kaleo.jpg
+documentroot/externalData/jaquettes/artists-main-nekfeu.png
+documentroot/externalData/jaquettes/artists-main-txarango.jpg
