@@ -1,18 +1,19 @@
 <h1><?= $artist->getName() ?></h1>
 
 <label>Genre</label>
-<select>
+<select id="genderslist">
     <?php
     foreach($genders as $gender){
     ?><option value="<?= $gender['id'] ?>" <?= $artist->getKind() == $gender['GenderName']? "selected" : ""?> ><?= $gender['GenderName'] ?></option>
     <?php } ?>
 </select><br>
-
+<form id="countrybox">
 <label>Pays</label>
-<?php
+    <?php
     foreach($countries as $country){
     ?><input type="radio" name="country" value="<?= $country['id'] ?>" <?= $artist->getCountry() == $country['CountryName']? "checked" : ""?> ><?= $country['CountryName'] ?>
     <?php } ?>
+</form>
 <br>
 <label for="description">Description</label><textarea rows="10" cols="60" name="description" id="description" ><?= $artist->getDescription() ?></textarea><br>
 <label for="pic">Image</label><img id="pic" src="/datastorage/pictures/<?= $artist->getPicture() ?>"><br>
