@@ -14,7 +14,7 @@ $(document).on('click', '#save', function() {
     var file = tarr[tarr.length-1]; // name + extension
     var id = $("#prodId").val();
     var name = $("div[class='name']").html();
-    var desc = $("div[class='description']").html();
+    var desc = $("#description").val();
     var contract = $("#contract_id").val();
     $.ajax({
         type: "POST",

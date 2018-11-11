@@ -8,6 +8,7 @@
 
 require_once ("sources/model/Artist.php");
 
+/* Get all the data from table Artist */
 $artists = Artist::All();
 
 require_once ("sources/view/listView.html");

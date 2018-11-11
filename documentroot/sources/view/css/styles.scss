@@ -1,5 +1,4 @@
 $color-second : #333;
-$color-primary : white;
 
 
 $color--white : #FFFFFF;
@@ -23,7 +22,7 @@ html {
 }
 
 body {
-  background-color: black;
+  background-color: $color--black;
   background-image: url('../../../externalData/cover/prehome-bg.png');
   background-repeat: no-repeat;
   background-position: 515px -345px;
