@@ -153,8 +153,7 @@ class Artist implements iPersistable
         $pdo = Database::dbConnection();
         $stmt = $pdo->prepare('select id from Artists');
         $stmt->execute();
-        foreach ($stmt->fetchAll() as $item)
-        {
+        foreach ($stmt->fetchAll() as $item) {
             $artist = new Artist();
             $artist->load($item['id']);
             $res[] = $artist;
@@ -189,18 +188,18 @@ class Artist implements iPersistable
               Contracts.restaurant,
               Contracts.car,
               Contracts.nbMeals,
-              Contracts.contractType_id
+              Contracts.contract_type
             from
               Artists inner join
               Countries on Artists.Country_id = Countries.id inner join
               Genders on Artists.Gender_id = Genders.id left join
                 (Contracts inner join
-                ContractTypes on Contracts.contractType_id = ContractTypes.id) 
+                ContractTypes on Contracts.contract_type = ContractTypes.id) 
                 on Artists.Contract_id = Contracts.id 
             where Artists.id = :id
         ');
         $stmt->execute(['id' => $id]);
-        extract($stmt->fetch(PDO::FETCH_ASSOC)); // $id, $name, $mainpicture, $description, $kind, $Gender_id, $country, $Country_id, $Contract_id, $signeOn, $contracttext, $fee, $restaurant, $car, $nbMeals, $contractType_id
+        extract($stmt->fetch(PDO::FETCH_ASSOC)); // $id, $name, $mainpicture, $description, $kind, $Gender_id, $country, $Country_id, $Contract_id, $signeOn, $contracttext, $fee, $restaurant, $car, $nbMeals, $contract_type
 
         $this->id = $id;
         $this->name = $name;
@@ -213,10 +212,8 @@ class Artist implements iPersistable
         $this->picture = $mainpicture;
         $this->performances = self::readPerformances($id);
 
-        $contract = null;
         // Instanciate the appropriate contract type
-        switch($contractType_id)
-        {
+        switch ($contract_type) {
             case 1:
                 $contract = new VIPContract($contracttext, $fee, $restaurant, $car);
                 break;
@@ -250,7 +247,7 @@ class Artist implements iPersistable
                     insert into Artists (Name, Description, Gender_id, Country_id, Mainpicture)
                     values (:name,:descr,:gender,:country,:pic)
         ');
-        $stmt->execute(['name' => $this->name,'descr' => $this->description,'gender' => $this->gender_id,'country' => $this->country_id,'pic' => $this->picture]);
+        $stmt->execute(['name' => $this->name, 'descr' => $this->description, 'gender' => $this->gender_id, 'country' => $this->country_id, 'pic' => $this->picture]);
         $this->id = $this->pdo->lastInsertId();
     }
 
@@ -266,7 +263,7 @@ class Artist implements iPersistable
                     update Artists set Name = :name, Description = :descr, Gender_id = :gender, Country_id = :country, Contract_id = :contract, Mainpicture = :pic
                     where id = :id
         ');
-        $stmt->execute(['name' => $this->name,'descr' => $this->description,'gender' => $this->gender_id,'country' => $this->country_id,'contract' => $this->contract_id,'pic' => $this->picture, 'id' => $this->id]);
+        $stmt->execute(['name' => $this->name, 'descr' => $this->description, 'gender' => $this->gender_id, 'country' => $this->country_id, 'contract' => $this->contract_id, 'pic' => $this->picture, 'id' => $this->id]);
     }
 
     /**
@@ -287,9 +284,7 @@ class Artist implements iPersistable
         from PerformanceDates inner join Scenes S on PerformanceDates.Scene_id = S.id
         where Artist_id = :aid;');
         $stmt->execute(['aid' => $aid]);
-        $perfs = null;
-        foreach ($stmt->fetchAll() as $perf)
-        {
+        foreach ($stmt->fetchAll() as $perf) {
             $coos = preg_split(";", $perf['Localisation']);
             $coobj = new Coordinate(floatval($coos[0]), floatval($coos[1]));
             $sceneobj = new Scene($perf['scene'], $coobj);
@@ -299,15 +294,15 @@ class Artist implements iPersistable
         return $perfs;
     }
 
-    public function getGenderId(){
+    public function getGenderId()
+    {
         return $this->gender_id;
     }
 
-    public function getCountryId(){
+    public function getCountryId()
+    {
         return $this->country_id;
     }
-
-
 
 
     public function pathToImages()
@@ -323,5 +318,37 @@ class Artist implements iPersistable
     public function pathToArtistsImages()
     {
         return self::pathToExternalData() . "pictures/";
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @param mixed $country
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+    }
+
+    /**
+     * @param mixed $country_id
+     */
+    public function setCountryId($country_id)
+    {
+        $this->country_id = $country_id;
+    }
+
+    /**
+     * @param mixed $gender_id
+     */
+    public function setGenderId($gender_id)
+    {
+        $this->gender_id = $gender_id;
     }
 }

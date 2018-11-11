@@ -1,18 +1,18 @@
 <div id="home-top">
     <div class="overlay">
-        <h1>PaléoFestival</h1>
+        <h1 <?= (!isset($_SESSION["sawHomeView"])) ? "class=\"zoomIn animated\"" : ""; ?> >PaléoFestival</h1>
     </div>
 </div>
 
 <section id="next-artists">
     <?php foreach($artists as $artist) : ?>
 
-    <a href="?page=preview&id=<?= $artist->getId() ?>">
+    <a href="?page=preview&id=<?= $artist->getId() ?>" <?= (!isset($_SESSION["sawHomeView"])) ? "class=\"zoomIn animated delay-1s\"" : ""; ?> >
         <article>
-        <img src="<?= $artist->pathToArtistsImages() ?><?= $artist->getPicture() ?>" class="artist-img" />
-        <div class="artist-overlay">
-            <h2 class="artist-title"><?= $artist->getName() ?></h2>
-        </div>
+            <img src="<?= $artist->pathToArtistsImages() ?><?= $artist->getPicture() ?>" class="artist-img"/>
+            <div class="artist-overlay">
+                <h2 class="artist-title"><?= $artist->getName() ?></h2>
+            </div>
         </article>
     </a>
     <?php endforeach; ?>

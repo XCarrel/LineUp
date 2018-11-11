@@ -10,6 +10,7 @@ require_once ("sources/model/Artist.php");
 require_once ("sources/model/Gender.php");
 require_once ("sources/model/Country.php");
 
+
 $actualArtist = new Artist();
 $actualArtist->load($artistId);
 

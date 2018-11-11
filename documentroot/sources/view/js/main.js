@@ -9,20 +9,21 @@ $(function(){
 
     $('#savebutton').click(function () {
         data = {};
-        data.gender = $("#select-gender").val();
-        data.country = $("input[type='radio']:checked").val();
+        data.artistid = $("input[name=artistid]").val();
+        data.genderid = $("#select-gender").val();
+        data.countryid = $("input[type='radio']:checked").val();
         data.description = $("#textarea-description").val();
 
         $.ajax({
             type: "POST",
-            url:  "http://prw1server/?page=api",
+            url:  "?page=api",
             data: data
         })
             .done(function(){
 
             })
             .fail(function () {
-                alert('failed');
+
             });
     });
 });

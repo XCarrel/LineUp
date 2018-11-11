@@ -4,7 +4,7 @@
 
 <table>
     <thead>
-    <th colspan="2"><h1 data-artistId="<?= $actualArtist->getId() ?>"><?= $actualArtist->getName() ?></h1></th>
+    <th colspan="2"><h1 data-artistid="<?= $actualArtist->getId() ?>"><?= $actualArtist->getName() ?></h1></th>
     </thead>
     <tbody>
     <tr>
@@ -13,12 +13,12 @@
     </tr>
     <tr>
         <td>Pays</td>
-        <td><span data-artistId="<?= $actualArtist->getId() ?>" data-key="id"><?= $actualArtist->getCountry() ?></span>
+        <td><span data-key="id"><?= $actualArtist->getCountry() ?></span>
         </td>
     </tr>
     <tr>
         <td>Description</td>
-        <td><span data-artistId="<?= $actualArtist->getId() ?>"><?= $actualArtist->getDescription() ?></span></td>
+        <td><span><?= $actualArtist->getDescription() ?></span></td>
     </tr>
     <tr>
         <td>Image</td>
@@ -42,7 +42,7 @@
     <tr>
         <td>Contract</td>
         <td>
-            <?= ($actualArtist->getContract() == null) ? "Aucun" : "Youpi"; ?>
+            <?= $actualArtist->getContract() == null ? "Aucun" : $actualArtist->getContract()->get_type() ?>
         </td>
     </tr>
     </tbody>

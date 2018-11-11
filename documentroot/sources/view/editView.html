@@ -2,8 +2,8 @@
 
 <table>
     <thead>
-    <th colspan="2"><h1 data-artistId="<?= $actualArtist->getId() ?>"><?= $actualArtist->getName() ?></h1></th>
-    <input type="text" name="artistId" value="<?= $actualArtist->getId() ?>" class="hidden">
+    <th colspan="2"><h1><?= $actualArtist->getName() ?></h1></th>
+    <input type="text" name="artistid" value="<?= $actualArtist->getId() ?>" class="hidden">
     </thead>
     <tbody>
     <tr>
@@ -11,9 +11,11 @@
 
         <td>
 
-            <select id="select-gender"  name="gender">
+            <select id="select-gender" name="gender">
                 <?php foreach($gender->All() as $genderItem) : ?>
-                    <option value="<?= $genderItem->getId() ?>" <?= ($actualArtist->getGenderId() ==  $genderItem->getId()) ? "selected" : "" ?>><?= $genderItem->getName() ?> </option>
+                <option value="<?= $genderItem->getId() ?>"
+                <?= ($actualArtist->getGenderId() == $genderItem->getId()) ? "selected" : "" ?>><?= $genderItem->
+                getName() ?> </option>
                 <?php endforeach; ?>
             </select>
         </td>
@@ -22,7 +24,8 @@
         <td>Pays</td>
         <td id="countries-list">
             <?php foreach($country->All() as $countryItem) : ?>
-            <input type="radio" name="country" value="<?= $countryItem->getId() ?>" <?= ($actualArtist->getCountryId() ==  $countryItem->getId()) ? "checked" : "" ?>> <?= $countryItem->getName() ?> <br>
+            <input type="radio" name="country" value="<?= $countryItem->getId() ?>" <?= ($actualArtist->getCountryId()
+            == $countryItem->getId()) ? "checked" : "" ?>> <?= $countryItem->getName() ?> <br>
             <?php endforeach; ?>
 
         </td>
@@ -30,7 +33,8 @@
     <tr>
         <td>Description</td>
         <td>
-            <textarea rows="10" cols="80" name="textarea-description" id="textarea-description"><?= $actualArtist->getDescription() ?></textarea>
+            <textarea rows="10" cols="80" name="textarea-description" id="textarea-description"><?= $actualArtist->
+                getDescription() ?></textarea>
         </td>
     </tr>
     <tr>
@@ -55,7 +59,7 @@
     <tr>
         <td>Contract</td>
         <td>
-            <?= ($actualArtist->getContract() == null) ? "Aucun" : "Youpi"; ?>
+            <?= $actualArtist->getContract() == null ? "Aucun" : $actualArtist->getContract()->get_type() ?>
         </td>
     </tr>
     </tbody>
@@ -63,3 +67,4 @@
 
 <button type="button" id="savebutton" class="hidden">Save</button>
 <button type="button" id="returnBack" onclick="location.href = '<?= $backToPage ?>';">Return back</button>
+<script src="sources/view/js/main.js"></script>

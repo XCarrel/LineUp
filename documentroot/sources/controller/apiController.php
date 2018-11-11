@@ -11,14 +11,16 @@ require_once ("sources/model/Gender.php");
 require_once ("sources/model/Country.php");
 
 
-$gender         = $_POST['gender'];
-$country        = $_POST['country'];
-$description    = $_POST['description'];
-$artistId       = $_POST['artistId'];
+extract ($_POST); // $artistid, $description, $countryid, $genderid
+
+var_dump($_POST);
 
 $artist = new Artist();
+$artist->load($artistid);
+$artist->setDescription($description);
+$artist->setCountryId($countryid);
+$artist->setGenderId($genderid);
 $artist->store();
 
 
-require_once ("sources/view/editView.html");
 
