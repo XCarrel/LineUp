@@ -15,6 +15,11 @@
 </span><br>
 
 <button id="cmdDelGender" class="button hidden">supprimer sélectionné</button>
-<button id="cmdModGender" class="button hidden">modifier sélectionné</button>
-<a ><button id="cmdAjoutGender" class="button">Ajouter</button> <input type="text" id="AddGenderText" name="name" ></a>
+<button id="cmdModGender" class="button hidden">modifier sélectionné</button> <input type="text" id="EditGenderText" name="name" class="hidden"><br>
+
+<a ><button id="cmdAjoutGender" class="button " disabled>Ajouter</button> <input type="text" id="AddGenderText" name="name"  ></a>
+<div id="lblSaved" class="flashmsg hidden">
+    <h4>Données enregistrées</h4>
+</div>
+
 <script src="sources/js/adminView.js"></script>
