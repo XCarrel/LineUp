@@ -20,6 +20,7 @@ switch ($page)
 {
     case 'home':
     case 'list':
+    case 'administration':
         break;
     case 'edit':
     case 'view':
