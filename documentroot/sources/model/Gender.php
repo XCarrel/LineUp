@@ -39,6 +39,12 @@ class Gender implements iPersistable
      * @return void
      * @throws exception if the record wasn't found
      */
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
     public function load($id)
     {
         $stmt = $this->pdo->prepare('select id, name  from Genders where Genders.id = :id');
@@ -67,7 +73,12 @@ class Gender implements iPersistable
      */
     public function create()
     {
-        // TODO: Implement create() method.
+        $stmt = $this->pdo->prepare('
+                    insert into Genders (Name)
+                    values (:name)
+        ');
+        $stmt->execute(['name' => $this->name]);
+        $this->id = $this->pdo->lastInsertId();
     }
 
     /**

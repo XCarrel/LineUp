@@ -20,6 +20,7 @@ switch ($page)
 {
     case 'home':
     case 'list':
+    case 'admin':
         break;
     case 'edit':
     case 'view':
@@ -35,6 +36,10 @@ switch ($page)
     case 'api':
         include("sources/api/APIController.php"); // "call" to the controller
         die(); // we don't want to return the layout html on the API
+        break;
+    case 'apiga':
+        include ("sources/api/APIGenderAdd.php");
+        die();
         break;
     default:
         $page = 'error';

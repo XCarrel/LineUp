@@ -1,0 +1,30 @@
+<h1>Administration</h1>
+
+<h2>Genres</h2>
+
+<form class="customcheckbox">
+    <?php foreach ($genders as $gender) { ?>
+    <input type="checkbox" name="cbxgender" value="<?= $gender->getId() ?>"> <?= $gender->getName() ?> <br>
+    <?php } ?>
+</form>
+
+
+
+<button id="btnAdd" class="button" disabled>Ajouter</button>
+
+<input id="tbxAdd" type="text" name="tbxAdd" value="">
+
+
+<button id="btnDelete" class="button hidden">Enregistrer</button>
+<button id="btnRename" class="button hidden">Enregistrer</button>
+
+<br><br><br><br><br><br><br><br>
+
+
+<span id="rbtgender">
+    <?php foreach ($genders as $gender) { ?>
+    <input type="radio" data-gid="<?= $gender->getId() ?>" name="rbtgender"><?= $gender->getName() ?>
+    <?php } ?>
+</span>
+
+<script src="sources/js/adminView.js"></script>
