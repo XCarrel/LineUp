@@ -6,6 +6,9 @@
  * Time: 15:21
  */
 
+require_once "sources/model/Database.php";
+require_once "sources/model/iPersistable.php";
+
 class Gender implements iPersistable
 {
     private $id;
@@ -56,6 +59,7 @@ class Gender implements iPersistable
      */
     public function reload()
     {
+
         // TODO: Implement reload() method.
     }
 
@@ -67,7 +71,12 @@ class Gender implements iPersistable
      */
     public function create()
     {
-        // TODO: Implement create() method.
+        $stmt = $this->pdo->prepare('
+                    insert into Genders (Name)
+                    values (:name)
+        ');
+        $stmt->execute(['name' => $this->name]);
+        $this->id = $this->pdo->lastInsertId();
     }
 
     /**
@@ -117,4 +126,14 @@ class Gender implements iPersistable
     {
         return $this->id;
     }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+
 }

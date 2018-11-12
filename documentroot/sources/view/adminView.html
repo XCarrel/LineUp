@@ -1,0 +1,12 @@
+<h1>Administation</h1>
+
+<h2>Genres</h2>
+
+<?php foreach($genders as $gender){ ?>
+<input type="checkbox" name="<?= $gender->getName() ?>" value="<?= $gender->getId() ?>"><?= $gender->getName() ?><br>
+<?php } ?>
+
+<button id="cmdAdd" class="button disabled" disabled>Ajouter</button>
+<input class="addGender" type="text" name="newGender"></br>
+
+<script src="sources/js/adminView.js"></script>
