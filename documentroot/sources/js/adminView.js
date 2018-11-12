@@ -63,9 +63,6 @@ function edit(){
 
 }
 
-
-
-
 function save() {
     // find out the country id
     let cid = 0
