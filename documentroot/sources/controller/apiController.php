@@ -11,13 +11,14 @@ require_once ("sources/model/Gender.php");
 require_once ("sources/model/Country.php");
 
 
-extract ($_POST); // $artistid, $description, $countryid, $genderid, $typeRequest
+extract ($_POST); /* $artistid, $description, $countryid, $genderid, $request, $typeRequest
+                         --> It's not an exhausthive list but it's the basics to receive on this page. Some extra elements can be added and differ if it's for artist or gender for example  */
 
 var_dump($_POST);
 
 
-switch($typeRequest){
-    case 'changeArtist':
+switch($request){
+    case 'artist':
         $artist = new Artist();
         $artist->load($artistid);
         $artist->setDescription($description);
@@ -25,8 +26,15 @@ switch($typeRequest){
         $artist->setGenderId($genderid);
         $artist->store();
         break;
-    case 'changeGender':
+    case 'gender':
+        $gender = new Gender();
 
+
+        if($typeRequest === "add"){
+            $gender->setName($toAdd);
+            $gender->create();
+            break;
+        }
         break;
 }
 

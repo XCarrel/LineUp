@@ -73,7 +73,12 @@ class Gender implements iPersistable
 
     public function create()
     {
-
+        $stmt = $this->pdo->prepare('
+                    insert into Genders (Name)
+                    values (:Name)
+        ');
+        $stmt->execute(['Name' => $this->name]);
+        $this->id = $this->pdo->lastInsertId();
     }
 
     public function store()
@@ -96,6 +101,14 @@ class Gender implements iPersistable
 
     public function getId(){
         return $this->id;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
 }

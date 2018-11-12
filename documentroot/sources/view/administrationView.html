@@ -2,14 +2,15 @@
 
 <form action="?page=api&typeRequest=changeGender" method="post">
 
-    <?php foreach($genders::All() as $gender) : ?>
-        <input type="checkbox" name="gender" value="<?= $gender->getName() ?>"> <span class="white" style="color: white;"> <?= $gender->getName() ?></span><br>
-    <?php endforeach; ?>
-    
+    <div id="listCheckbox">
+        <?php foreach($genders::All() as $gender) : ?>
+            <input type="checkbox" name="gender" value="<?= $gender->getName() ?>"> <span class="white" style="color: white;"> <?= $gender->getName() ?></span><br>
+        <?php endforeach; ?>
+    </div>
+
     <button type="button" id="Add">Ajouter</button>
     <input type="text" name="text-add" id="genderToAdd" >
 </form>
-
 
 
 <script src="sources/view/js/administration.js"></script>
