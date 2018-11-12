@@ -9,7 +9,10 @@ $(document).ready(function () {
 
     $('input:checkbox').change(function () {
         getCheckedCheckbox()
-        enable()
+        showbuttons()
+    })
+    $('.renameGender').keypress(function () {
+        enableRename()
     })
 })
 
@@ -21,18 +24,39 @@ $('#cmdDelete').click(function () {
     deleteGender()
 })
 
-// Check if the page as changed
+$('#cmdRename').click(function () {
+    renameGender()
+})
+
+// Check if the page as changed. Used only when we want to create a new gender.
 function touch() {
     $('#cmdAdd').prop('disabled',false);
     $('#cmdAdd').removeClass('disabled');
     $('#cmdAdd').addClass('admin');
 }
 
-// If a checkbox has been checked, we shows the buttons
-function enable(){
+// If a checkbox has been checked, we shows the buttons. Enable function is for checkbox.
+function showbuttons(){
     $('#cmdDelete').removeClass('hidden');
     $('#cmdRename').removeClass('hidden');
     $('.renameGender').removeClass('hidden');
+}
+
+function enableRename(){
+    $('#cmdRename').removeClass('disabled');
+    $('#cmdRename').prop('disabled',false);
+}
+
+// Check what checkbox as been checked. As we can have multiple checkbox selected, we have to create an array.
+function getCheckedCheckbox(){
+    /* declare an checkbox array */
+    var chkArray = [];
+
+    /* look for all checkboxes that have a class 'chk' attached to it and check if it was checked */
+    $("input:checkbox:checked").each(function() {
+        chkArray.push($(this).val());
+    });
+    return chkArray
 }
 
 // Add the new value the user has typed
@@ -51,7 +75,7 @@ function save() {
     )
 }
 
-// POST the array and get the ids.
+// POST the array with ID(s).
 function deleteGender(){
     $.post(
         "?page=apigender",
@@ -64,14 +88,15 @@ function deleteGender(){
     )
 }
 
-// Check what checkbox as been checked. As we can have multiple checkbox selected, we have to create an array.
-function getCheckedCheckbox(){
-    /* declare an checkbox array */
-    var chkArray = [];
-
-    /* look for all checkboes that have a class 'chk' attached to it and check if it was checked */
-    $("input:checkbox:checked").each(function() {
-        chkArray.push($(this).val());
-    });
-    return chkArray
+function renameGender(){
+    $.post(
+        "?page=apigender",
+        {
+            "id": getCheckedCheckbox(),
+            "name": $("input:checkbox:checked").attr("name")
+        },
+        function () {
+            location.reload()
+        }
+    )
 }

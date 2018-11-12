@@ -12,7 +12,7 @@ require_once ("sources/model/Gender.php");
 
 //Check if a new gender is added with the variable name or a gender is getting deleted.
 
-if(isset($name)){
+if(isset($name) && !isset($id)){
     // Create a new Gender object so we can add our new gender in the create method.
     $gender = new Gender();
     $gender->setName($name);
@@ -27,5 +27,10 @@ if(isset($ids)){
         $gender->load($id);
         $gender->destroy();
     }
-
+}
+if(isset($id) && isset($name)){
+    $gender = new Gender();
+    $gender->load($id);
+    $gender->setName($name);
+    $gender->store();
 }
