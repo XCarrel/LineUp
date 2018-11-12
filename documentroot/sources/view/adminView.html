@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrateur</title>
+</head>
+<body>
+<h1>Administration</h1>
+<h3>Genres</h3>
+<?php foreach ($genders as $gender) { ?>
+<input class="checkbox" name="checkbox" type="checkbox" value="<?= $gender->getId() ?>"><?= gender->getName() ?></input>
+<?php } ?>
+<button class="button" id="btn_delete">Supprimer les sélectionnés</button>
+<button class="button" id="btn_rename">Renommer les sélectionnés en </button><input name="text_rename" type="text" id="text_rename" />
+<button class="button" id="btn">Ajouter</button><input name="text" type="text" id="text_input" />
+</body>
+</html>

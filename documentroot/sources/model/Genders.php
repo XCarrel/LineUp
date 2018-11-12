@@ -88,20 +88,35 @@ class Genders implements iPersistable
     {
         // TODO: Implement reload() method.
     }
-
+    /**
+     * Creates record(s) in the db for the object state. The id member is updated with the value picked by the db
+     *
+     * @return void
+     * @throws exception if the record wasn't created because of some db constraint violation
+     */
     public function create()
     {
-        // TODO: Implement create() method.
+        $stmt = $this->pdo->prepare('
+                    insert into Genders (Name)
+                    values (:name)
+        ');
+        $stmt->execute(['name' => $this->name]);
+        $this->id = $this->pdo->lastInsertId();
     }
 
     public function store()
     {
-        // TODO: Implement store() method.
+        $stmt = $this->pdo->prepare('
+                    update Genders set Name = :name
+                    where id = :id
+        ');
+        $stmt->execute(['name' => $this->name, 'id' => $this->id]);
     }
 
     public function destroy()
     {
-        // TODO: Implement destroy() method.
+        $stmt = $this->pdo->prepare('delete from Genders where id = :id');
+        $stmt->execute(['id' => $this->id]);
     }
 
 

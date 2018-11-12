@@ -15,7 +15,7 @@ html {
   width:auto
 }
 .alert {
-  background: $color-primary;
+  background: $color--primary;
 }
 * {
   box-sizing: border-box;
@@ -182,7 +182,7 @@ body {
 .container a {
   text-decoration: none;
   display: block;
-  color: $color-primary;
+  color: $color--primary;
 }
 
 .text a:hover {
@@ -196,20 +196,20 @@ body {
   font-weight: bold;
   font-size: 3em;
   text-align: center;
-  background-color: $color-primary;
+  background-color: $color--primary;
   border-radius: 85px 100px; padding: 10px;
 
 }
 .description {
   color: $color-second;
-  background-color: $color-primary;
+  background-color: $color--primary;
   border-radius: 15px 50px; padding: 30px;
   width: 100%;
   min-height: 230px;
   overflow: hidden;
 }
 .name {
-  color: $color-primary;
+  color: $color--primary;
   width: 245px;
   height: auto;
   transform: translate(-50%, -700%);
@@ -226,7 +226,7 @@ body {
   font-weight: bold;
   font-size: 2em;
   text-align: center;
-  background-color: $color-primary;
+  background-color: $color--primary;
   border-radius: 85px 10px; padding: 30px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -366,7 +366,7 @@ figure.snip1091.hover figcaption:after {
 }
 
 .text {
-  color: $color-primary;
+  color: $color--primary;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -384,7 +384,7 @@ figure.snip1091.hover figcaption:after {
 .performances
 {
   color: $color-second;
-  background-color: $color-primary;
+  background-color: $color--primary;
   border-radius: 15px 50px; padding: 20px;
   width: 100%;
   min-height: 100px;

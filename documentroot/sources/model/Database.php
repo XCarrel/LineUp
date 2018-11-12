@@ -16,7 +16,7 @@ class Database
         $host = 'localhost';
         $db = 'lineup';
         $user = 'root';
-        $pass = '';
+        $pass = 'root';
 
         $dsn = "mysql:host=$host;dbname=$db";
         $options = [
