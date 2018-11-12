@@ -24,11 +24,27 @@ class Gender implements iPersistable
     }
 
     /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return mixed
      */
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
     /**
@@ -41,7 +57,7 @@ class Gender implements iPersistable
      */
     public function load($id)
     {
-        $stmt = $this->pdo->prepare('select id, name  from Genders where Genders.id = :id');
+        $stmt = $this->pdo->prepare('select id, name from Genders where Genders.id = :id');
         $stmt->execute(['id' => $id]);
         extract($stmt->fetch(PDO::FETCH_ASSOC)); // $id, $name
         $this->id = $id;
@@ -67,7 +83,9 @@ class Gender implements iPersistable
      */
     public function create()
     {
-        // TODO: Implement create() method.
+        $stmt = $this->pdo->prepare('insert into Genders (Name) values (:name)');
+        $stmt->execute(['name' => $this->getName()]);
+        $this->id = $this->pdo->lastInsertId();
     }
 
     /**
@@ -78,7 +96,8 @@ class Gender implements iPersistable
      */
     public function store()
     {
-        // TODO: Implement store() method.
+        $stmt = $this->pdo->prepare('UPDATE Genders SET Name=:name WHERE id=:id');
+        $stmt->execute(['id' => $this->getId(),'name' => $this->name]);
     }
 
     /**
@@ -89,7 +108,8 @@ class Gender implements iPersistable
      */
     public function destroy()
     {
-        // TODO: Implement destroy() method.
+        $stmt = $this->pdo->prepare('delete from Genders where id = :id');
+        $stmt->execute(['id' => $this->id]);
     }
 
     /**
@@ -99,7 +119,7 @@ class Gender implements iPersistable
     public static function All()
     {
         $pdo = Database::dbConnection();
-        $stmt = $pdo->prepare('select id from Genders');
+        $stmt = $pdo->prepare('select id, name from Genders');
         $stmt->execute();
         foreach ($stmt->fetchAll() as $item)
         {
