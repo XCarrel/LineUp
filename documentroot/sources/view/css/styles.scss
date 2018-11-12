@@ -1,5 +1,5 @@
 @import "fonts.css";
-@import "blueTheme";
+@import "blueTheme.scss";
 //@import "redTheme";
 //@import "greenTheme";
 
@@ -17,7 +17,20 @@ header {
 }
 
 .hidden {
-  display: none !important;
+  background-color: #808080;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 32px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  pointer-events: none;
+}
+.hiddendiv{
+    display: none !important;
 }
 // Menu stuff
 
@@ -129,7 +142,10 @@ label {
   display: inline-block;
   font-size: 16px;
 }
-
+.textbox {
+  height: 40px;
+  border-radius: 5px;
+}
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -213,4 +229,3 @@ $skew : 15deg;
 #homepic {
   text-align: center;
 }
-

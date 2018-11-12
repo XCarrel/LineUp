@@ -30,6 +30,10 @@ class Gender implements iPersistable
     {
         return $this->name;
     }
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 
     /**
      * Load the object's members with the data of the database record with the given id
@@ -65,10 +69,15 @@ class Gender implements iPersistable
      * @return void
      * @throws exception if the record wasn't created because of some db constraint violation
      */
-    public function create()
-    {
-        // TODO: Implement create() method.
-    }
+     public function create()
+     {
+         $stmt = $this->pdo->prepare('
+                     insert into Genders (Name)
+                     values (:name)
+         ');
+         $stmt->execute(['name' => $this->name]);
+         $this->id = $this->pdo->lastInsertId();
+     }
 
     /**
      * Stores the state of the object in the db record(s)

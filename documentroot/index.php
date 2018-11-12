@@ -21,6 +21,8 @@ switch ($page)
     case 'home':
     case 'list':
         break;
+    case 'admin':
+        break;
     case 'edit':
     case 'view':
     case 'preview':
