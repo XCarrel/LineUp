@@ -19,6 +19,17 @@ header {
 .hidden {
   display: none !important;
 }
+
+//Class to disable a button
+.disabled{
+   opacity: 0.65;
+   cursor: not-allowed;
+}
+
+//Change the input size
+#InputGender{
+   line-height: 30px;
+}
 // Menu stuff
 
 $menuHeight: 50px;

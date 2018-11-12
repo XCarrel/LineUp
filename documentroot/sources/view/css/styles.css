@@ -16,6 +16,15 @@ header {
   display: none !important;
 }
 
+.disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+#InputGender {
+  line-height: 30px;
+}
+
 nav {
   height: 50px;
   font-family: 'riffic', Fallback, sans-serif;

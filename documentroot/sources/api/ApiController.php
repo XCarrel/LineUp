@@ -6,7 +6,7 @@
  * Time: 11:53
  */
 
-extract ($_POST); // $artistid, $description, $countryid, $genderid
+extract ($_POST); // 
 
 require_once ("sources/model/Artist.php");
 
@@ -18,4 +18,3 @@ $artist->setGenderId($genderid);
 $artist->store();
 
 ?>
-

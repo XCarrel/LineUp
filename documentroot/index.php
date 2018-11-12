@@ -19,6 +19,7 @@ $page = isset($_GET["page"]) ? $_GET["page"] : "home";
 switch ($page)
 {
     case 'home':
+    case 'administration':
     case 'list':
         break;
     case 'edit':
@@ -34,6 +35,9 @@ switch ($page)
         break;
     case 'api':
         include("sources/api/APIController.php"); // "call" to the controller
+        die(); // we don't want to return the layout html on the API
+        break;
+    case 'apiAdmin':
         die(); // we don't want to return the layout html on the API
         break;
     default:

@@ -6,6 +6,10 @@
  * Time: 15:21
  */
 
+//Necessary to get all the genders
+require_once "sources/model/Database.php";
+require_once "sources/model/iPersistable.php";
+
 class Gender implements iPersistable
 {
     private $id;
@@ -67,7 +71,9 @@ class Gender implements iPersistable
      */
     public function create()
     {
-        // TODO: Implement create() method.
+      $stmt = $this->pdo->prepare('insert into Genders (Name) values (:name)');
+      $stmt->execute(['name' => $this->name]);
+      $this->id = $this->pdo->lastInsertId();
     }
 
     /**
