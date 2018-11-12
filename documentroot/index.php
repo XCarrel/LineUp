@@ -13,6 +13,8 @@ switch ($page)
 {
     case 'home':
     case 'list':
+    case 'administration':
+
         break;
     case 'preview':
         if(isset($_GET["id"])) {
