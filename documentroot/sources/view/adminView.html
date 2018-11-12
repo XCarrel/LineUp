@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Administration</h2>
+
+    <div class="description" >
+        <h3>Genre: </h3>
+            <?php foreach($genders as $gender) {?>
+        <div style="display: block" >
+            <input type="checkbox" name="gender" value="<?= $gender->getId() ?>" data-name="<?= $gender->getName()?>"><?= $gender->getName()?>
+        </div>
+
+            <?php } ?>
+
+
+    </div>
+
+    <div class="description">
+        <input class="inputBlack" name="name" id="name">
+        <button class="button" id="buttonCreateNewGender" disabled >Ajouter</button>
+        <button class="button" id="buttonDelete">Supprimer les sélectionnés</button>
+        <button class="button" id="buttonUpdateGender">Renommer le sélectionné en </button>
+    </div>
+
+
+
+</div>

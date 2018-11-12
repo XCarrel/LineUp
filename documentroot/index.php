@@ -18,6 +18,7 @@ switch ($page)
 {
     case 'home':
     case 'list':
+    case 'admin':
         break;
     case 'info':
     case 'preview':
@@ -31,6 +32,10 @@ switch ($page)
         }
         break;
     case 'api':
+        include("sources/controller/$page"."Controller.php");
+        die();
+        break;
+    case 'apiGender':
         include("sources/controller/$page"."Controller.php");
         die();
         break;

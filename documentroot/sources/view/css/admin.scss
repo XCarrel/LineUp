@@ -1,0 +1,18 @@
+#buttonCreateNewGender{
+  display: block;
+}
+#buttonDelete{
+  display: none;
+}
+#buttonUpdateGender{
+  display: none;
+}
+
+.disabled{
+  background-color: lightgray;
+  color: gray;
+}
+.active{
+  background-color: white;
+  color: black;
+}

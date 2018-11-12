@@ -82,7 +82,6 @@ class Gender implements iPersistable
         extract($results->fetch(PDO::FETCH_ASSOC)); 
         $this->id = $id;
         $this->name = $name;
-      
     }
 
     public function reload()
@@ -91,17 +90,28 @@ class Gender implements iPersistable
     
     public function create()
     {
+        $results = $this->pdo->prepare('
+                    insert into Genders (Name)
+                    values (:name)
+        ');
+        $results->execute(['name' => $this->name]);
+        $this->id = $this->pdo->lastInsertId();
     }
 
     public function store()
-    {    
+    {
+        $results = $this->pdo->prepare('
+                    update Genders set Name = :name
+                    where id = :id
+        ');
+        $results->execute(['name' => $this->name,'id'=> $this->id ]);
     }
 
     public function destroy()
     {
+        $results = $this->pdo->prepare('delete from Genders where id = :id');
+        $results->execute(['id' => $this->id]);
     }
 
-    private function readPerformances($aid)
-    {
-    }
+
 }

@@ -57,6 +57,114 @@ $(document).ready(function(){
         });
     });
 
+
+    $('#name').on('input',function(e){
+        if($("#name").val().length > 0){
+            $("#buttonCreateNewGender").addClass("active");
+            $("#buttonCreateNewGender").removeClass("disabled");
+            $("#buttonCreateNewGender").removeAttr("disabled");
+
+            $("#buttonUpdateGender").addClass("active");
+            $("#buttonUpdateGender").removeClass("disabled");
+            $("#buttonUpdateGender").removeAttr("disabled");
+
+        }else{
+            $("#buttonCreateNewGender").addClass("disabled");
+            $("#buttonCreateNewGender").removeClass("active");
+            $("#buttonCreateNewGender").attr("disabled","disabled");
+
+            $("#buttonUpdateGender").addClass("disabled");
+            $("#buttonUpdateGender").removeClass("active");
+            $("#buttonUpdateGender").attr("disabled","disabled");
+
+        }
+        $('input[name="gender"]').each(function() {
+            if($(this).data('name')==$("#name").val()) {
+                console.log("here")
+                $("#buttonCreateNewGender").addClass("disabled");
+                $("#buttonCreateNewGender").removeClass("active");
+                $("#buttonCreateNewGender").attr("disabled","disabled");
+
+                $("#buttonUpdateGender").addClass("disabled");
+                $("#buttonUpdateGender").removeClass("active");
+                $("#buttonUpdateGender").attr("disabled","disabled");
+                return 1;
+            }
+        });
+
+    });
+
+    $("input[type=checkbox][name=gender]").click(function () {
+        let numberChecked = $( "input[type=checkbox][name=gender]:checked" ).length;
+        if (numberChecked == 0) {
+            $("#buttonCreateNewGender").css({"display": "block"});
+            $("#buttonDelete").css({"display": "none"});
+            $("#buttonUpdateGender").css({"display": "none"});
+            $("#name").css({"display": "block"});
+            $("#name").val()
+        }else if(numberChecked == 1){
+            $("#buttonCreateNewGender").css({"display": "none"});
+            $("#buttonDelete").css({"display": "block"});
+            $("#buttonUpdateGender").css({"display": "block"});
+            $("#name").css({"display": "block"});
+            $("#name").val()
+
+        }else{
+            $("#buttonCreateNewGender").css({"display": "none"});
+            $("#buttonDelete").css({"display": "block"});
+            $("#buttonUpdateGender").css({"display": "none"});
+            $("#name").css({"display": "none"});
+        }
+    })
+
+
+    $("#buttonCreateNewGender").click(function(){
+        $.ajax({
+            method:"POST",
+            url: "?page=apiGender",
+            data:{
+                action:"create",
+                name:$("#name").val(),
+            },
+            success: function(data) {
+                location.reload();
+            }
+        });
+    });
+    $("#buttonDelete").click(function(){
+        let idArray=[];
+
+        $('input[name="gender"]:checked').each(function() {
+            idArray.push(this.value);
+        });
+
+        $.ajax({
+            method:"POST",
+            url: "?page=apiGender",
+            data:{
+                action:"delete",
+                id:idArray,
+            },
+            success: function(data) {
+                location.reload();
+            }
+        });
+    });
+    $("#buttonUpdateGender").click(function(){
+        $.ajax({
+            method:"POST",
+            url: "?page=apiGender",
+            data:{
+                id:$('input[name="gender"]:checked').val(),
+                action:"update",
+                name:$("#name").val(),
+            },
+            success: function(data) {
+                location.reload();
+            }
+        });
+    });
+
 })
 function isDitry(){
     if($("#countrySave").val()!= $('input[type=radio][name=country]:checked').attr('value')){
