@@ -178,14 +178,14 @@ table tbody td a {
   visibility: hidden;
 }
 
-button {
+button, input[type=submit] {
   background-color: #e94285;
   min-height: 50px;
   padding: 20px;
   margin-top: 10px;
   border: none;
 }
-button:hover {
+button:hover, input[type=submit]:hover {
   cursor: pointer;
 }
 
@@ -196,6 +196,10 @@ footer {
   color: white;
   height: 15vh;
   margin-top: 10vh;
+}
+
+.white {
+  color: white !important;
 }
 
 /*# sourceMappingURL=style.css.map */

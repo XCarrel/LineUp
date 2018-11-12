@@ -11,16 +11,27 @@ require_once ("sources/model/Gender.php");
 require_once ("sources/model/Country.php");
 
 
-extract ($_POST); // $artistid, $description, $countryid, $genderid
+extract ($_POST); // $artistid, $description, $countryid, $genderid, $typeRequest
 
 var_dump($_POST);
 
-$artist = new Artist();
-$artist->load($artistid);
-$artist->setDescription($description);
-$artist->setCountryId($countryid);
-$artist->setGenderId($genderid);
-$artist->store();
+
+switch($typeRequest){
+    case 'changeArtist':
+        $artist = new Artist();
+        $artist->load($artistid);
+        $artist->setDescription($description);
+        $artist->setCountryId($countryid);
+        $artist->setGenderId($genderid);
+        $artist->store();
+        break;
+    case 'changeGender':
+
+        break;
+}
+
+
+
 
 
 

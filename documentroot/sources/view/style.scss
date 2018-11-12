@@ -204,7 +204,7 @@ table{
   visibility: hidden;
 }
 
-button {
+button, input[type=submit] {
   background-color: $paleoPink;
   min-height: 50px;
   padding: 20px;
@@ -223,6 +223,10 @@ footer{
   color: white;
   height: 15vh;
   margin-top: 10vh;
+}
+
+.white{
+  color: white !important;
 }
 
 
