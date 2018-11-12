@@ -188,18 +188,18 @@ class Artist implements iPersistable
               Contracts.restaurant,
               Contracts.car,
               Contracts.nbMeals,
-              Contracts.contract_type
+              Contracts.contractType_id
             from
               Artists inner join
               Countries on Artists.Country_id = Countries.id inner join
               Genders on Artists.Gender_id = Genders.id left join
                 (Contracts inner join
-                ContractTypes on Contracts.contract_type = ContractTypes.id) 
+                ContractTypes on Contracts.contractType_id = ContractTypes.id) 
                 on Artists.Contract_id = Contracts.id 
             where Artists.id = :id
         ');
         $stmt->execute(['id' => $id]);
-        extract($stmt->fetch(PDO::FETCH_ASSOC)); // $id, $name, $mainpicture, $description, $kind, $Gender_id, $country, $Country_id, $Contract_id, $signeOn, $contracttext, $fee, $restaurant, $car, $nbMeals, $contract_type
+        extract($stmt->fetch(PDO::FETCH_ASSOC)); // $id, $name, $mainpicture, $description, $kind, $Gender_id, $country, $Country_id, $Contract_id, $signeOn, $contracttext, $fee, $restaurant, $car, $nbMeals, $contractType_id
 
         $this->id = $id;
         $this->name = $name;
@@ -213,7 +213,7 @@ class Artist implements iPersistable
         $this->performances = self::readPerformances($id);
 
         // Instanciate the appropriate contract type
-        switch ($contract_type) {
+        switch ($contractType_id) {
             case 1:
                 $contract = new VIPContract($contracttext, $fee, $restaurant, $car);
                 break;
