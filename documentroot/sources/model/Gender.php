@@ -98,7 +98,8 @@ class Gender implements iPersistable
      */
     public function destroy()
     {
-        // TODO: Implement destroy() method.
+        $stmt = $this->pdo->prepare('delete from Genders where id = :id');
+        $stmt->execute(['id' => $this->id]);
     }
 
     /**

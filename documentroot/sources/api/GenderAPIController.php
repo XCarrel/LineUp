@@ -10,6 +10,22 @@ extract ($_POST);
 
 require_once ("sources/model/Gender.php");
 
-$gender = new Gender();
-$gender->setName($name);
-$gender->create();
+//Check if a new gender is added with the variable name or a gender is getting deleted.
+
+if(isset($name)){
+    // Create a new Gender object so we can add our new gender in the create method.
+    $gender = new Gender();
+    $gender->setName($name);
+    $gender->create();
+}
+
+if(isset($ids)){
+    //To delete multiple selections, do a foreach then create a new object to destroy it.
+    foreach ($ids as $id){
+        error_log($id,0);
+        $gender = new Gender();
+        $gender->load($id);
+        $gender->destroy();
+    }
+
+}

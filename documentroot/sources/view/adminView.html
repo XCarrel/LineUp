@@ -6,6 +6,10 @@
 <input type="checkbox" name="<?= $gender->getName() ?>" value="<?= $gender->getId() ?>"><?= $gender->getName() ?><br>
 <?php } ?>
 
+<button id="cmdDelete" class="button hidden">Supprimer les sélectionnés</button>
+<button id="cmdRename" class="button hidden disabled" disabled>Renommer le sélectionné en</button>
+<input class="renameGender hidden" type="text" name="renameGender"></br>
+
 <button id="cmdAdd" class="button disabled" disabled>Ajouter</button>
 <input class="addGender" type="text" name="newGender"></br>
 
