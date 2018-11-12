@@ -117,7 +117,7 @@ $(document).ready(function(){
         }
     })
 
-
+    //Create new Gender
     $("#buttonCreateNewGender").click(function(){
         $.ajax({
             method:"POST",
@@ -131,6 +131,7 @@ $(document).ready(function(){
             }
         });
     });
+    
     $("#buttonDelete").click(function(){
         let idArray=[];
 
