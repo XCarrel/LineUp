@@ -6,6 +6,9 @@
  * Time: 15:21
  */
 
+require_once "sources/model/Database.php";
+require_once "sources/model/iPersistable.php";
+
 class Gender implements iPersistable
 {
     private $id;
@@ -24,11 +27,27 @@ class Gender implements iPersistable
     }
 
     /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return mixed
      */
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
     /**
@@ -56,7 +75,17 @@ class Gender implements iPersistable
      */
     public function reload()
     {
-        // TODO: Implement reload() method.
+
+    }
+
+    public function update($id)
+    {
+        $stmt = $this->pdo->prepare('
+                    update Genders set Name = :name
+                    where id = :id
+        ');
+
+        $stmt->execute(['name' => $this->name, 'id' => $id]);
     }
 
     /**
@@ -78,7 +107,12 @@ class Gender implements iPersistable
      */
     public function store()
     {
-        // TODO: Implement store() method.
+        $stmt = $this->pdo->prepare('
+                    insert into Genders (Name)
+                    values (:name)
+        ');
+        $stmt->execute(['name' => $this->name]);
+        $this->id = $this->pdo->lastInsertId();
     }
 
     /**
@@ -89,7 +123,8 @@ class Gender implements iPersistable
      */
     public function destroy()
     {
-        // TODO: Implement destroy() method.
+        $stmt = $this->pdo->prepare('delete from Genders where id = :id');
+        $stmt->execute(['id' => $this->id]);
     }
 
     /**
@@ -108,7 +143,10 @@ class Gender implements iPersistable
             $res[] = $gender;
         }
         return $res;
+
     }
+
+    // update the gender by his id
 
     /**
      * @return mixed

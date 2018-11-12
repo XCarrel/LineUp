@@ -1,0 +1,28 @@
+<h1>Liste</h1>
+
+<h2>Il y a <?= count($genders); ?> genres au programme</h2>
+
+
+
+<div class="round">
+<span id="rbtgender">
+    <?php foreach ($genders as $gender) { ?>
+    <input type="checkbox" value="<?= $gender->getName() ?>" data-cid="<?= $gender->getId() ?>" name="rbtgender"><?= $gender->getName() ?><br>
+    <?php } ?>
+</span><br>
+</div>
+
+<button  id="cmdSuppr" class="button hidden"  >Supprimer les sélectionnés</button>
+<button  id="cmdRename" class="button hidden" disabled="disabled"  >Renommer le sélectionné en </button>
+<input type="text" id="inputRename" class="hidden" name="oui" ></input><br>
+
+<button  id="cmdSave" class="button" disabled="disabled" >Ajouter</button>
+<input type="text" id="inputAdd"  name="oui"></input>
+<input type="hidden" id="genderid" value="<?= $gender->getId() ?>">
+
+<button  id="test" class="button"  >test</button>
+
+
+
+<script src="sources/js/administration.js"></script>
+

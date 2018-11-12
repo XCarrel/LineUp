@@ -55,4 +55,6 @@ interface iPersistable
      * @throws exception if the record couldn't be deleted because of some db constraint violation
      */
     public function destroy();
+
+    public function update($id);
 }
