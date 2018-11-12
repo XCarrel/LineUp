@@ -20,6 +20,7 @@ switch ($page)
 {
     case 'home':
     case 'list':
+    case 'administration':
         break;
     case 'edit':
     case 'view':
@@ -32,6 +33,15 @@ switch ($page)
             $errormessage = "Format incorrect (manque l'id de l'artiste)";
         }
         break;
+    case 'apidel':
+        include("sources/api/administration/APIDelController.php"); // "call" to the controller
+        die(); // we don't want to return the layout html on the API
+    case 'apirename':
+        include("sources/api/administration/APIRenameController.php"); // "call" to the controller
+        die(); // we don't want to return the layout html on the API
+    case 'apiadd':
+        include("sources/api/administration/APIAddController.php"); // "call" to the controller
+        die(); // we don't want to return the layout html on the API
     case 'api':
         include("sources/api/APIController.php"); // "call" to the controller
         die(); // we don't want to return the layout html on the API
