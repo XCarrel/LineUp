@@ -5,7 +5,7 @@
 
 $(document).ready(function () {
 
-    // Make the save button appear when a change is made in the page
+    // Make the delete button appear when a change is made in the page
     $('input').keypress(function () {
         touch()
     })
@@ -86,25 +86,4 @@ function save() {
 }
 
 
-function saveGender() {
-    // find out the country id
-    let cid = 0
-    $('input:radio').each( function() {
-        if ($(this).prop('checked')) cid = $(this).data('cid')
-    })
 
-    $.post(
-        "?page=api",
-        {
-            "genderid": $('#genderid').val(),
-            "Name" : $('#name').val(),
-  },
-        function () {
-            $('#lblSaved').removeClass('hidden')
-            $('#cmdSave').addClass('hidden')
-            setTimeout(function(){
-                $('#lblSaved').addClass('hidden')
-            }, 1500)
-        }
-    )
-}

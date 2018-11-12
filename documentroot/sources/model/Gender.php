@@ -76,7 +76,12 @@ class Gender implements iPersistable
      */
     public function create()
     {
-        // TODO: Implement create() method.
+        $stmt = $this->pdo->prepare('
+                    insert into Genders (Name)
+                    values (:name)
+        ');
+        $stmt->execute(['name' => $this->name]);
+        $this->id = $this->pdo->lastInsertId();
     }
 
     /**
@@ -103,7 +108,8 @@ class Gender implements iPersistable
      */
     public function destroy()
     {
-        // TODO: Implement destroy() method.
+        $stmt = $this->pdo->prepare('delete from Genders where id = :id');
+        $stmt->execute(['id' => $this->id]);
     }
 
     /**

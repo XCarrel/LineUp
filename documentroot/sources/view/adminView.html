@@ -1,4 +1,4 @@
-<h1>Liste</h1>
+<h1>Genre</h1>
 
 <h2>Il y a <?= count($genders); ?> genre au programme</h2>
 
@@ -14,6 +14,7 @@
     <?php } ?>
 </span><br>
 
-
-<button id="cmdSaveGender" class="button">Enregistrer</button>
-<a ><button class="button">Ajouter</button> <input type="text" id="AddGenderText" name="name" ></a>
+<button id="cmdDelGender" class="button hidden">supprimer sélectionné</button>
+<button id="cmdModGender" class="button hidden">modifier sélectionné</button>
+<a ><button id="cmdAjoutGender" class="button">Ajouter</button> <input type="text" id="AddGenderText" name="name" ></a>
+<script src="sources/js/adminView.js"></script>

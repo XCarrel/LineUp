@@ -21,7 +21,6 @@ $artist->store();
 require_once ("sources/model/Gender.php");
 $gender = new Gender();
 $gender->load($genderid);
-$gender->setDescription($Name);
 $gender->store();
 
 ?>

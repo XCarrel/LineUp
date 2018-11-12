@@ -6,7 +6,10 @@
  * Time: 16:42
  */
 
+require_once ("sources/model/Artist.php");
 require_once ("sources/model/Gender.php");
+require_once ("sources/model/Country.php");
+require_once ("sources/model/ContractType.php");
 
 $genders = Gender::All();
 
