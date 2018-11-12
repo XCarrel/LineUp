@@ -5,6 +5,8 @@
 
 $(document).ready(function () {
 
+    $('#cmdSave').prop("disabled",true);
+
     // Make the save button appear when a change is made in the page
     $('input').keypress(function () {
         touch()
@@ -45,9 +47,9 @@ function touch() {
     let ok = true
     ok = ($('#description').val().length > 0) // description must be filled
     if (ok)
-        $('#cmdSave').removeClass('hidden')
+        $('#cmdSave').prop("disabled",true);
     else
-        $('#cmdSave').addClass('hidden')
+        $('#cmdSave').prop("disabled",false);
 }
 
 // Save the current values on the server using a post over ajax

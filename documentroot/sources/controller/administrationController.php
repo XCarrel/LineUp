@@ -9,6 +9,7 @@
 require_once ("sources/model/Artist.php");
 require_once ("sources/model/Gender.php");
 
+// Reprendre tous les genres dans la base de données
 $genders = Gender::All();
 
 require_once ("sources/view/administrationView.html");

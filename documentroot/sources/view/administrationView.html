@@ -2,15 +2,16 @@
 
 <h2>Genre</h2><br>
     <?php foreach ($genders as $gender) { ?>
-        <input type="checkbox" name="gender" value="<?= $gender->getId() ?>"><?= $gender->getName() ?><br>
+        <input type="checkbox" name="gender" id="checkGender" value="<?= $gender->getId() ?>"><?= $gender->getName() ?><br>
     <?php } ?>
 <br>
 
-
+<!-- Trois boutons pour supprimé ou modifié un nom dans la base de données -->
 <button id="btnDel" class="button">Supprimer les sélectionnés</button>
 <button id="btnUpdate" class="button">Renommer le sélectionné en </button>
 <input type="text" id="inputUpdate"/><br>
 
+<!-- bouton permettant d'ajouter un nouveau genre -->
 <button id="btnAdd" class="button">Ajouter</button>
 <input type="text" id="newGender"/>
 

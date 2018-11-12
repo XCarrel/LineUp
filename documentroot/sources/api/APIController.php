@@ -14,6 +14,7 @@ require_once ("sources/model/Gender.php");
 error_log((print_r($_POST, true)));
 
 $gender = new Gender();
+
 if($_POST['gender'] != "")
 {
     $gender->setName($_POST['gender']);
@@ -34,13 +35,5 @@ else if($_POST['id'] != "" && $_POST['genderUpdate'] != "")
     $gender->store();
 }
 
-/*
-$artist = new Artist();
-$artist->load($artistid);
-$artist->setDescription($description);
-$artist->setCountryId($countryid);
-$artist->setGenderId($genderid);
-$artist->store();
-*/
 ?>
 

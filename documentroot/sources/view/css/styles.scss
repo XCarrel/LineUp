@@ -19,6 +19,12 @@ header {
 .hidden {
   display: none !important;
 }
+
+.red
+{
+  background-color: red !important;
+}
+
 // Menu stuff
 
 $menuHeight: 50px;
@@ -130,6 +136,10 @@ label {
   font-size: 16px;
 }
 
+.disabled {
+  background-color: #9e9ebe !important;
+}
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -213,4 +223,3 @@ $skew : 15deg;
 #homepic {
   text-align: center;
 }
-

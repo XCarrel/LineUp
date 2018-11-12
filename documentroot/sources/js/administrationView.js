@@ -5,32 +5,20 @@
 
 $(document).ready(function () {
 
-    $('#btnAdd').prop('disabled', true).addClass('red');
+    // le bouton est désactivé
+    $('#btnAdd').prop('disabled', true);
 
+    // le bouton s'active
     $('#newGender').keypress(function () {
         btn()
     })
+
+    // le bouton s'active
     $('#newGender').change(function () {
         btn()
     })
 
-    // Make the save button appear when a change is made in the page
-    /*$('input').keypress(function () {
-        touch()
-    })
-    $('input:radio').click(function () {
-        touch()
-    })
-    $('select').change(function () {
-        touch()
-    })
-    $('textarea').keydown(function () {
-        touch()
-    })
-    $('textarea').on('paste', function () {
-        touch()
-    })*/
-
+    // Ajout d'un genre dans la base de données
     $("#btnAdd").click(function () {
         $.ajax({
             method: 'POST',
@@ -44,6 +32,7 @@ $(document).ready(function () {
         })
     });
 
+    // suppression d'un ou plusieurs genre en même temps dans la base de données
     $("#btnDel").click(function () {
         var arr=[];
 
@@ -64,6 +53,7 @@ $(document).ready(function () {
         })
     });
 
+    // Modifier le nom d'un genre dans la base de données
     $("#btnUpdate").click(function () {
         $.ajax({
             method: 'POST',
@@ -79,37 +69,12 @@ $(document).ready(function () {
     });
 })
 
-function checkbox() {
-
-}
 function btn()
 {
     let ok = true
     ok = ($('#newGender').val().length > 0) // description must be filled
     if (ok)
-        $('#btnAdd').prop('disabled', false).removeClass('red');
+        $('#btnAdd').prop('disabled', false);
     else
-        $('#btnAdd').prop('disabled', true).removeClass('false');
-}
-
-
-
-// Save the current values on the server using a post over ajax
-function save() {
-    $.post(
-        "?page=api",
-        {
-            "artistid": $('#artistid').val(),
-            "description" : $('#description').val(),
-            "countryid" : $('input[name=rbtCountry]:checked').data('cid'),
-            "genderid" : $('#dpdGender').val()
-        },
-        function () {
-            $('#lblSaved').removeClass('hidden')
-            $('#cmdSave').addClass('hidden')
-            setTimeout(function(){
-                $('#lblSaved').addClass('hidden')
-            }, 1500)
-        }
-    )
+        $('#btnAdd').prop('disabled', true);
 }
