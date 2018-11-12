@@ -18,6 +18,7 @@ $(document).ready(function () {
     $('textarea').keydown(function () {
         touch()
     })
+
     $('textarea').on('paste', function () {
         touch()
     })
@@ -38,7 +39,13 @@ $(document).ready(function () {
         save()
     })
 
+    $('#cmdSaveGender').click(function () {
+        save()
+    })
+
 })
+
+
 
 // Mark the page as dirty, i.e: changes were made
 function touch() {
@@ -49,6 +56,9 @@ function touch() {
     else
         $('#cmdSave').addClass('hidden')
 }
+
+
+
 
 // Save the current values on the server using a post over ajax
 function save() {
@@ -65,6 +75,30 @@ function save() {
             "description" : $('#description').val(),
             "countryid" : cid,
             "genderid" : $('#dpdGender').val()},
+        function () {
+            $('#lblSaved').removeClass('hidden')
+            $('#cmdSave').addClass('hidden')
+            setTimeout(function(){
+                $('#lblSaved').addClass('hidden')
+            }, 1500)
+        }
+    )
+}
+
+
+function saveGender() {
+    // find out the country id
+    let cid = 0
+    $('input:radio').each( function() {
+        if ($(this).prop('checked')) cid = $(this).data('cid')
+    })
+
+    $.post(
+        "?page=api",
+        {
+            "genderid": $('#genderid').val(),
+            "Name" : $('#name').val(),
+  },
         function () {
             $('#lblSaved').removeClass('hidden')
             $('#cmdSave').addClass('hidden')

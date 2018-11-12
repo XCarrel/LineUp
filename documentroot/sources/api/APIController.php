@@ -17,5 +17,12 @@ $artist->setCountryId($countryid);
 $artist->setGenderId($genderid);
 $artist->store();
 
+
+require_once ("sources/model/Gender.php");
+$gender = new Gender();
+$gender->load($genderid);
+$gender->setDescription($Name);
+$gender->store();
+
 ?>
 

@@ -1,0 +1,19 @@
+<h1>Liste</h1>
+
+<h2>Il y a <?= count($genders); ?> genre au programme</h2>
+
+
+
+
+
+
+
+<span id="rbtgender">
+    <?php foreach ($genders as $gender) { ?>
+    <input type="radio" data-cid="<?= $gender->getId() ?>" name="rbtgender" ><?= $gender->getName() ?></a><br>
+    <?php } ?>
+</span><br>
+
+
+<button id="cmdSaveGender" class="button">Enregistrer</button>
+<a ><button class="button">Ajouter</button> <input type="text" id="AddGenderText" name="name" ></a>

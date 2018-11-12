@@ -6,6 +6,15 @@
  * Time: 15:21
  */
 
+require_once "sources/model/Database.php";
+require_once "sources/model/iPersistable.php";
+require_once "sources/model/Coordinate.php";
+require_once "sources/model/Scene.php";
+require_once "sources/model/Performance.php";
+require_once "sources/model/Contract.php";
+require_once "sources/model/VIPContract.php";
+require_once "sources/model/StandardContract.php";
+
 class Gender implements iPersistable
 {
     private $id;
@@ -78,7 +87,12 @@ class Gender implements iPersistable
      */
     public function store()
     {
-        // TODO: Implement store() method.
+        error_log("Storing: ['name' => {$this->name}, 'id' => {$this->id}]");
+        $stmt = $this->pdo->prepare('
+                    update Genders set Name = :name
+                    where id = :id
+        ');
+        $stmt->execute(['name' => $this->name, 'id' => $this->id]);
     }
 
     /**
@@ -117,4 +131,5 @@ class Gender implements iPersistable
     {
         return $this->id;
     }
+
 }
