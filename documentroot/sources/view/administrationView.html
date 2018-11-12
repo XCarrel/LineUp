@@ -1,0 +1,17 @@
+<h1>Administration</h1>
+
+<h2>Genre</h2><br>
+    <?php foreach ($genders as $gender) { ?>
+        <input type="checkbox" name="gender" value="<?= $gender->getId() ?>"><?= $gender->getName() ?><br>
+    <?php } ?>
+<br>
+
+
+<button id="btnDel" class="button">Supprimer les sélectionnés</button>
+<button id="btnUpdate" class="button">Renommer le sélectionné en </button>
+<input type="text" id="inputUpdate"/><br>
+
+<button id="btnAdd" class="button">Ajouter</button>
+<input type="text" id="newGender"/>
+
+<script src="sources/js/administrationView.js"></script>
