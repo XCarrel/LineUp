@@ -1,7 +1,8 @@
 <div class="container">
-    <h2>Administration</h2>
+
 
     <div class="description" >
+        <h2>Administration</h2>
         <h3>Genre: </h3>
             <?php foreach($genders as $gender) {?>
         <div style="display: block" >
@@ -14,6 +15,7 @@
     </div>
 
     <div class="description">
+        <label>Nom: </label>
         <input class="inputBlack" name="name" id="name">
         <button class="button" id="buttonCreateNewGender" disabled >Ajouter</button>
         <button class="button" id="buttonDelete">Supprimer les sélectionnés</button>
