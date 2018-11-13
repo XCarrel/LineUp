@@ -1,0 +1,12 @@
+<h1>Administration</h1>
+
+<h2>Genres</h2>
+<form method="post" action="?page=admin">
+    <?php foreach($genders as $gender){ ?>
+    <input type="checkbox" name="genders[]" id="chk<?= $gender->getId() ?>" value="<?= $gender->getId() ?>" class="my-checkbox"><label class="checkboxlabel" id="lbl<?= $gender->getId() ?>" for="chk<?= $gender->getId() ?>"><?= $gender->getName() ?></label><br>
+    <?php } ?>
+    <button class="button hidden" type="submit" id="cmdDel" name="del">Supprimer les sélectionnés</button>
+    <button class="button hidden" type="submit" id="cmdUpd" name="upd" disabled>Renommer le sélectionné en</button><input class="adminInput hidden" type="text" id="txtUpd" name="updName" data-button="cmdUpd"><br>
+    <button class="button" type="submit" id="cmdIns" name="ins" disabled>Ajouter</button><input type="text" id="txtIns" name="newName" class="adminInput" data-button="cmdIns">
+</form>
+<script src="sources/js/adminView.js"></script>

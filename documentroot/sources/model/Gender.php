@@ -11,16 +11,24 @@ class Gender implements iPersistable
     private $id;
     private $name;
 
-    private $pdo; // Need database connection
+    private $pdo;
 
     /**
-     * Scene constructor.
+     * Gender constructor.
      * @param $name
      * @param $localization
      */
     public function __construct()
     {
-        $this->pdo = Database::dbConnection();
+        $this->pdo = Database::dbConnection(); // Need database connection
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
     /**
@@ -67,7 +75,12 @@ class Gender implements iPersistable
      */
     public function create()
     {
-        // TODO: Implement create() method.
+        $stmt = $this->pdo->prepare('
+                    insert into Genders (Name)
+                    values (:name)
+        ');
+        $stmt->execute(['name' => $this->name]);
+        $this->id = $this->pdo->lastInsertId();
     }
 
     /**
@@ -78,7 +91,8 @@ class Gender implements iPersistable
      */
     public function store()
     {
-        // TODO: Implement store() method.
+        $stmt = $this->pdo->prepare('update Genders set Name = :name where id = :id');
+        $stmt->execute(['name' => $this->name, 'id' => $this->id]);
     }
 
     /**
@@ -89,7 +103,11 @@ class Gender implements iPersistable
      */
     public function destroy()
     {
-        // TODO: Implement destroy() method.
+        try {
+            $stmt = $this->pdo->prepare('delete from Genders where id = :id');
+            $stmt->execute(['id' => $this->id]);
+        } catch (Exception $e) {
+        }
     }
 
     /**

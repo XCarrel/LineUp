@@ -130,6 +130,10 @@ label {
   font-size: 16px;
 }
 
+.button:disabled {
+  background-color: #6c7daf;
+}
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -138,6 +142,52 @@ select {
   border-radius: 0px;
 }
 
+.my-checkbox {
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  border: 1px solid #cacece;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+  padding: 9px;
+  border-radius: 10px;
+  display: inline-block;
+  position: relative;
+  vertical-align: bottom;
+}
+
+.my-checkbox:active, .my-checkbox:checked:active {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.my-checkbox:checked {
+  background-color: #e9ecee;
+  border: 1px solid #adb8c0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+  color: #0000ff;
+}
+
+.my-checkbox:checked:after {
+  content: '\2714';
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  left: 3px;
+  color: #0000ff;
+}
+
+.checkboxlabel {
+  vertical-align: center;
+  display: inline-block;
+  font-size: large;
+  width: 100px;
+  height: 25px;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.adminInput {
+  height: 40px;
+  font-size: large;
+}
 // Artist page
 
 $skew : 15deg;
