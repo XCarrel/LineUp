@@ -9,7 +9,7 @@
 require_once ("sources/model/Genders.php");
 
 /* Get all the data from table Artist */
-$artists = Genders::All();
+$genders = Genders::All();
 
 require_once ("sources/view/adminView.html");
 

@@ -5,13 +5,13 @@
     <title>Administrateur</title>
 </head>
 <body>
-<h1>Administration</h1>
-<h3>Genres</h3>
+<h2>Administration</h2>
+<h4>Genres</h4>
 <?php foreach ($genders as $gender) { ?>
-<input class="checkbox" name="checkbox" type="checkbox" value="<?= $gender->getId() ?>"><?= gender->getName() ?></input>
+<input class="checkbox" name="checkbox" type="checkbox" value="<?= $gender->getId() ?>"><?= $gender->getName() ?></input><br />
 <?php } ?>
 <button class="button" id="btn_delete">Supprimer les sélectionnés</button>
-<button class="button" id="btn_rename">Renommer les sélectionnés en </button><input name="text_rename" type="text" id="text_rename" />
+<button class="button" id="btn_rename">Renommer les sélectionnés en </button><input name="text_rename" type="text" id="text_rename" /><br />
 <button class="button" id="btn">Ajouter</button><input name="text" type="text" id="text_input" />
 </body>
 </html>

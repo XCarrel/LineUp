@@ -29,13 +29,6 @@ class Genders implements iPersistable
         return $this->id;
     }
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return mixed
@@ -103,7 +96,12 @@ class Genders implements iPersistable
         $stmt->execute(['name' => $this->name]);
         $this->id = $this->pdo->lastInsertId();
     }
-
+    /**
+     * Stores the state of the object in the db record(s)
+     *
+     * @return void
+     * @throws exception if the record wasn't created because of some db constraint violation
+     */
     public function store()
     {
         $stmt = $this->pdo->prepare('
@@ -112,7 +110,12 @@ class Genders implements iPersistable
         ');
         $stmt->execute(['name' => $this->name, 'id' => $this->id]);
     }
-
+    /**
+     * Deletes the db record(s)
+     *
+     * @return void
+     * @throws exception if the record couldn't be deleted because of some db constraint violation
+     */
     public function destroy()
     {
         $stmt = $this->pdo->prepare('delete from Genders where id = :id');

@@ -14,6 +14,7 @@ switch ($page)
 {
     case 'home':
     case 'list':
+    case 'admin':
         break;
     case 'info';
     case 'preview';
@@ -26,7 +27,7 @@ switch ($page)
         $errormessage = "Format incorrect (manque l'id de l'artiste)";
     }
     break;
-    case 'api': Echo "salut"; include("sources/controller/apiController.php");
+    case 'api': Echo "salut"; include("sources/api/apiController.php");
     die();
     break;
     default:

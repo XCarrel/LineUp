@@ -27,15 +27,15 @@ $gender->create();
 
 
 /** Get data via POST method and delete records from table */
-$gender_delete = new Genders();
-foreach($_POST['gender'] as $gender_id) {
-    $gender_delete->setId($gender_id);
+foreach($_POST['gender_id'] as $gender_id) {
+    $gender_delete = new Genders();
+    $gender_delete->load($gender_id);
     $gender_delete->destroy();
 }
 
 /** Get the data via POST method and update name in Genders table */
 $gender_update = new Genders();
 $gender_update->setName($_POST['gender_name']);
-$gender_update->setId($_POST['gender_id']);
+$gender_update->load($_POST['gender_id_update']);
 $gender_update->store();
 ?>
