@@ -8,7 +8,7 @@
    <input type="checkbox" name="rbtGender[]" multiple value="<?= $gender->getId() ?>"><?= $gender->getName() ?><br> <!-- "[]" and multiple are necessary to delete more than 1 value at same time -->
    <?php } ?>
    <button id="cmdDelGender" name="cmdDelGender" class="button hidden">Supprimer les sélectionnés</button> <!-- Button is hiden while there is no select items -->
-   <button id="cmdRenameGender" name="cmdRenameGender" class="button hidden">Renommer le sélectionné en</button> <!-- Button is hiden while the is not only 1 item selected --> <input id="RenameGender" name="RenameGender" type="text" class="Input hidden">
+   <button id="cmdRenameGender" name="cmdRenameGender" class="button hidden disabled" disabled>Renommer le sélectionné en</button> <!-- Button is hiden while the is not only 1 item selected --> <input id="RenameGender" name="RenameGender" type="text" class="Input hidden">
    <br>
 </form>
 
