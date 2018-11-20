@@ -110,7 +110,8 @@ class Gender implements iPersistable
      */
     public function store()
     {
-        // TODO: Implement store() method.
+      $stmt = $this->pdo->prepare('update Genders set Name = :name where id = :id');
+      $stmt->execute(['name' => $this->name, 'id' => $this->id]);
     }
 
     /**
@@ -119,10 +120,15 @@ class Gender implements iPersistable
      * @return void
      * @throws exception if the record couldn't be deleted because of some db constraint violation
      */
-    public function destroy()
+    public function destroy() //Delete a gender who isn't empty
     {
          $stmt = $this->pdo->prepare('delete from Genders where id = :id');
-         $stmt->execute(['id' => $this->id]);
+         //try to execute the query, if it doesn't works, there's no crash and nothing happens
+         try {
+            $stmt->execute(['id' => $this->id]);
+         } catch (\Exception $e) {
+
+         }
     }
 
     /**

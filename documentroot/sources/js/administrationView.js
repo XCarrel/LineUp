@@ -15,13 +15,16 @@ $(document).ready(function () {
     $('input:checkbox').change(function () {
         touchCheckbox();
     })
+
+    //Detect when the user press on the keyboard, detect delete and back
+    $('#InputGender').on('keydown', function () {
+      touchInput();
+    })
 })
 
 // Mark the page as dirty, i.e: changes were made
-function touchInput() {
-    let ok = true
-    ok = ($('#InputGender').val().length > 1) // description must be filled
-    if (ok)
+function touchInput() { //Doesn't work 100% well, it let the user put only 1 letter
+    if ($('#InputGender').val().length >=2)
     {
         $('#cmdNewGender').removeClass('disabled'); //Remove the class "disabled"
         $('#cmdNewGender').attr('disabled', false); //Put the button on enable
@@ -35,13 +38,23 @@ function touchInput() {
 
 // Mark the page as dirty, i.e: changes were made
 function touchCheckbox(checkbox) {
-   /*if(checkbox.checked)
-   {*/
-        $('#cmdDelGender').removeClass('hidden');
-        $('#cmdRenameGender').removeClass('hidden');
-   /*}
-   else
+   if(document.querySelectorAll('input[type="checkbox"]:checked').length > 1) //Check how many checkboxes are checked
    {
       $('#cmdDelGender').removeClass('hidden');
-   }*/
+      $('#cmdRenameGender').addClass('hidden');
+      $('#RenameGender').addClass('hidden');
+   }
+   else
+   {
+      $('#cmdRenameGender').removeClass('hidden');
+      $('#cmdDelGender').removeClass('hidden');
+      $('#RenameGender').removeClass('hidden');
+   }
+
+   if(document.querySelectorAll('input[type="checkbox"]:checked').length == 0) //Check how many checkboxes are checked
+   {
+      $('#cmdRenameGender').addClass('hidden');
+      $('#cmdDelGender').addClass('hidden');
+      $('#RenameGender').addClass('hidden');
+   }
 }

@@ -7,6 +7,8 @@
 
 require_once ("sources/model/Gender.php");
 
+error_log(print_r($_POST,1));
+
 if(isset($_POST['cmdNewGender'])) //Create a new gender
 {
    $InputGender = $_POST['InputGender']; //Take the value of "InputGender"
@@ -15,13 +17,26 @@ if(isset($_POST['cmdNewGender'])) //Create a new gender
    $gender->create();
 }
 
-if(isset($_POST['cmdDelGender'])) //Delete a gender
+if(isset($_POST['cmdDelGender'])) //Delete all the genders selected
 {
+   foreach ($_POST['rbtGender'] as $SelectedOption) //Delete the genders selected one and delete them
+   {
+      $gender = new Gender();
+      $gender->setId($SelectedOption);
+      $gender->destroy();
+   }
+}
 
-   $GenderToDel = $_POST['cmdDelGender']; //Take the id stored on "cmdDelGender"
-   $gender = new Gender();
-   $gender->setId($GenderToDel);
-   $gender->destroy();
+if(isset($_POST['cmdRenameGender'])) //Rename the gender selected
+{
+   $RenameGender = $_POST['RenameGender']; //Take the value of "InputGender"
+   foreach ($_POST['rbtGender'] as $SelectedOption) //Select the gender who is checked
+   {
+      $gender = new Gender();
+      $gender->setId($SelectedOption);
+      $gender->setName($RenameGender);
+      $gender->store();
+   }
 }
 
 $genders = Gender::All();
