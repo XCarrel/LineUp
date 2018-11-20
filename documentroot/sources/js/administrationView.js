@@ -4,72 +4,26 @@
 // Oct 2018
 
 $(document).ready(function () {
-
-    // le bouton est désactivé
-    $('#btnAdd').prop('disabled', true);
-
     // le bouton s'active
-    $('#newGender').keypress(function () {
-        btn()
+    $('input').keypress(function () {
+        btnAdd()
+        btnUpdate()
     })
 
     // le bouton s'active
-    $('#newGender').change(function () {
-        btn()
+    $('input').change(function () {
+        btnAdd()
+        btnUpdate()
     })
 
-    // Ajout d'un genre dans la base de données
-    $("#btnAdd").click(function () {
-        $.ajax({
-            method: 'POST',
-            url: "?page=api",
-            data : {
-                gender:$('#newGender').val()
-            },
-            success : function() {
-                location.reload();
-            }
-        })
-    });
-
-    // suppression d'un ou plusieurs genre en même temps dans la base de données
-    $("#btnDel").click(function () {
-        var arr=[];
-
-        $("input:checkbox[name*=gender]:checked").each(function(){
-            arr.push($(this).val());
-        });
-        var p = $('input.benf').serializeArray();
-        console.log(p);
-        console.log(arr);
-        $.ajax({
-            url:'?page=api',
-            type:'post',
-            dataType:'text',
-            data:{genderDel:arr},
-            success:function(data){
-                location.reload();
-            }
-        })
-    });
-
-    // Modifier le nom d'un genre dans la base de données
-    $("#btnUpdate").click(function () {
-        $.ajax({
-            method: 'POST',
-            url: "?page=api",
-            data : {
-                id:$('input[name=gender]:checked').val(),
-                genderUpdate:$('#inputUpdate').val()
-            },
-            success : function() {
-                location.reload();
-            }
-        })
-    });
+    // certains boutons s'affichent ou se cachent suivant le nombre de checkbox checkée
+    $('input:checkbox').click(function () {
+        hideShow()
+    })
 })
 
-function btn()
+// fonction qui disabled ou non le bouton pour ajouter un genre
+function btnAdd()
 {
     let ok = true
     ok = ($('#newGender').val().length > 0) // description must be filled
@@ -77,4 +31,34 @@ function btn()
         $('#btnAdd').prop('disabled', false);
     else
         $('#btnAdd').prop('disabled', true);
+}
+
+// fonction qui disabled ou non le bouton pour renommer un genre
+function btnUpdate()
+{
+    let ok = true
+    ok = ($('#inputUpdate').val().length > 0) // description must be filled
+    if (ok)
+        $('#btnUpdate').prop('disabled', false);
+    else
+        $('#btnUpdate').prop('disabled', true);
+}
+
+// fonction qui affiche ou cache les boutons pour supprimer ou renommer un genre
+function hideShow() {
+    checkboxChecked = $('input:checkbox:checked').length;
+    if (checkboxChecked == 1) // Only one => renaming is allowed
+    {
+        $('#btnUpdate').removeClass('hidden')
+        $('#inputUpdate').removeClass('hidden')
+    }
+    else
+    {
+        $('#btnUpdate').addClass('hidden')
+        $('#inputUpdate').addClass('hidden')
+    }
+    if (checkboxChecked > 0) // at least one selected => can delete
+        $('#btnDel').removeClass('hidden')
+    else
+        $('#btnDel').addClass('hidden')
 }
