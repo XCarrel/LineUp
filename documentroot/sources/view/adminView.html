@@ -1,12 +1,16 @@
 <div class="container">
 
+<form method="post" action="?page=admin">
 
     <div class="description" >
         <h2>Administration</h2>
         <h3>Genre: </h3>
             <?php foreach($genders as $gender) {?>
         <div style="display: block" >
-            <input type="checkbox" name="gender" value="<?= $gender->getId() ?>" data-name="<?= $gender->getName()?>"><?= $gender->getName()?>
+            <label class="container"> <?= $gender->getName()?>
+                <input type="checkbox" type="checkbox" name="genderID[]" value="<?= $gender->getId() ?>" data-name="<?= $gender->getName()?>">
+                <span class="checkmark"></span>
+            </label>
         </div>
 
             <?php } ?>
@@ -17,11 +21,11 @@
     <div class="description">
         <label>Nom: </label>
         <input class="inputBlack" name="name" id="name">
-        <button class="button" id="buttonCreateNewGender" disabled >Ajouter</button>
-        <button class="button" id="buttonDelete">Supprimer les sélectionnés</button>
-        <button class="button" id="buttonUpdateGender">Renommer le sélectionné en </button>
+        <button class="button" type="submit" value="create" name="button" id="buttonCreateNewGender" disabled >Ajouter</button>
+        <button class="button" type="submit" value="delete" name="button" id="buttonDelete">Supprimer les sélectionnés</button>
+        <button class="button" type="submit" value="update" name="button" id="buttonUpdateGender">Renommer le sélectionné en </button>
     </div>
-
+</form>
 
 
 </div>

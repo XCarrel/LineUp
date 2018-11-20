@@ -35,10 +35,6 @@ switch ($page)
         include("sources/controller/$page"."Controller.php");
         die();
         break;
-    case 'apiGender':
-        include("sources/controller/$page"."Controller.php");
-        die();
-        break;
     default:
         $page = 'error';
         $errormessage = "La page demandée n'existe pas";

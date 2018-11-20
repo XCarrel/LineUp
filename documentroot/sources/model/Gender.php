@@ -56,7 +56,10 @@ class Gender implements iPersistable
         $this->name = $name;
     }
 
-    
+    /*
+    * Retrieve all Gender from the database
+    *
+    * */
     public static function all()
     {
         $pdo = Database::dbConnection();
@@ -71,6 +74,10 @@ class Gender implements iPersistable
         return $data;
     }
 
+    /*
+    * Retrieve all informations from Gender
+    *
+    * */
     public function load($id)
     {
         $results = $this->pdo->prepare('
@@ -87,7 +94,11 @@ class Gender implements iPersistable
     public function reload()
     {
     }
-    
+
+    /*
+     * Create a new gender in database
+     *
+     * */
     public function create()
     {
         $results = $this->pdo->prepare('
@@ -98,6 +109,10 @@ class Gender implements iPersistable
         $this->id = $this->pdo->lastInsertId();
     }
 
+    /*
+    * update a gender in database
+    *
+    * */
     public function store()
     {
         $results = $this->pdo->prepare('
@@ -107,10 +122,18 @@ class Gender implements iPersistable
         $results->execute(['name' => $this->name,'id'=> $this->id ]);
     }
 
+    /*
+    * Destroy gender in database
+    *
+    * */
     public function destroy()
     {
-        $results = $this->pdo->prepare('delete from Genders where id = :id');
-        $results->execute(['id' => $this->id]);
+        try{
+            $results = $this->pdo->prepare('delete from Genders where id = :id');
+            $results->execute(['id' => $this->id]);
+        } catch (Exception $e) {
+
+        }
     }
 
 
