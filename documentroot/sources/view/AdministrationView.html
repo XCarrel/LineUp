@@ -2,17 +2,18 @@
 
 <label>Genres</label><br>
 
+<!-- Post used to rename or delete a gender-->
 <form method="post">
    <?php foreach ($genders as $gender) { ?> <!-- Check in the db every gender -->
    <input type="checkbox" name="rbtGender" value="<?= $gender->getId() ?>"><?= $gender->getName() ?><br>
    <?php } ?>
-   <button id="cmdDelGender" class="button hidden">Supprimer les sélectionnés</button> <!-- Button is hiden while there is no select items -->
-   <button id="cmdRenameGender" class="button hidden">Renommer le sélectionné en</button><br> <!-- Button is hiden while the is not only 1 item selected -->
+   <button id="cmdDelGender" name="cmdDelGender" class="button hidden">Supprimer les sélectionnés</button> <!-- Button is hiden while there is no select items -->
+   <button id="cmdRenameGender" name="cmdRenameGender" class="button hidden">Renommer le sélectionné en</button><br> <!-- Button is hiden while the is not only 1 item selected -->
 </form>
 
 <form method="post"> <!-- Add a gender -->
-   <button id="cmdNewGender" class="button disabled" disabled>Ajouter</button>
-   <input id="InputGender" type="text" name="newGender">
+   <button id="cmdNewGender" name="cmdNewGender" class="button disabled" disabled>Ajouter</button>
+   <input id="InputGender" name="InputGender" type="text" name="newGender">
 </form>
 
 <script src="sources/js/administrationView.js"></script>

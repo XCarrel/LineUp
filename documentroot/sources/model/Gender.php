@@ -36,6 +36,32 @@ class Gender implements iPersistable
     }
 
     /**
+     * Set the value of Name
+     *
+     * @param mixed name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @param mixed id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
      * Load the object's members with the data of the database record with the given id
      * if the id member was set before the call, it is overwritten
      *
@@ -95,7 +121,8 @@ class Gender implements iPersistable
      */
     public function destroy()
     {
-        // TODO: Implement destroy() method.
+         $stmt = $this->pdo->prepare('delete from Genders where id = :id');
+         $stmt->execute(['id' => $this->id]);
     }
 
     /**

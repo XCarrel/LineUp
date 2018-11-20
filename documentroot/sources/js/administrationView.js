@@ -45,17 +45,3 @@ function touchCheckbox(checkbox) {
       $('#cmdDelGender').removeClass('hidden');
    }*/
 }
-
-// Save the current values on the server using a post over ajax
-function save() {
-    $.post(
-        "?page=apiAdmin",
-        {
-            "InputGender": $('#InputGender').val()
-        },
-        function () {
-            $('#cmdNewGender').addClass('disabled');
-            $('#cmdNewGender').attr('disabled', true);
-        }
-    )
-}
