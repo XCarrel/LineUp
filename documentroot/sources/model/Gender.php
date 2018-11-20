@@ -83,7 +83,11 @@ class Gender implements iPersistable
 
     public function store()
     {
-
+        $stmt = $this->pdo->prepare('
+                    update Genders set Name = :name
+                    where id = :id
+        ');
+        $stmt->execute(['name' => $this->name, 'id' => $this->id]);
     }
 
     public function destroy()
@@ -110,6 +114,14 @@ class Gender implements iPersistable
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
 }
