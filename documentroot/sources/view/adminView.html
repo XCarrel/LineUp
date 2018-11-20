@@ -4,7 +4,7 @@
 
 
 <?php foreach ($genders as $gender) { ?>
-    <input type="checkbox" data-gid="<?= $gender->getId() ?>" data-gname="<?= $gender->getName()?>" name="rbtGender"> <?= $gender->getName() ?><br>
+    <input type="checkbox" data-gid="<?= $gender->getId() ?>" data-gname="<?= $gender->getName()?>" name="rbtGender" class="checkbox-round"> <?= $gender->getName() ?><br>
 <?php } ?>
 <br>
     <input type="button" value="Supprimer les sélectionnés" name="deleteGender" id="deleteGender" class=" hiddendiv">

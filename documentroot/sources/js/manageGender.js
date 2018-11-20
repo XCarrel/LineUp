@@ -71,14 +71,16 @@ function touch() {
     let sameR = false
     let sameA = false
     //foreach gender , testing if the text box value is the same. if yes stop the loop.
+    // toUpperCase : compare with both string to toUpperCase
+    //trim : even if the user add a space at the end, he will not be able to add a gender with same name
     actualGender.forEach(function(gender){
         if(!sameA)
         {
-            sameA = gender == $('#addbox').val();
+            sameA = gender.toUpperCase().trim() == $('#addbox').val().toUpperCase().trim();
 
         }
         if(!sameR){
-            sameR = gender == $('#renamebox').val();
+            sameR = gender.toUpperCase().trim() == $('#renamebox').val().toUpperCase().trim();
         }
     });
     okA = ($('#addbox').val().length > 0) // description must be filled

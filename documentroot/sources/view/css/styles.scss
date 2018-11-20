@@ -32,6 +32,15 @@ header {
 .hiddendiv{
     display: none !important;
 }
+//Checkbox style
+.checkbox-round {
+    width: 2em;
+    height: 2em;
+    border-radius: 100%;
+    vertical-align: middle;
+    border-radius: 50%;
+    cursor: pointer;
+}
 // Menu stuff
 
 $menuHeight: 50px;

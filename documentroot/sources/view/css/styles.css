@@ -30,6 +30,15 @@ header {
   display: none !important;
 }
 
+.checkbox-round {
+  width: 2em;
+  height: 2em;
+  border-radius: 100%;
+  vertical-align: middle;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 nav {
   height: 50px;
   font-family: 'riffic', Fallback, sans-serif;
