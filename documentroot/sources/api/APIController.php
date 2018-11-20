@@ -1,13 +1,13 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Xavier
- * Date: 28.10.18
- * Time: 11:53
+ * Created by ATOM.
+ * User: Jarod
+ * Date: 20.11.2018
+ * Time: 10:33
  */
 
 extract ($_POST); // $artistid, $description, $countryid, $genderid ||||||||$action $genderName $genderOldName $genderNewName $gendersid[]
-error_log(print_r($gendersid,1));
+
 require_once ("sources/model/Artist.php");
 require_once ("sources/model/Gender.php");
 if(isset($_POST['artistid']))

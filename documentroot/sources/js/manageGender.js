@@ -1,7 +1,7 @@
-// Code that allows viewing and editing artists' data from the same page
+// Code that allows to manage gender.
 // using ajax and no form
-// X. Carrel
-// Oct 2018
+// Jarod Streckeisen
+// 20 November 2018
 var actualGender=[];
 var actualCheckedGenderID=[]; //Get ID of checked genders
 $(document).ready(function () {
@@ -68,8 +68,8 @@ var g
 function touch() {
     let okR = true
     let okA = true
-    let sameR = false
-    let sameA = false
+    let sameR = false // value for rename box
+    let sameA = false //value for add box
     //foreach gender , testing if the text box value is the same. if yes stop the loop.
     // toUpperCase : compare with both string to toUpperCase
     //trim : even if the user add a space at the end, he will not be able to add a gender with same name
