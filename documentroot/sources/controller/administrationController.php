@@ -11,20 +11,15 @@ require_once ("sources/model/Gender.php");
 
 $genders = new Gender();
 
-error_log("LIST");
-var_dump($_POST);
 extract($_POST);
-
 
 if(isset($add)){
     $gender = new Gender();
-
     $gender->setName($genderToAdd);
     $gender->create();
 }
 
 if(isset($delete)){
-
     foreach($genderId as $id) :
         $gender = new Gender();
         $gender->load($id);
