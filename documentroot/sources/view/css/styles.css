@@ -13,9 +13,6 @@ header {
 .hidden {
   display: none !important; }
 
-.red {
-  background-color: red !important; }
-
 nav {
   height: 50px;
   font-family: 'riffic', Fallback, sans-serif;
@@ -99,6 +96,9 @@ label {
   text-decoration: none;
   display: inline-block;
   font-size: 16px; }
+
+.button:disabled {
+  background-color: #6c6c6c; }
 
 .disabled {
   background-color: #9e9ebe !important; }
