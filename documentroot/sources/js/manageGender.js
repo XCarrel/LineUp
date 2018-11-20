@@ -3,39 +3,37 @@
 // X. Carrel
 // Oct 2018
 var actualGender=[];
-var actualCheckedGender=[];
-var singleGender = {};
+var actualCheckedGenderID=[]; //Get ID of checked genders
 $(document).ready(function () {
 
-    //Change event . that will listen if a checkbox is checked or unchecked
+    //Change event . It will listen if a checkbox is checked or unchecked
     $('input[type=checkbox][name=rbtGender]').change(function() {
-        actualCheckedGender=[];
-
+        let nbchecked = 0;
+        actualCheckedGenderID=[];
         //saving all the selected gender
         $('input[type=checkbox][name=rbtGender]:checked').each(function () {
-            //singleGender.id = $(this).data('gid');
-            //singleGender.name = $(this).data('gname');
-            actualCheckedGender.push($(this).data('gname'));
+            nbchecked++;
+            actualCheckedGenderID.push($(this).data('gid'));
         });
         //triggering view when checkbox are selected
-        if(actualCheckedGender.length == 0)
+        if(nbchecked == 0)
         {
             $('#renamebox').removeClass('textbox').addClass('hiddendiv');
             $('#renameGender').removeClass('button').addClass('hiddendiv');
             $('#deleteGender').removeClass('button').addClass('hiddendiv');
         }
-        else if (actualCheckedGender.length == 1)
+        else if (nbchecked == 1)
         {
             $('#renamebox').removeClass('hiddendiv').addClass('textbox');
-            $('#renameGender').removeClass('hiddendiv').addClass('button');
+            $('#renameGender').removeClass('hiddendiv').addClass('hidden');
             $('#deleteGender').removeClass('hiddendiv').addClass('button');
         }
         else{
             $('#renamebox').removeClass('textbox').addClass('hiddendiv');
             $('#renameGender').removeClass('button').addClass('hiddendiv');
         }
-        console.log(actualCheckedGender);
 
+        console.log(actualCheckedGenderID);
     });
     //saving all existing gender name
     $('input[type=checkbox][name=rbtGender]').each(function(){
@@ -47,46 +45,46 @@ $(document).ready(function () {
     $('#addbox').keyup(function () {
         touch()
     })
-    // Make the save button appear when a change is made in the page
-    /*$('input').keypress(function () {
+    $('#renamebox').keyup(function () {
         touch()
     })
-    $('input:radio').click(function () {
-        touch()
-    })
-    $('select').change(function () {
-        touch()
-    })
-
-    $('textarea').on('paste', function () {
-        touch()
-    })*/
-
-
-    // Save
+    // Call Save function
     $('#addGender').click(function () {
         addGender();
     })
-    $('$renameGender').click(function(){
+    //Call rename function
+    $('#renameGender').click(function(){
         renameGender();
+    });
+    //Call delete function
+    $('#deleteGender').click(function(){
+        removeGender();
+        console.log("i'm clicked");
     });
 
 })
 var g
 // Mark the page as dirty, i.e: changes were made
 function touch() {
-    let ok = true
-    let same = false
+    let okR = true
+    let okA = true
+    let sameR = false
+    let sameA = false
     //foreach gender , testing if the text box value is the same. if yes stop the loop.
     actualGender.forEach(function(gender){
-        if(!same)
+        if(!sameA)
         {
-            same = gender == $('#addbox').val();
+            sameA = gender == $('#addbox').val();
+
+        }
+        if(!sameR){
+            sameR = gender == $('#renamebox').val();
         }
     });
-    ok = ($('#addbox').val().length > 0) // description must be filled
+    okA = ($('#addbox').val().length > 0) // description must be filled
+    okR = ($('#renamebox').val().length > 0)
     //if description is not empty and there isn't any gender with the same name, allow to press "add" button
-    if (ok && same == false){
+    if (okA && sameA == false){
         $('#addGender').removeClass('hidden')
         $('#addGender').addClass('button')
     }
@@ -94,9 +92,17 @@ function touch() {
         $('#addGender').addClass('hidden')
         $('#addGender').removeClass('button')
     }
+    if(okR && sameR == false){
+        $('#renameGender').removeClass('hidden')
+        $('#renameGender').addClass('button')
+    }
+    else{
+        $('#renameGender').addClass('hidden')
+        $('#renameGender').removeClass('button')
+    }
 }
 
-// Save the current values on the server using a post over ajax
+// Add gender
 function addGender() {
     $.post(
         "?page=api",
@@ -115,22 +121,27 @@ function addGender() {
     )
     location.reload();
 }
+//Rename gender
 function renameGender() {
     $.post(
         "?page=api",
         {
             "action" : "rename",
-            "genderOldName": actualCheckedGender[0],
+            "genderid" : actualCheckedGenderID[0],
             "genderNewName": $('#renamebox').val()
         },
-        function () {
-            /*$('#lblSaved').removeClass('hidden')
-            $('#cmdSave').addClass('hidden')
-            setTimeout(function(){
-                $('#lblSaved').addClass('hidden')
-            }, 1500)*/
-        }
+    )
+    location.reload();
+}
+// Remove gender
+function removeGender() {
+    $.post(
+        "?page=api",
+        {
+            "action" : "remove",
+            "gendersid" : actualCheckedGenderID
 
+        },
     )
     location.reload();
 }

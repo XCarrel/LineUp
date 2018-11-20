@@ -87,7 +87,8 @@ class Gender implements iPersistable
      */
     public function store()
     {
-        // TODO: Implement store() method.
+        $stmt = $this->pdo->prepare('update Genders set Name = :name where id = :id');
+        $stmt->execute(['name' => $this->name, 'id' => $this->id]);
     }
 
     /**
@@ -98,7 +99,14 @@ class Gender implements iPersistable
      */
     public function destroy()
     {
-        // TODO: Implement destroy() method.
+        //Handle error if we delete an used gender. Avoid it to appear in the error.log file
+        try{
+            $stmt = $this->pdo->prepare('delete from Genders where id = :id');
+            $stmt->execute(['id' => $this->id]);
+        }
+        catch(Exception $e){
+
+        }
     }
 
     /**
