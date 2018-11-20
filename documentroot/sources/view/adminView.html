@@ -4,27 +4,18 @@
 
 <form class="customcheckbox">
     <?php foreach ($genders as $gender) { ?>
-    <input type="checkbox" name="cbxgender" value="<?= $gender->getId() ?>"> <?= $gender->getName() ?> <br>
+    <input class="cbxgender" type="checkbox" value="<?= $gender->getId() ?>"> <?= $gender->getName() ?> <br>
     <?php } ?>
 </form>
 
 
+<button id="btnDelete" class="button hidden">Supprimer les sélectionnés</button>
+<button id="btnRename" class="button hidden">Renommer le sélectionné en</button>
+<input id="tbxRename" type="text" name="tbxAdd" class="hidden" value="">
 
-<button id="btnAdd" class="button" disabled>Ajouter</button>
-
-<input id="tbxAdd" type="text" name="tbxAdd" value="">
-
-
-<button id="btnDelete" class="button hidden">Enregistrer</button>
-<button id="btnRename" class="button hidden">Enregistrer</button>
-
-<br><br><br><br><br><br><br><br>
-
-
-<span id="rbtgender">
-    <?php foreach ($genders as $gender) { ?>
-    <input type="radio" data-gid="<?= $gender->getId() ?>" name="rbtgender"><?= $gender->getName() ?>
-    <?php } ?>
-</span>
+<form action = "?page=apiga"  method = "POST">
+    <button id="btnAdd" class="button" disabled>Ajouter</button>
+    <input id="tbxAdd" type="text" name="tbxAdd" value="">
+</form>
 
 <script src="sources/js/adminView.js"></script>

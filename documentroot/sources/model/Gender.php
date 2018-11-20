@@ -1,10 +1,13 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Xavier
+ * User: Philippe B.
  * Date: 02.10.18
  * Time: 15:21
  */
+
+require_once "sources/model/iPersistable.php";
+require_once "sources/model/Database.php";
 
 class Gender implements iPersistable
 {
@@ -62,7 +65,7 @@ class Gender implements iPersistable
      */
     public function reload()
     {
-        // TODO: Implement reload() method.
+         $this->load($this->id);
     }
 
     /**
@@ -89,7 +92,11 @@ class Gender implements iPersistable
      */
     public function store()
     {
-        // TODO: Implement store() method.
+        $stmt = $this->pdo->prepare('
+                    update Gender set Name = :name
+                    where id = :id
+        ');
+        $stmt->execute(['name' => $this->name,'descr' => $this->description,'gender' => $this->gender_id,'country' => $this->country_id,'contract' => $this->contract_id,'pic' => $this->picture, 'id' => $this->id]);
     }
 
     /**
@@ -100,7 +107,8 @@ class Gender implements iPersistable
      */
     public function destroy()
     {
-        // TODO: Implement destroy() method.
+        $stmt = $this->pdo->prepare('delete from Genders where id = :id');
+        $stmt->execute(['id' => $this->id]);
     }
 
     /**

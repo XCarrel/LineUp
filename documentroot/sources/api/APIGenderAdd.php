@@ -14,5 +14,7 @@ $gender = new Gender();
 $gender->setName($gendername);
 $gender->create();
 
+//require_once ("sources/view/adminView.html");
+
 ?>
 

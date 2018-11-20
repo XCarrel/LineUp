@@ -1,6 +1,6 @@
 // Code that allows viewing and editing artists' data from the same page
 // using ajax and no form
-// X. Carrel
+// Philippe B.
 // Oct 2018
 
 $(document).ready(function () {
@@ -12,10 +12,35 @@ $(document).ready(function () {
 
     // Add new gender
     $('#btnAdd').click(function () {
-        addGender()
+        //addGender()
     })
 
+
+    $('.cbxgender').change(function(){
+        var idcheck = $(this).val();
+        if ($(this).is(":checked")) {
+            $('#btnDelete').removeClass('hidden')
+            $('#btnRename').removeClass('hidden')
+            $('#tbxRename').removeClass('hidden')
+        } else {
+            $('#btnDelete').addClass('hidden')
+            $('#btnRename').addClass('hidden')
+            $('#tbxRename').addClass('hidden')
+        }
+    });
+
 })
+
+function showtime() {
+    var checkBox3000 = document.getElementById("cbxgender");
+    var btn = document.getElementById("btnRename");
+    if (checkBox3000.checked == true) {
+        $('#btnRename').removeClass('hidden')
+    }
+    else {
+        $('#btnRename').addClass('hidden')
+    }
+}
 
 // Mark the page as dirty, i.e: changes were made
 function touch() {
@@ -28,7 +53,7 @@ function touch() {
 }
 
 // Add the current value on the server using a post over ajax
-function addGender() {
+/*function addGender() {
     $.post(
         "?page=apiga",
         {
@@ -42,3 +67,4 @@ function addGender() {
         }
     )
 }
+*/
