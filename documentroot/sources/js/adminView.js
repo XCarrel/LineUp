@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // Make the save button appear when a change is made in the page
-    $('input').keypress(function () {
+    $('UpdateGender').keypress(function () {
         touch2()
     })
     $('input:checkbox').click(function () {

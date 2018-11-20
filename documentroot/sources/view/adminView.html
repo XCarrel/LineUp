@@ -6,16 +6,17 @@
 
 
 
-<form method="post"  action="APIGenderController.php">
+<form method="post"  action="APIGenderController">
     <?php foreach ($genders as $gender) { ?>
     <input type="checkbox" name="rbtGender" value="<?= $gender->getId() ?>"><?= $gender->getName() ?><br>
     <?php } ?>
     <button id="cmdDeleteGender" name="cmdDeleteGender" class="button ">Supprimer les sélectionnés</button>
-    <button id="cmdUpdateGender" name="cmdUpdateGender" class="button ">Renommer le sélectionné en</button> <input id="UpdateGender" name="UpdateGender" type="text" class="Input"><br>
+    <button id="cmdUpdateGender" name="cmdUpdateGender" class="button ">Renommer le sélectionné en</button> <input id="UpdateGender" name="UpdateGender" type="text" class="Input">
+    <br>
 </form>
 
 
-<form method="post" action="APIGenderController.php">
+<form method="post" action="APIGenderController">
     <button id="cmdCreateGender" name="cmdCreateGender" class="button " >Ajouter</button>
     <input id="InputGender" name="InputGender" type="text" name="newGender">
 </form>

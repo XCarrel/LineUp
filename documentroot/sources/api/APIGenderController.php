@@ -10,7 +10,7 @@ require_once ("sources/model/Gender.php");
 
 if (isset($_POST["cmdCreateGender"])) {
 
-    $InputGender = $_POST['InputGender']; //Take the value of "InputGender"
+    $InputGender = $_POST['UpdateGender']; //Take the value of "UpdateGender"
     $gender = new Gender();
     $gender->setName($InputGender);
     $gender->create();
@@ -19,7 +19,7 @@ if (isset($_POST["cmdCreateGender"])) {
 
 else if (isset($_POST["cmdUpdateGender"])) {
 
-    $RenameGender = $_POST['UpdateGender']; //Take the value of "InputGender"
+    $RenameGender = $_POST['UpdateGender']; //Take the value of "UpdateGender"
     foreach ($_POST['rbtGender'] as $SelectedOption) //Select the gender who is checked
     {
         $gender = new Gender();
@@ -30,7 +30,8 @@ else if (isset($_POST["cmdUpdateGender"])) {
 
 }
 
-else if (isset($_POST["cmdDeleteGender"])) {
+else if (isset($_POST["cmdDeleteGender"]))
+{
     foreach ($_POST['rbtGender'] as $SelectedOption) //Delete the genders selected one and delete them
     {
         $gender = new Gender();
