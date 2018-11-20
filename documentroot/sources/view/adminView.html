@@ -2,15 +2,17 @@
 
 <h2>Genres</h2>
 
+<form method="post" action="?page=admin">
 <?php foreach($genders as $gender){ ?>
-<input type="checkbox" name="<?= $gender->getName() ?>" value="<?= $gender->getId() ?>"><?= $gender->getName() ?><br>
+<input type="checkbox" name="genders[]" value="<?= $gender->getId() ?>"><?= $gender->getName() ?><br>
 <?php } ?>
 
-<button id="cmdDelete" class="button hidden">Supprimer les sélectionnés</button>
-<button id="cmdRename" class="button hidden disabled" disabled>Renommer le sélectionné en</button>
+<button id="cmdDelete" class="button hidden" name="delete">Supprimer les sélectionnés</button>
+<button id="cmdRename" class="button hidden disabled" name="rename" disabled>Renommer le sélectionné en</button>
 <input class="renameGender hidden" type="text" name="renameGender"></br>
 
-<button id="cmdAdd" class="button disabled" disabled>Ajouter</button>
+<button id="cmdAdd" class="button disabled" name="add" disabled>Ajouter</button>
 <input class="addGender" type="text" name="newGender"></br>
+</form>
 
 <script src="sources/js/adminView.js"></script>

@@ -6,6 +6,8 @@
  * Time: 14:42
  */
 
+
+/* Not used anymore
 extract ($_POST);
 
 require_once ("sources/model/Gender.php");

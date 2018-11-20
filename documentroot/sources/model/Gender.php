@@ -6,9 +6,7 @@
  * Time: 15:21
  */
 
-//Required so we can use Genders anywhere without problems.
-require_once "sources/model/Database.php";
-require_once "sources/model/iPersistable.php";
+
 
 class Gender implements iPersistable
 {
@@ -92,7 +90,7 @@ class Gender implements iPersistable
                     update Genders set Name = :name
                     where id = :id
         ');
-        $stmt->execute(['name' => $this->name]);
+        $stmt->execute(['name' => $this->name, 'id' => $this->id]);
     }
 
     /**

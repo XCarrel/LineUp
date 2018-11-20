@@ -8,14 +8,14 @@ $(document).ready(function () {
     })
 
     $('input:checkbox').change(function () {
-        getCheckedCheckbox()
+        //getCheckedCheckbox()
         showbuttons()
     })
     $('.renameGender').keypress(function () {
         enableRename()
     })
 })
-
+/* AJAX
 $('#cmdAdd').click(function () {
     save()
 })
@@ -27,6 +27,7 @@ $('#cmdDelete').click(function () {
 $('#cmdRename').click(function () {
     renameGender()
 })
+*/
 
 // Check if the page as changed. Used only when we want to create a new gender.
 function touch() {
@@ -37,9 +38,24 @@ function touch() {
 
 // If a checkbox has been checked, we shows the buttons. Enable function is for checkbox.
 function showbuttons(){
-    $('#cmdDelete').removeClass('hidden');
-    $('#cmdRename').removeClass('hidden');
-    $('.renameGender').removeClass('hidden');
+    numberOfChecked = $('input:checkbox:checked').length; //Check how many checkboxes has been checked.
+    if (numberOfChecked == 1) // If there's a checkbox selected, we show the button.
+    {
+        $('.renameGender').removeClass('hidden');
+        $('#cmdRename').removeClass('hidden');
+    }
+    else
+    {
+        $('.renameGender').addClass('hidden');
+        $('#cmdRename').addClass('hidden');
+    }
+    if (numberOfChecked > 0) // If there's more than one, hide the delete button.
+    {
+        $('#cmdDelete').removeClass('hidden');
+    }
+    else{
+        $('#cmdDelete').addClass('hidden');
+    }
 }
 
 function enableRename(){
@@ -47,17 +63,22 @@ function enableRename(){
     $('#cmdRename').prop('disabled',false);
 }
 
+
+/* AJAX
 // Check what checkbox as been checked. As we can have multiple checkbox selected, we have to create an array.
 function getCheckedCheckbox(){
-    /* declare an checkbox array */
+    // declare an checkbox array
+
     var chkArray = [];
 
-    /* look for all checkboxes that have a class 'chk' attached to it and check if it was checked */
+    // look for all checkboxes that have a class 'chk' attached to it and check if it was checked
     $("input:checkbox:checked").each(function() {
         chkArray.push($(this).val());
     });
     return chkArray
 }
+
+
 
 // Add the new value the user has typed
 function save() {
@@ -100,3 +121,4 @@ function renameGender(){
         }
     )
 }
+*/
