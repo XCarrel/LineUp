@@ -4,7 +4,7 @@
 
     <div id="listCheckbox">
         <?php foreach($genders::All() as $gender) : ?>
-        <input type="checkbox" class="regular-checkbox" name="genderId" data-gendername="<?= $gender->getName() ?>" value="<?= $gender->getId() ?>" data-genderid="<?= $gender->getId()?>"> <span class="white"> <?= $gender->getName() ?></span><br>
+        <input type="checkbox" class="regular-checkbox" name="genderId[]" data-gendername="<?= $gender->getName() ?>" value="<?= $gender->getId() ?>" data-genderid="<?= $gender->getId()?>"> <span class="white"> <?= $gender->getName() ?></span><br>
 
         <?php endforeach; ?>
     </div>

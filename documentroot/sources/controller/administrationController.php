@@ -16,15 +16,6 @@ var_dump($_POST);
 extract($_POST);
 
 
-//            break;
-//        }else if($typeRequest === "delete"){ // deleteList must be set for the "delete" request
-//
-//        }else if($typeRequest === "rename"){ // genderToRename must be set for the "delete" request
-//            $gender = new Gender();
-//            // Not finished
-//        }
-//        break;
-
 if(isset($add)){
     $gender = new Gender();
 
@@ -33,18 +24,17 @@ if(isset($add)){
 }
 
 if(isset($delete)){
-    foreach($deleteList as $toDeleteGender) :
+
+    foreach($genderId as $id) :
         $gender = new Gender();
-        $gender->load($toDeleteGender);
+        $gender->load($id);
         $gender->destroy();
-    endforeach;;
-    echo 'delete';
+    endforeach;
 }
 
-////array(4) { ["genderId"]=> string(2) "12" ["rename"]=> string(0) "" ["genderToDeleteOrRename"]=> string(8) "TEST1234" ["genderToAdd"]=> string(0) "" } genderId: 12renameif(isset($rename)){
 if(isset($rename)){
     $gender = new Gender();
-    $gender->setId($genderId);
+    $gender->setId($genderId[0]);
     $gender->setName($genderToDeleteOrRename);
     $gender->store();
 }
