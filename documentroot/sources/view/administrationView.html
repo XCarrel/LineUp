@@ -1,18 +1,20 @@
 <h1>Administration</h1>
 
 <h2>Genre</h2><br>
+<form method="post">
     <?php foreach ($genders as $gender) { ?>
-        <input type="checkbox" name="gender" id="checkGender" value="<?= $gender->getId() ?>"><?= $gender->getName() ?><br>
+        <input type="checkbox" name="genders[]" id="chk<?= $gender->getId() ?>" value="<?= $gender->getId() ?>"><?= $gender->getName() ?><br>
     <?php } ?>
-<br>
+    <br>
 
-<!-- Trois boutons pour supprimé ou modifié un nom dans la base de données -->
-<button id="btnDel" class="button">Supprimer les sélectionnés</button>
-<button id="btnUpdate" class="button">Renommer le sélectionné en </button>
-<input type="text" id="inputUpdate"/><br>
+    <!-- Trois boutons pour supprimé ou modifié un nom dans la base de données -->
+    <button id="btnDel" name="delete" class="button hidden">Supprimer les sélectionnés</button>
+    <button id="btnUpdate" name="update" class="button hidden" disabled>Renommer le sélectionné en </button>
+    <input type="text" id="inputUpdate" name="updatetext" class="hidden"/><br>
 
-<!-- bouton permettant d'ajouter un nouveau genre -->
-<button id="btnAdd" class="button">Ajouter</button>
-<input type="text" id="newGender"/>
+    <!-- bouton permettant d'ajouter un nouveau genre -->
+    <button id="btnAdd" name="add" class="button" disabled>Ajouter</button>
+    <input type="text" name="addtext" id="newGender"/>
+</form>
 
 <script src="sources/js/administrationView.js"></script>
