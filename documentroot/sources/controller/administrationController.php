@@ -23,9 +23,12 @@ if (isset($delete))
 {
     foreach ($genders as $genderID)
     {
-        $genderDelete = new Gender();
-        $genderDelete->load($genderID);
-        $genderDelete->destroy();
+        try {
+            $genderDelete = new Gender();
+            $genderDelete->load($genderID);
+            $genderDelete->destroy();
+        }
+        catch (Exception $ex) {}
     }
 }
 if (isset($update))
