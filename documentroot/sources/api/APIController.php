@@ -9,6 +9,8 @@
 extract ($_POST); // $artistid, $description, $countryid, $genderid
 
 require_once ("sources/model/Artist.php");
+require_once ("sources/model/Gender.php");
+require_once ("sources/model/Country.php");
 
 $artist = new Artist();
 $artist->load($artistid);
@@ -16,12 +18,6 @@ $artist->setDescription($description);
 $artist->setCountryId($countryid);
 $artist->setGenderId($genderid);
 $artist->store();
-
-
-require_once ("sources/model/Gender.php");
-$gender = new Gender();
-$gender->load($genderid);
-$gender->store();
 
 ?>
 

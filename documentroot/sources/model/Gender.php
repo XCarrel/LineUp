@@ -78,9 +78,9 @@ class Gender implements iPersistable
     {
         $stmt = $this->pdo->prepare('
                     insert into Genders (Name)
-                    values (:name)
+                    values (:Name)
         ');
-        $stmt->execute(['name' => $this->name]);
+        $stmt->execute(['Name' => $this->name]);
         $this->id = $this->pdo->lastInsertId();
     }
 
@@ -123,9 +123,9 @@ class Gender implements iPersistable
         $stmt->execute();
         foreach ($stmt->fetchAll() as $item)
         {
-            $gender = new Gender();
-            $gender->load($item['id']);
-            $res[] = $gender;
+            $artist = new Gender();
+            $artist->load($item['id']);
+            $res[] = $artist;
         }
         return $res;
     }

@@ -6,20 +6,19 @@
 
 
 
-
-
-<span id="rbtgender">
+<form method="post"  action="APIGenderController.php">
     <?php foreach ($genders as $gender) { ?>
-    <input type="checkbox" data-cid="<?= $gender->getId() ?>" name="rbtgender" ><?= $gender->getName() ?></a><br>
+    <input type="checkbox" name="rbtGender" value="<?= $gender->getId() ?>"><?= $gender->getName() ?><br>
     <?php } ?>
-</span><br>
+    <button id="cmdDeleteGender" name="cmdDeleteGender" class="button ">Supprimer les sélectionnés</button>
+    <button id="cmdUpdateGender" name="cmdUpdateGender" class="button ">Renommer le sélectionné en</button> <input id="UpdateGender" name="UpdateGender" type="text" class="Input"><br>
+</form>
 
-<button id="cmdDelGender" class="button hidden">supprimer sélectionné</button>
-<button id="cmdModGender" class="button hidden">modifier sélectionné</button> <input type="text" id="EditGenderText" name="name" class="hidden"><br>
 
-<a ><button id="cmdAjoutGender" class="button " disabled>Ajouter</button> <input type="text" id="AddGenderText" name="name"  ></a>
-<div id="lblSaved" class="flashmsg hidden">
-    <h4>Données enregistrées</h4>
-</div>
+<form method="post" action="APIGenderController.php">
+    <button id="cmdCreateGender" name="cmdCreateGender" class="button " >Ajouter</button>
+    <input id="InputGender" name="InputGender" type="text" name="newGender">
+</form>
+
 
 <script src="sources/js/adminView.js"></script>

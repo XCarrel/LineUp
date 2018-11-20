@@ -4,7 +4,7 @@ $(document).ready(function () {
     $('input').keypress(function () {
         touch2()
     })
-    $('input:radio').click(function () {
+    $('input:checkbox').click(function () {
         touch()
     })
 
@@ -45,7 +45,7 @@ function touch2(){
 }
 
 function del(){
-        $("input:radio[name*=gender]:checked").each(function(){
+        $("input:checkbox[name*=gender]:checked").each(function(){
             arr.push($(this).val());
         });
         $.ajax({
@@ -66,12 +66,12 @@ function edit(){
 function save() {
     // find out the country id
     let cid = 0
-    $('input:radio').each( function() {
+    $('input:checkbox').each( function() {
         if ($(this).prop('checked')) cid = $(this).data('cid')
     })
 
     $.post(
-        "?page=api",
+        "?page=APIGender",
         {
             "genderid": $('#genderId').val(),
             "Name" : $('#name').val(),

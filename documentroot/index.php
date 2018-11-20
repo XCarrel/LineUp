@@ -33,9 +33,14 @@ switch ($page)
             $errormessage = "Format incorrect (manque l'id de l'artiste)";
         }
         break;
+
     case 'api':
         include("sources/api/APIController.php"); // "call" to the controller
         die(); // we don't want to return the layout html on the API
+        break;
+    case 'apiGender':
+        include("sources/controller/APIGenderController.php");
+        die();
         break;
     default:
         $page = 'error';

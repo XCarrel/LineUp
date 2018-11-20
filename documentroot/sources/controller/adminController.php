@@ -12,9 +12,6 @@ require_once ("sources/model/Country.php");
 require_once ("sources/model/ContractType.php");
 
 $genders = Gender::All();
-$gender = new Gender();
-$gender->load($genderId);
-
 require_once ("sources/view/adminView.html");
 
 ?>
