@@ -1,36 +1,31 @@
 $(function(){
-    // $('#textarea-description, #select-gender, input[name="country"]').on('change keyup paste', function(){
-    //     showButtonAfterChanges();
-    // });
-
 
     /** -- ADD -- **/
-    $('#Add').click(function () {
+    // $('#Add').click(function () {
+    //
+    //     if($("#genderToAdd").val().length === 0) // If the input is empty, we don't do anything
+    //         return false;
+    //
+    //     data = {};
+    //     data.request = "gender";
+    //     data.typeRequest = "add";
+    //     data.toAdd = $("#genderToAdd").val();
+    //
+    //     $.ajax({
+    //         type: "POST",
+    //         url:  "?page=api",
+    //         data: data
+    //     }).done(function(){
+    //         // If all is ok, we decide to put the actual input into the list
+    //         $('#listCheckbox').append(addNewCheckBoxToDom($("#genderToAdd").val()));
+    //     }).fail(function () {
+    //         alert('fail');
+    //     });
+    // });
 
-        if($("#genderToAdd").val().length === 0) // If the input is empty, we don't do anything
-            return false;
-
-
-        data = {};
-        data.request = "gender";
-        data.typeRequest = "add";
-        data.toAdd = $("#genderToAdd").val();
-
-        $.ajax({
-            type: "POST",
-            url:  "?page=api",
-            data: data
-        }).done(function(){
-            // If all is ok, we decide to put the actual input into the list
-            $('#listCheckbox').append(addNewCheckBoxToDom($("#genderToAdd").val()));
-        }).fail(function () {
-            alert('fail');
-        });
-    });
-
-    $('#genderToAdd').on('change keyup paste', function(){
+    $('#genderToAdd').on('change keyup paste remove', function(){
         $('input[name="gender"]').each(function(){
-            if($("#genderToAdd").val().toLowerCase() === $(this).val().toLowerCase()){
+            if($("#genderToAdd").val().toLowerCase() === $(this).val().toLowerCase() || $("#genderToAdd").val().length === 0){
                 deactivateButton("#Add");
                 return false; // This is important ! (must be false). It will make the each loop stop at it
             }else{
@@ -69,9 +64,9 @@ $(function(){
         });
     });
 
-    $('#genderToDelete').on('change keyup paste', function(){
+    $('#genderToDelete').on('change keyup paste remove', function(){
         $('input[name="gender"]').each(function(){
-            if($("#genderToDelete").val().toLowerCase() === $(this).val().toLowerCase()){
+            if($("#genderToDelete").val().toLowerCase() === $(this).val().toLowerCase()){ //
                 deactivateButton("#renameSelected");
                 return false; // This is important ! (must be false). It will make the each loop stop at it
             }else{
@@ -81,7 +76,6 @@ $(function(){
     });
 
     /** ---- END DELETE ---- **/
-
 
     /** -- RENAME -- **/
 
@@ -107,8 +101,6 @@ $(function(){
     });
     /** ---END RENAME ---- */
 
-
-
     $('input[type="checkbox"]').click(function () {
         $totalSelectedCheckBox = $("body").find('input[type="checkbox"]:checked').length;
         if($totalSelectedCheckBox === 1){
@@ -119,11 +111,6 @@ $(function(){
             disableRenameSelected();
         }
     });
-
-    /*
-            <button type="button" id="DeleteSelected">Supprimer les sélectionnés</button>
-        <button type="button" id="RenameSelected" class="hidden">Renommer le sélectionné en</button>
-     */
 
     function deactivateButton($button){
         $($button).attr("disabled", "");

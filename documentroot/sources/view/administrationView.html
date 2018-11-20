@@ -1,21 +1,20 @@
 <h1>Administration</h1>
 
-<form action="?page=api&typeRequest=changeGender" method="post">
+<form action="?page=administration" method="post">
 
     <div id="listCheckbox">
         <?php foreach($genders::All() as $gender) : ?>
-            <input type="checkbox" name="gender" value="<?= $gender->getName() ?>" data-genderid="<?= $gender->getId()?>"> <span class="white" style="color: white;"> <?= $gender->getName() ?></span><br>
+            <input type="checkbox" class="regular-checkbox" name="gender" value="<?= $gender->getName() ?>" data-genderid="<?= $gender->getId()?>"> <span class="white"> <?= $gender->getName() ?></span><br>
         <?php endforeach; ?>
     </div>
 
-    <div id="afterSelectedCheckbox" class="">
-        <button type="button" id="deleteSelected">Supprimer les sélectionnés</button>
-        <button type="button" id="renameSelected" disabled>Renommer le sélectionné en</button>
-        <input type="text" name="text-add" id="genderToDelete" > <br>
+    <div id="afterSelectedCheckbox" class="hidden">
+        <button type="button" id="deleteSelected" name="delete">Supprimer les sélectionnés</button>
+        <button type="button" id="renameSelected" name="rename" disabled >Renommer le sélectionné en</button>
+        <input type="text" name="text-add" id="genderToDelete"> <br>
     </div>
-    <button type="button" id="Add">Ajouter</button>
-    <input type="text" name="text-add" id="genderToAdd" >
+    <input type="submit" id="Add" name="add" value="Ajouter" disabled>
+    <input type="text" name="genderToAdd" id="genderToAdd">
 </form>
-
 
 <script src="sources/view/js/administration.js"></script>

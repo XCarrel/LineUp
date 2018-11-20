@@ -23,26 +23,6 @@ switch($request){
         $artist->setGenderId($genderid);
         $artist->store();
         break;
-    case 'gender':
-
-
-        if($typeRequest === "add"){ // toAdd must be set for the "add" request
-            $gender = new Gender();
-
-            $gender->setName($toAdd);
-            $gender->create();
-            break;
-        }else if($typeRequest === "delete"){ // deleteList must be set for the "delete" request
-            foreach($deleteList as $toDeleteGender) :
-                $gender = new Gender();
-                $gender->load($toDeleteGender);
-                $gender->destroy();
-            endforeach;;
-        }else if($typeRequest === "rename"){ // genderToRename must be set for the "delete" request
-                $gender = new Gender();
-                // Not finished
-        }
-        break;
 }
 
 
